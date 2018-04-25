@@ -6,5 +6,9 @@ target 'SpaSpy' do
   use_frameworks!
 
   # Pods for SpaSpy
-
+  pod 'Firebase/Core'
+  pod 'GooglePlaces'
+  pod 'GooglePlacePicker'
+  pod 'GoogleMaps'
+  pod 'SnapKit', '~> 4.0.0'
 end

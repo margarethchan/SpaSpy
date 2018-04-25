@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		81DC1D422090F99800915C70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D412090F99800915C70 /* AppDelegate.swift */; };
-		81DC1D442090F99800915C70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D432090F99800915C70 /* ViewController.swift */; };
 		81DC1D472090F99800915C70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81DC1D452090F99800915C70 /* Main.storyboard */; };
 		81DC1D492090F99900915C70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81DC1D482090F99900915C70 /* Assets.xcassets */; };
 		81DC1D4C2090F99900915C70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81DC1D4A2090F99900915C70 /* LaunchScreen.storyboard */; };
 		81DC1D592090FC1600915C70 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D582090FC1600915C70 /* APIKeys.swift */; };
+		81DC1D5B2090FEBE00915C70 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81DC1D5A2090FEBE00915C70 /* GoogleService-Info.plist */; };
 		A4F278D2C07E38F58E370DB8 /* Pods_SpaSpy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 297F6580FD2C5D0116DF5EF2 /* Pods_SpaSpy.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,12 +22,12 @@
 		62FD98FDFBAC69080F0569E7 /* Pods-SpaSpy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaSpy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpaSpy/Pods-SpaSpy.debug.xcconfig"; sourceTree = "<group>"; };
 		81DC1D3E2090F99800915C70 /* SpaSpy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaSpy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81DC1D412090F99800915C70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		81DC1D432090F99800915C70 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		81DC1D462090F99800915C70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		81DC1D482090F99900915C70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81DC1D4B2090F99900915C70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		81DC1D4D2090F99900915C70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81DC1D582090FC1600915C70 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		81DC1D5A2090FEBE00915C70 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,13 +71,16 @@
 		81DC1D402090F99800915C70 /* SpaSpy */ = {
 			isa = PBXGroup;
 			children = (
-				81DC1D572090FBFE00915C70 /* Hidden */,
-				81DC1D412090F99800915C70 /* AppDelegate.swift */,
-				81DC1D432090F99800915C70 /* ViewController.swift */,
+				81DC1D5C209101DF00915C70 /* Models */,
+				81DC1D5D209101E600915C70 /* Services */,
+				81DC1D5E209101EB00915C70 /* Pages */,
 				81DC1D452090F99800915C70 /* Main.storyboard */,
+				81DC1D412090F99800915C70 /* AppDelegate.swift */,
 				81DC1D482090F99900915C70 /* Assets.xcassets */,
 				81DC1D4A2090F99900915C70 /* LaunchScreen.storyboard */,
 				81DC1D4D2090F99900915C70 /* Info.plist */,
+				81DC1D5A2090FEBE00915C70 /* GoogleService-Info.plist */,
+				81DC1D572090FBFE00915C70 /* Hidden */,
 			);
 			path = SpaSpy;
 			sourceTree = "<group>";
@@ -88,6 +91,27 @@
 				81DC1D582090FC1600915C70 /* APIKeys.swift */,
 			);
 			path = Hidden;
+			sourceTree = "<group>";
+		};
+		81DC1D5C209101DF00915C70 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		81DC1D5D209101E600915C70 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		81DC1D5E209101EB00915C70 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pages;
 			sourceTree = "<group>";
 		};
 		D775A04B0504308512CECDD8 /* Pods */ = {
@@ -110,6 +134,8 @@
 				81DC1D3A2090F99800915C70 /* Sources */,
 				81DC1D3B2090F99800915C70 /* Frameworks */,
 				81DC1D3C2090F99800915C70 /* Resources */,
+				00B642D28988D932FE3C3FCD /* [CP] Embed Pods Frameworks */,
+				05B527B068707268C87D634F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -159,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81DC1D4C2090F99900915C70 /* LaunchScreen.storyboard in Resources */,
+				81DC1D5B2090FEBE00915C70 /* GoogleService-Info.plist in Resources */,
 				81DC1D492090F99900915C70 /* Assets.xcassets in Resources */,
 				81DC1D472090F99800915C70 /* Main.storyboard in Resources */,
 			);
@@ -167,6 +194,50 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		00B642D28988D932FE3C3FCD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SpaSpy/Pods-SpaSpy-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpaSpy/Pods-SpaSpy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		05B527B068707268C87D634F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SpaSpy/Pods-SpaSpy-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpaSpy/Pods-SpaSpy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D4A5D2FE93D4EB4F51CD2A55 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -193,7 +264,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				81DC1D592090FC1600915C70 /* APIKeys.swift in Sources */,
-				81DC1D442090F99800915C70 /* ViewController.swift in Sources */,
 				81DC1D422090F99800915C70 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
