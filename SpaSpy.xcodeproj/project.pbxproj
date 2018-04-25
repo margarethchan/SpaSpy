@@ -12,6 +12,7 @@
 		81DC1D472090F99800915C70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81DC1D452090F99800915C70 /* Main.storyboard */; };
 		81DC1D492090F99900915C70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81DC1D482090F99900915C70 /* Assets.xcassets */; };
 		81DC1D4C2090F99900915C70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81DC1D4A2090F99900915C70 /* LaunchScreen.storyboard */; };
+		81DC1D592090FC1600915C70 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D582090FC1600915C70 /* APIKeys.swift */; };
 		A4F278D2C07E38F58E370DB8 /* Pods_SpaSpy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 297F6580FD2C5D0116DF5EF2 /* Pods_SpaSpy.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 		81DC1D482090F99900915C70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81DC1D4B2090F99900915C70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		81DC1D4D2090F99900915C70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81DC1D582090FC1600915C70 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 		81DC1D402090F99800915C70 /* SpaSpy */ = {
 			isa = PBXGroup;
 			children = (
+				81DC1D572090FBFE00915C70 /* Hidden */,
 				81DC1D412090F99800915C70 /* AppDelegate.swift */,
 				81DC1D432090F99800915C70 /* ViewController.swift */,
 				81DC1D452090F99800915C70 /* Main.storyboard */,
@@ -77,6 +80,14 @@
 				81DC1D4D2090F99900915C70 /* Info.plist */,
 			);
 			path = SpaSpy;
+			sourceTree = "<group>";
+		};
+		81DC1D572090FBFE00915C70 /* Hidden */ = {
+			isa = PBXGroup;
+			children = (
+				81DC1D582090FC1600915C70 /* APIKeys.swift */,
+			);
+			path = Hidden;
 			sourceTree = "<group>";
 		};
 		D775A04B0504308512CECDD8 /* Pods */ = {
@@ -181,6 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81DC1D592090FC1600915C70 /* APIKeys.swift in Sources */,
 				81DC1D442090F99800915C70 /* ViewController.swift in Sources */,
 				81DC1D422090F99800915C70 /* AppDelegate.swift in Sources */,
 			);
@@ -330,7 +342,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HRCUFV4R99;
 				INFOPLIST_FILE = SpaSpy/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = MHC.SpaSpy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -346,7 +361,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HRCUFV4R99;
 				INFOPLIST_FILE = SpaSpy/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = MHC.SpaSpy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
