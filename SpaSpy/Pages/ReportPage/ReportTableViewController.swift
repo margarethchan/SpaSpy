@@ -77,6 +77,7 @@ class ReportTableViewController: UITableViewController {
             cell.photosCollectionView.backgroundColor = .yellow
             cell.photosCollectionView.delegate = self
             cell.photosCollectionView.dataSource = self
+            cell.photosCollectionView.tag = 0
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddressTableViewCell", for: indexPath) as! AddressTableViewCell
@@ -89,6 +90,10 @@ class ReportTableViewController: UITableViewController {
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessTypeTableViewCell", for: indexPath) as! BusinessTypeTableViewCell
             cell.backgroundColor = .blue
+            cell.businessTypeCollectionView.backgroundColor = .yellow
+            cell.businessTypeCollectionView.delegate = self
+            cell.businessTypeCollectionView.dataSource = self
+            cell.businessTypeCollectionView.tag = 1
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "RedFlagsTableViewCell", for: indexPath) as! RedFlagsTableViewCell
@@ -178,25 +183,54 @@ extension ReportTableViewController: UICollectionViewDelegateFlowLayout, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return uploadedPhotos.count
-        return 15
+        switch collectionView.tag {
+        case 0:
+            //        return uploadedPhotos.count
+            return 15
+        case 1:
+            //            return selectedBusinessTypes.count
+            return 5
+        default:
+            return 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddPhotoCollectionViewCell", for: indexPath) as! AddPhotoCollectionViewCell
-        let addPhotoIcon = #imageLiteral(resourceName: "cam1")
-        cell.addImageIcon.image = addPhotoIcon
-        return cell
+        switch collectionView.tag {
+        case 0:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddPhotoCollectionViewCell", for: indexPath) as! AddPhotoCollectionViewCell
+            let addPhotoIcon = #imageLiteral(resourceName: "cam1")
+            cell.addImageIcon.image = addPhotoIcon
+            return cell
+        case 1:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BusinessTypeCollectionViewCell", for: indexPath) as! BusinessTypeCollectionViewCell
+            let businessType = businessTypes[indexPath.row]
+            cell.businessTypeLabel.text = businessType
+            return cell
+        default:
+            let cell = UICollectionViewCell()
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-        let availableWidth = view.frame.width - paddingSpace
-        let widthPerItem = availableWidth / itemsPerRow
-
-        return CGSize(width: widthPerItem, height: widthPerItem)
+        
+        switch collectionView.tag {
+        case 0:
+            let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+            let availableWidth = view.frame.width - paddingSpace
+            let widthPerItem = availableWidth / itemsPerRow
+            return CGSize(width: widthPerItem, height: widthPerItem)
+        case 1:
+            let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+            let availableWidth = view.frame.width - paddingSpace
+            let widthPerItem = availableWidth / itemsPerRow
+            return CGSize(width: widthPerItem, height: widthPerItem / 2)
+        default:
+            return CGSize(width: 5.0, height: 5.0)
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView,

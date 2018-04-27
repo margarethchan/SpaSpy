@@ -10,7 +10,18 @@ import UIKit
 
 class BusinessTypeTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var businessTypeCollectionView: UICollectionView!
+    
     // Collection View of Multi-selectable categories
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .white
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
