@@ -10,6 +10,18 @@ import UIKit
 
 class ReportTableViewController: UITableViewController {
 
+    var uploadedPhotos = [Photo]()
+    var selectedBusinessTypes = [String]()
+    var selectedLocation = ""
+    var selectedRedFlags = [String]()
+    var enteredNumbers = ""
+    var enteredWebpages = ""
+    var enteredNotes = ""
+    
+    // UICollectionView reference values
+    let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+    let itemsPerRow: CGFloat = 4
+    
     @IBAction func clearFormButton(_ sender: UIBarButtonItem) {
         print("clear form")
     }
@@ -24,6 +36,7 @@ class ReportTableViewController: UITableViewController {
         self.tableView.dataSource = self
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 100
+        self.tableView.reloadData()
         self.tableView.allowsSelection = false
         self.tableView.bounces = false
         self.tableView.separatorStyle = .none
@@ -60,24 +73,33 @@ class ReportTableViewController: UITableViewController {
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotosTableViewCell", for: indexPath) as! PhotosTableViewCell
+            cell.backgroundColor = .yellow
+            cell.photosCollectionView.delegate = self
+            cell.photosCollectionView.dataSource = self
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddressTableViewCell", for: indexPath) as! AddressTableViewCell
+            cell.backgroundColor = .green
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessTypeTableViewCell", for: indexPath) as! BusinessTypeTableViewCell
+            cell.backgroundColor = .blue
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "RedFlagsTableViewCell", for: indexPath) as! RedFlagsTableViewCell
+            cell.backgroundColor = .cyan
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "NumbersTableViewCell", for: indexPath) as! NumbersTableViewCell
+            cell.backgroundColor = .red
         return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "WebpagesTableViewCell", for: indexPath) as! WebpagesTableViewCell
+            cell.backgroundColor = .orange
             return cell
         case 6:
             let cell = tableView.dequeueReusableCell(withIdentifier: "NotesTableViewCell", for: indexPath) as! NotesTableViewCell
+            cell.backgroundColor = .brown
             return cell
         default:
             let cell = UITableViewCell()
@@ -85,6 +107,12 @@ class ReportTableViewController: UITableViewController {
         }
     }
     
+
+    
+    
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 100
+//    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -132,3 +160,57 @@ class ReportTableViewController: UITableViewController {
     */
 
 }
+
+
+extension ReportTableViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return uploadedPhotos.count
+        return 15
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch indexPath.row {
+        case 0:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddPhotoCollectionViewCell", for: indexPath) as! AddPhotoCollectionViewCell
+            let addPhotoIcon = #imageLiteral(resourceName: "cam1")
+            cell.addImageIcon.image = addPhotoIcon
+            return cell
+            
+        default:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
+            let uploadedPhoto = #imageLiteral(resourceName: "cam2")
+            cell.uploadedImage.image = uploadedPhoto
+            return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
+}
+

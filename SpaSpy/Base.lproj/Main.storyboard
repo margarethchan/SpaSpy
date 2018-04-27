@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZIL-2O-wvb">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -89,16 +89,97 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhotosTableViewCell" id="50s-b9-EKT" customClass="PhotosTableViewCell" customModule="SpaSpy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhotosTableViewCell" rowHeight="100" id="50s-b9-EKT" customClass="PhotosTableViewCell" customModule="SpaSpy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="50s-b9-EKT" id="A8j-pJ-3U3">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="50s-b9-EKT" id="A8j-pJ-3U3">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSL-bv-mKd">
+                                            <rect key="frame" x="10" y="0.0" width="365" height="0.0"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Yj4-s2-4Hb">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                            <color key="backgroundColor" red="1" green="0.63578296599999995" blue="0.66844335269999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="110" id="pu8-cG-xKN"/>
+                                            </constraints>
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SuQ-Vv-mZi">
+                                                <size key="itemSize" width="50" height="50"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                            <cells>
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddPhotoCollectionViewCell" id="8Z9-db-NEm" customClass="AddPhotoCollectionViewCell" customModule="SpaSpy" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="25" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z3d-Zv-gOF">
+                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                    </view>
+                                                    <color key="backgroundColor" red="0.0" green="0.93748415399999996" blue="0.94634359140000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="z3d-Zv-gOF" firstAttribute="leading" secondItem="8Z9-db-NEm" secondAttribute="leading" id="9dJ-RT-paC"/>
+                                                        <constraint firstItem="z3d-Zv-gOF" firstAttribute="top" secondItem="8Z9-db-NEm" secondAttribute="top" id="jwm-Jo-b9A"/>
+                                                        <constraint firstAttribute="trailing" secondItem="z3d-Zv-gOF" secondAttribute="trailing" id="lZD-K2-rRw"/>
+                                                        <constraint firstAttribute="bottom" secondItem="z3d-Zv-gOF" secondAttribute="bottom" id="r9J-nX-vhv"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="addImageIcon" destination="z3d-Zv-gOF" id="LK3-4b-XAy"/>
+                                                    </connections>
+                                                </collectionViewCell>
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionViewCell" id="Mdk-pM-5gr" customClass="PhotoCollectionViewCell" customModule="SpaSpy" customModuleProvider="target">
+                                                    <rect key="frame" x="60" y="25" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nSu-OF-VMB">
+                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                    </view>
+                                                    <color key="backgroundColor" red="0.0" green="0.75815657380000001" blue="0.41577871979999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="nSu-OF-VMB" secondAttribute="bottom" id="2TT-Lr-oZd"/>
+                                                        <constraint firstAttribute="trailing" secondItem="nSu-OF-VMB" secondAttribute="trailing" id="BDz-6m-ZQz"/>
+                                                        <constraint firstItem="nSu-OF-VMB" firstAttribute="top" secondItem="Mdk-pM-5gr" secondAttribute="top" id="bhs-IB-uoG"/>
+                                                        <constraint firstItem="nSu-OF-VMB" firstAttribute="leading" secondItem="Mdk-pM-5gr" secondAttribute="leading" id="thJ-Me-FIU"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="uploadedImage" destination="nSu-OF-VMB" id="WrP-6V-tnj"/>
+                                                    </connections>
+                                                </collectionViewCell>
+                                            </cells>
+                                        </collectionView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="PSL-bv-mKd" firstAttribute="leading" secondItem="A8j-pJ-3U3" secondAttribute="leading" constant="10" id="0Z2-Oy-7vf"/>
+                                        <constraint firstItem="Yj4-s2-4Hb" firstAttribute="leading" secondItem="A8j-pJ-3U3" secondAttribute="leading" id="M33-hc-cSR"/>
+                                        <constraint firstAttribute="trailing" secondItem="Yj4-s2-4Hb" secondAttribute="trailing" id="ORR-Zf-geT"/>
+                                        <constraint firstItem="Yj4-s2-4Hb" firstAttribute="top" secondItem="PSL-bv-mKd" secondAttribute="bottom" id="PXi-xG-UKA"/>
+                                        <constraint firstItem="PSL-bv-mKd" firstAttribute="top" secondItem="A8j-pJ-3U3" secondAttribute="top" id="fgb-cS-CnB"/>
+                                        <constraint firstAttribute="bottom" secondItem="Yj4-s2-4Hb" secondAttribute="bottom" id="h8Q-Cg-JUO"/>
+                                        <constraint firstAttribute="trailing" secondItem="PSL-bv-mKd" secondAttribute="trailing" id="xBh-ko-e5D"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="photosCollectionView" destination="Yj4-s2-4Hb" id="OFP-CY-4dP"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddressTableViewCell" id="Pph-7t-jyi" customClass="AddressTableViewCell" customModule="SpaSpy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="128" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pph-7t-jyi" id="go8-Fo-BGw">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -106,7 +187,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BusinessTypeTableViewCell" id="VEP-co-nxH" customClass="BusinessTypeTableViewCell" customModule="SpaSpy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="116" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="172" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VEP-co-nxH" id="EVj-5i-kJ1">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -114,7 +195,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RedFlagsTableViewCell" id="vBv-Uw-lxr" customClass="RedFlagsTableViewCell" customModule="SpaSpy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="160" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="216" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vBv-Uw-lxr" id="fzF-B2-MsS">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -122,7 +203,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NumbersTableViewCell" id="YQ9-Po-ZuI" customClass="NumbersTableViewCell" customModule="SpaSpy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="204" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="260" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YQ9-Po-ZuI" id="UWa-YT-mbz">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -130,7 +211,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WebpagesTableViewCell" id="CFP-et-Kur" customClass="WebpagesTableViewCell" customModule="SpaSpy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="248" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="304" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CFP-et-Kur" id="0zP-A7-Na9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -138,7 +219,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotesTableViewCell" id="3U3-uf-BVL" customClass="NotesTableViewCell" customModule="SpaSpy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="292" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="348" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3U3-uf-BVL" id="Jgh-Q4-z2J">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -175,6 +256,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="1Ya-WX-mBY"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OTX-an-ffF">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -189,7 +271,7 @@
             </objects>
             <point key="canvasLocation" x="1287" y="133"/>
         </scene>
-        <!--View Controller-->
+        <!--Search-->
         <scene sceneID="2hq-bS-u4L">
             <objects>
                 <viewController id="dh1-yA-OvS" sceneMemberID="viewController">
@@ -199,13 +281,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="FHQ-jf-UTQ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="RkX-a0-olg"/>
+                    <navigationItem key="navigationItem" title="Search" id="RkX-a0-olg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t09-ti-S2l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4516" y="-461.01949025487261"/>
         </scene>
-        <!--View Controller-->
+        <!--Learn-->
         <scene sceneID="6w7-B2-3hN">
             <objects>
                 <viewController id="Tec-U4-BP0" sceneMemberID="viewController">
@@ -215,13 +297,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2da-sD-vXV"/>
                     </view>
-                    <navigationItem key="navigationItem" id="qyT-KV-6lE"/>
+                    <navigationItem key="navigationItem" title="Learn" id="qyT-KV-6lE">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="menu1" id="WsL-uL-dzF"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CSv-Zn-ggX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4516" y="312.59370314842579"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--History-->
         <scene sceneID="ono-no-wgE">
             <objects>
                 <collectionViewController id="gUr-4H-Wfc" sceneMemberID="viewController">
@@ -250,7 +334,7 @@
                             <outlet property="delegate" destination="gUr-4H-Wfc" id="PO1-Og-xUf"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="9lw-2Z-ARh"/>
+                    <navigationItem key="navigationItem" title="History" id="9lw-2Z-ARh"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Cg-dl-UpK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -333,4 +417,7 @@
             <point key="canvasLocation" x="3576.8000000000002" y="1143.7781109445277"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu1" width="30" height="30"/>
+    </resources>
 </document>

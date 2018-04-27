@@ -34,6 +34,9 @@
 		81DC1D8A2093876B00915C70 /* NumbersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D892093876B00915C70 /* NumbersTableViewCell.swift */; };
 		81DC1D8C2093877C00915C70 /* WebpagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D8B2093877C00915C70 /* WebpagesTableViewCell.swift */; };
 		81DC1D8E2093878500915C70 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D8D2093878500915C70 /* NotesTableViewCell.swift */; };
+		81DC1D9020939FAF00915C70 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D8F20939FAF00915C70 /* PhotoCollectionViewCell.swift */; };
+		81DC1D922093A55400915C70 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D912093A55400915C70 /* Photo.swift */; };
+		81DC1D942093A7B200915C70 /* AddPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D932093A7B200915C70 /* AddPhotoCollectionViewCell.swift */; };
 		A4F278D2C07E38F58E370DB8 /* Pods_SpaSpy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 297F6580FD2C5D0116DF5EF2 /* Pods_SpaSpy.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +73,9 @@
 		81DC1D892093876B00915C70 /* NumbersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersTableViewCell.swift; sourceTree = "<group>"; };
 		81DC1D8B2093877C00915C70 /* WebpagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebpagesTableViewCell.swift; sourceTree = "<group>"; };
 		81DC1D8D2093878500915C70 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
+		81DC1D8F20939FAF00915C70 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		81DC1D912093A55400915C70 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		81DC1D932093A7B200915C70 /* AddPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +144,7 @@
 		81DC1D5C209101DF00915C70 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				81DC1D912093A55400915C70 /* Photo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -215,6 +222,8 @@
 			isa = PBXGroup;
 			children = (
 				81DC1D812093873700915C70 /* PhotosTableViewCell.swift */,
+				81DC1D932093A7B200915C70 /* AddPhotoCollectionViewCell.swift */,
+				81DC1D8F20939FAF00915C70 /* PhotoCollectionViewCell.swift */,
 				81DC1D832093874400915C70 /* AddressTableViewCell.swift */,
 				81DC1D852093875300915C70 /* BusinessTypeTableViewCell.swift */,
 				81DC1D872093875D00915C70 /* RedFlagsTableViewCell.swift */,
@@ -383,6 +392,7 @@
 				81DC1D712092743100915C70 /* SearchView.swift in Sources */,
 				81DC1D6D2092741400915C70 /* CameraView.swift in Sources */,
 				81DC1D842093874400915C70 /* AddressTableViewCell.swift in Sources */,
+				81DC1D922093A55400915C70 /* Photo.swift in Sources */,
 				81DC1D6F2092741E00915C70 /* FlagsView.swift in Sources */,
 				81DC1D862093875300915C70 /* BusinessTypeTableViewCell.swift in Sources */,
 				81DC1D8E2093878500915C70 /* NotesTableViewCell.swift in Sources */,
@@ -391,11 +401,13 @@
 				81DC1D6B2092740200915C70 /* ReportView.swift in Sources */,
 				81DC1D7F209274ED00915C70 /* HistoryView.swift in Sources */,
 				81DC1D422090F99800915C70 /* AppDelegate.swift in Sources */,
+				81DC1D9020939FAF00915C70 /* PhotoCollectionViewCell.swift in Sources */,
 				81DC1D752092746300915C70 /* VenueDetailView.swift in Sources */,
 				81DC1D7D209274DC00915C70 /* HistoryCollectionViewController.swift in Sources */,
 				81DC1D65209273B200915C70 /* SignInViewController.swift in Sources */,
 				81DC1D882093875D00915C70 /* RedFlagsTableViewCell.swift in Sources */,
 				81DC1D69209273F200915C70 /* SignInView.swift in Sources */,
+				81DC1D942093A7B200915C70 /* AddPhotoCollectionViewCell.swift in Sources */,
 				81DC1D79209274A500915C70 /* TopicsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
