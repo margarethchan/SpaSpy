@@ -43,6 +43,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxx-CB-5je">
                                 <rect key="frame" x="47" y="408.5" width="281" height="30"/>
                                 <state key="normal" title="Sign In"/>
+                                <connections>
+                                    <segue destination="ZIL-2O-wvb" kind="show" id="0G6-j9-u1s"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dr1-d2-h6b">
                                 <rect key="frame" x="47" y="587" width="281" height="30"/>
@@ -77,16 +80,16 @@
             </objects>
             <point key="canvasLocation" x="140" y="132.68365817091455"/>
         </scene>
-        <!--Report-->
+        <!--Report a Business-->
         <scene sceneID="EVP-88-6ZU">
             <objects>
-                <tableViewController id="tpd-Pb-fky" customClass="ReportTableViewController" customModule="SpaSpy" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ReportTableViewController" id="tpd-Pb-fky" customClass="ReportTableViewController" customModule="SpaSpy" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dhp-fc-Tza">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="50s-b9-EKT">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="50s-b9-EKT" customClass="PhotosTableViewCell" customModule="SpaSpy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="50s-b9-EKT" id="A8j-pJ-3U3">
@@ -94,7 +97,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Pph-7t-jyi">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Pph-7t-jyi" customClass="AddressTableViewCell" customModule="SpaSpy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pph-7t-jyi" id="go8-Fo-BGw">
@@ -102,7 +105,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="VEP-co-nxH">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="VEP-co-nxH" customClass="BusinessTypeTableViewCell" customModule="SpaSpy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="116" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VEP-co-nxH" id="EVj-5i-kJ1">
@@ -110,7 +113,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vBv-Uw-lxr">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vBv-Uw-lxr" customClass="RedFlagsTableViewCell" customModule="SpaSpy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="160" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vBv-Uw-lxr" id="fzF-B2-MsS">
@@ -118,7 +121,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="YQ9-Po-ZuI">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="YQ9-Po-ZuI" customClass="NumbersTableViewCell" customModule="SpaSpy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="204" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YQ9-Po-ZuI" id="UWa-YT-mbz">
@@ -126,7 +129,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="CFP-et-Kur">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="CFP-et-Kur" customClass="WebpagesTableViewCell" customModule="SpaSpy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="248" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CFP-et-Kur" id="0zP-A7-Na9">
@@ -134,7 +137,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="3U3-uf-BVL">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="3U3-uf-BVL" customClass="NotesTableViewCell" customModule="SpaSpy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="292" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3U3-uf-BVL" id="Jgh-Q4-z2J">
@@ -148,30 +151,14 @@
                             <outlet property="delegate" destination="tpd-Pb-fky" id="IaK-e4-fhC"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Report" id="R07-4F-yqq"/>
-                    <navigationItem key="navigationItem" id="Rhg-fa-ka1"/>
+                    <navigationItem key="navigationItem" title="Report a Business" id="Rhg-fa-ka1">
+                        <barButtonItem key="leftBarButtonItem" title="Clear" id="OKn-0Q-j4s"/>
+                        <barButtonItem key="rightBarButtonItem" title="Report" id="TU5-2h-upg"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WC9-7r-2Jh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3578" y="-1207"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="EDE-Bm-nEN">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bYR-C0-Qbk" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kbI-P4-hdX">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ZIL-2O-wvb" kind="relationship" relationship="rootViewController" id="yUn-dU-khl"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5fi-Cy-Aco" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="853.60000000000002" y="132.68365817091455"/>
+            <point key="canvasLocation" x="4516" y="-1207.6461769115442"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fNT-z1-pdt">
@@ -184,17 +171,17 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="tpd-Pb-fky" kind="relationship" relationship="viewControllers" id="JcQ-f2-VSP"/>
-                        <segue destination="dh1-yA-OvS" kind="relationship" relationship="viewControllers" id="vfv-Ud-DR2"/>
-                        <segue destination="Tec-U4-BP0" kind="relationship" relationship="viewControllers" id="QHx-yY-vdp"/>
-                        <segue destination="gUr-4H-Wfc" kind="relationship" relationship="viewControllers" id="zI1-qh-6bt"/>
+                        <segue destination="y79-Fh-X1a" kind="relationship" relationship="viewControllers" id="JcQ-f2-VSP"/>
+                        <segue destination="Lif-aF-XkR" kind="relationship" relationship="viewControllers" id="vfv-Ud-DR2"/>
+                        <segue destination="3VH-Bp-pD6" kind="relationship" relationship="viewControllers" id="QHx-yY-vdp"/>
+                        <segue destination="NSJ-LK-SlK" kind="relationship" relationship="viewControllers" id="zI1-qh-6bt"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fs1-Ru-3N1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1792.8" y="132.68365817091455"/>
+            <point key="canvasLocation" x="1287" y="133"/>
         </scene>
-        <!--Search-->
+        <!--View Controller-->
         <scene sceneID="2hq-bS-u4L">
             <objects>
                 <viewController id="dh1-yA-OvS" sceneMemberID="viewController">
@@ -204,13 +191,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="FHQ-jf-UTQ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" id="jHj-UN-qm5"/>
+                    <navigationItem key="navigationItem" id="RkX-a0-olg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t09-ti-S2l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3577" y="-461"/>
+            <point key="canvasLocation" x="4516" y="-461.01949025487261"/>
         </scene>
-        <!--Learn-->
+        <!--View Controller-->
         <scene sceneID="6w7-B2-3hN">
             <objects>
                 <viewController id="Tec-U4-BP0" sceneMemberID="viewController">
@@ -220,13 +207,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2da-sD-vXV"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Learn" id="TZ7-Rd-Ind"/>
+                    <navigationItem key="navigationItem" id="qyT-KV-6lE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CSv-Zn-ggX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3577" y="313"/>
+            <point key="canvasLocation" x="4516" y="312.59370314842579"/>
         </scene>
-        <!--History-->
+        <!--Collection View Controller-->
         <scene sceneID="ono-no-wgE">
             <objects>
                 <collectionViewController id="gUr-4H-Wfc" sceneMemberID="viewController">
@@ -255,11 +242,87 @@
                             <outlet property="delegate" destination="gUr-4H-Wfc" id="PO1-Og-xUf"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="History" id="tfe-TT-5QZ"/>
+                    <navigationItem key="navigationItem" id="9lw-2Z-ARh"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Cg-dl-UpK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3577" y="1144"/>
+            <point key="canvasLocation" x="4516" y="1143.7781109445277"/>
+        </scene>
+        <!--Report-->
+        <scene sceneID="Mkp-Vj-F8v">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y79-Fh-X1a" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Report" id="R07-4F-yqq"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yeu-o1-HJY">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="tpd-Pb-fky" kind="relationship" relationship="rootViewController" id="tTX-UO-CnA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yxf-Fq-OYA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3576.8000000000002" y="-1207.6461769115442"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="KbB-TY-Q19">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lif-aF-XkR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" id="jHj-UN-qm5"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vwu-b8-eRC">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dh1-yA-OvS" kind="relationship" relationship="rootViewController" id="CQv-iQ-haR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dcc-fF-PgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3576.8000000000002" y="-461.01949025487261"/>
+        </scene>
+        <!--Learn-->
+        <scene sceneID="MKR-Cn-2Ok">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3VH-Bp-pD6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Learn" id="TZ7-Rd-Ind"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qVn-2v-Ggu">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Tec-U4-BP0" kind="relationship" relationship="rootViewController" id="XT3-OD-SZM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fPD-bL-zq6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3576.8000000000002" y="312.59370314842579"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="5a1-iv-TZC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NSJ-LK-SlK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="History" id="tfe-TT-5QZ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fbq-ka-kfZ">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gUr-4H-Wfc" kind="relationship" relationship="rootViewController" id="xFH-O8-uoe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z8v-MI-fKU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3576.8000000000002" y="1143.7781109445277"/>
         </scene>
     </scenes>
 </document>

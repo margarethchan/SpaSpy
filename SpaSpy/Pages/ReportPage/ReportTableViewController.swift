@@ -13,6 +13,11 @@ class ReportTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        self.navigationItem.title = "Report a Business"
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Clear", style: .done, target: self, action: #selector(clearForm))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Report", style: .done, target: self, action: #selector(submitReport))
+        
+        
         // Nav Bar Right Button - Report, Left Button - Clear
         
         // Uncomment the following line to preserve selection between presentations
@@ -20,6 +25,14 @@ class ReportTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    @objc func clearForm() {
+        print("clear the form")
+    }
+    
+    @objc func submitReport() {
+        print("submit report")
     }
 
     override func didReceiveMemoryWarning() {
