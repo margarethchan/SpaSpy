@@ -10,15 +10,24 @@ import UIKit
 
 class ReportTableViewController: UITableViewController {
 
+    @IBAction func clearFormButton(_ sender: UIBarButtonItem) {
+        print("clear form")
+    }
+    
+    @IBAction func reportButton(_ sender: UIBarButtonItem) {
+        print("submit report")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        self.navigationItem.title = "Report a Business"
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Clear", style: .done, target: self, action: #selector(clearForm))
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Report", style: .done, target: self, action: #selector(submitReport))
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 100
+        self.tableView.allowsSelection = false
+        self.tableView.bounces = false
+        self.tableView.separatorStyle = .none
         
-        
-        // Nav Bar Right Button - Report, Left Button - Clear
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -26,14 +35,7 @@ class ReportTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    
-    @objc func clearForm() {
-        print("clear the form")
-    }
-    
-    @objc func submitReport() {
-        print("submit report")
-    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -44,23 +46,45 @@ class ReportTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 7
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
-
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PhotosTableViewCell", for: indexPath) as! PhotosTableViewCell
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddressTableViewCell", for: indexPath) as! AddressTableViewCell
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessTypeTableViewCell", for: indexPath) as! BusinessTypeTableViewCell
+            return cell
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RedFlagsTableViewCell", for: indexPath) as! RedFlagsTableViewCell
+            return cell
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NumbersTableViewCell", for: indexPath) as! NumbersTableViewCell
         return cell
+        case 5:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WebpagesTableViewCell", for: indexPath) as! WebpagesTableViewCell
+            return cell
+        case 6:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NotesTableViewCell", for: indexPath) as! NotesTableViewCell
+            return cell
+        default:
+            let cell = UITableViewCell()
+            return cell
+        }
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

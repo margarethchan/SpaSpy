@@ -89,7 +89,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="50s-b9-EKT" customClass="PhotosTableViewCell" customModule="SpaSpy" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhotosTableViewCell" id="50s-b9-EKT" customClass="PhotosTableViewCell" customModule="SpaSpy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="50s-b9-EKT" id="A8j-pJ-3U3">
@@ -97,7 +97,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Pph-7t-jyi" customClass="AddressTableViewCell" customModule="SpaSpy" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddressTableViewCell" id="Pph-7t-jyi" customClass="AddressTableViewCell" customModule="SpaSpy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pph-7t-jyi" id="go8-Fo-BGw">
@@ -105,7 +105,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="VEP-co-nxH" customClass="BusinessTypeTableViewCell" customModule="SpaSpy" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BusinessTypeTableViewCell" id="VEP-co-nxH" customClass="BusinessTypeTableViewCell" customModule="SpaSpy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="116" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VEP-co-nxH" id="EVj-5i-kJ1">
@@ -113,7 +113,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vBv-Uw-lxr" customClass="RedFlagsTableViewCell" customModule="SpaSpy" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RedFlagsTableViewCell" id="vBv-Uw-lxr" customClass="RedFlagsTableViewCell" customModule="SpaSpy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="160" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vBv-Uw-lxr" id="fzF-B2-MsS">
@@ -121,7 +121,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="YQ9-Po-ZuI" customClass="NumbersTableViewCell" customModule="SpaSpy" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NumbersTableViewCell" id="YQ9-Po-ZuI" customClass="NumbersTableViewCell" customModule="SpaSpy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="204" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YQ9-Po-ZuI" id="UWa-YT-mbz">
@@ -129,7 +129,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="CFP-et-Kur" customClass="WebpagesTableViewCell" customModule="SpaSpy" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WebpagesTableViewCell" id="CFP-et-Kur" customClass="WebpagesTableViewCell" customModule="SpaSpy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="248" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CFP-et-Kur" id="0zP-A7-Na9">
@@ -137,7 +137,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="3U3-uf-BVL" customClass="NotesTableViewCell" customModule="SpaSpy" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotesTableViewCell" id="3U3-uf-BVL" customClass="NotesTableViewCell" customModule="SpaSpy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="292" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3U3-uf-BVL" id="Jgh-Q4-z2J">
@@ -152,8 +152,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Report a Business" id="Rhg-fa-ka1">
-                        <barButtonItem key="leftBarButtonItem" title="Clear" id="OKn-0Q-j4s"/>
-                        <barButtonItem key="rightBarButtonItem" title="Report" id="TU5-2h-upg"/>
+                        <barButtonItem key="leftBarButtonItem" title="Clear" id="OKn-0Q-j4s">
+                            <connections>
+                                <action selector="clearFormButton:" destination="tpd-Pb-fky" id="vVK-L2-Snh"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Report" id="TU5-2h-upg">
+                            <connections>
+                                <action selector="reportButton:" destination="tpd-Pb-fky" id="DYE-IW-2o0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WC9-7r-2Jh" userLabel="First Responder" sceneMemberID="firstResponder"/>
