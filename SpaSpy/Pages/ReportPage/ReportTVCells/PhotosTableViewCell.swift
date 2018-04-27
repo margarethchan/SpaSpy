@@ -10,6 +10,9 @@ import UIKit
 
 class PhotosTableViewCell: UITableViewCell {
 
+    // Collection View of Images to be added by user
+    // Presents CameraView modally
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

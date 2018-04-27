@@ -10,6 +10,8 @@ import UIKit
 
 class WebpagesTableViewCell: UITableViewCell {
 
+    // Medium Scrollable Text View
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

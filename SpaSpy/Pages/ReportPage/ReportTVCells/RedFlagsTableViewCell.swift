@@ -10,6 +10,9 @@ import UIKit
 
 class RedFlagsTableViewCell: UITableViewCell {
 
+    // Presents a modal view with a tableview of red flags with switches set to off for user to switch on for applicable cases
+    // Present FlagsView modally
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

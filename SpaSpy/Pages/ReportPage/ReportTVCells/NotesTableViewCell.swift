@@ -10,6 +10,8 @@ import UIKit
 
 class NotesTableViewCell: UITableViewCell {
 
+    // Large Scrollable Text View
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

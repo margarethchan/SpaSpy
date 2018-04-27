@@ -10,6 +10,8 @@ import UIKit
 
 class BusinessTypeTableViewCell: UITableViewCell {
 
+    // Collection View of Multi-selectable categories
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

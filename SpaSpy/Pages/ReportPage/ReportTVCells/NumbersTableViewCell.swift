@@ -10,6 +10,8 @@ import UIKit
 
 class NumbersTableViewCell: UITableViewCell {
 
+    // Small Scrollable Text View
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

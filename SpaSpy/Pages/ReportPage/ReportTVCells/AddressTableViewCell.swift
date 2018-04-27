@@ -10,6 +10,8 @@ import UIKit
 
 class AddressTableViewCell: UITableViewCell {
 
+    // Button presents modal view of Google Map to select Place Name/Location Address
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
