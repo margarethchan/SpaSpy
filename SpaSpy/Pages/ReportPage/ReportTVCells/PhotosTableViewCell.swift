@@ -10,6 +10,7 @@ import UIKit
 
 class PhotosTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var photosLabel: UILabel!
     @IBOutlet weak var photosCollectionView: UICollectionView!   
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

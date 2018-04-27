@@ -158,6 +158,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="photosCollectionView" destination="Yj4-s2-4Hb" id="OFP-CY-4dP"/>
+                                    <outlet property="photosLabel" destination="PSL-bv-mKd" id="MoM-o3-U1w"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddressTableViewCell" rowHeight="100" id="Pph-7t-jyi" customClass="AddressTableViewCell" customModule="SpaSpy" customModuleProvider="target">
@@ -167,20 +168,46 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuw-QN-ryZ">
-                                            <rect key="frame" x="26" y="11" width="343" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuw-QN-ryZ">
+                                            <rect key="frame" x="10" y="0.0" width="355" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Cik-ff-l8x">
+                                            <rect key="frame" x="32" y="30.5" width="311.5" height="48.5"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pC7-QO-uE8">
+                                                    <rect key="frame" x="0.0" y="9.5" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="Cun-jo-CPx"/>
+                                                        <constraint firstAttribute="height" constant="30" id="RcF-Ds-p14"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="map1"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWb-ep-fjW">
+                                                    <rect key="frame" x="30" y="9.5" width="281.5" height="30"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.93748415399999996" blue="0.94634359140000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="Add Location"/>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="uuw-QN-ryZ" firstAttribute="leading" secondItem="go8-Fo-BGw" secondAttribute="leadingMargin" constant="10" id="0lN-Mn-V6g"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="uuw-QN-ryZ" secondAttribute="trailing" constant="-10" id="Bvl-Hf-0Z5"/>
-                                        <constraint firstItem="uuw-QN-ryZ" firstAttribute="top" secondItem="go8-Fo-BGw" secondAttribute="topMargin" id="FRg-60-EgT"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="uuw-QN-ryZ" secondAttribute="bottom" constant="57" id="ToE-Te-17x"/>
+                                        <constraint firstAttribute="trailing" secondItem="uuw-QN-ryZ" secondAttribute="trailing" constant="10" id="0t9-jS-a7E"/>
+                                        <constraint firstItem="Cik-ff-l8x" firstAttribute="top" secondItem="uuw-QN-ryZ" secondAttribute="bottom" constant="10" id="CAq-pK-FCz"/>
+                                        <constraint firstItem="zWb-ep-fjW" firstAttribute="width" secondItem="go8-Fo-BGw" secondAttribute="width" multiplier="0.75" id="IME-WV-3X4"/>
+                                        <constraint firstItem="uuw-QN-ryZ" firstAttribute="top" secondItem="go8-Fo-BGw" secondAttribute="top" id="hFy-SY-Krj"/>
+                                        <constraint firstItem="Cik-ff-l8x" firstAttribute="centerX" secondItem="go8-Fo-BGw" secondAttribute="centerX" id="lzc-O6-2Df"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Cik-ff-l8x" secondAttribute="bottom" constant="10" id="vnn-Fv-YaN"/>
+                                        <constraint firstItem="uuw-QN-ryZ" firstAttribute="leading" secondItem="go8-Fo-BGw" secondAttribute="leading" constant="10" id="wbZ-gD-4BM"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="addLocationButton" destination="zWb-ep-fjW" id="pd3-4p-L05"/>
+                                    <outlet property="businessAddressLabel" destination="uuw-QN-ryZ" id="eS9-48-sRH"/>
+                                    <outlet property="mapIconButton" destination="pC7-QO-uE8" id="boM-KT-YbE"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BusinessTypeTableViewCell" id="VEP-co-nxH" customClass="BusinessTypeTableViewCell" customModule="SpaSpy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="248" width="375" height="44"/>
@@ -414,6 +441,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="map1" width="64" height="64"/>
         <image name="menu1" width="30" height="30"/>
     </resources>
 </document>

@@ -12,7 +12,7 @@ class ReportTableViewController: UITableViewController {
 
     var uploadedPhotos = [Photo]()
     var selectedBusinessTypes = [String]()
-    var selectedLocation = ""
+    var selectedLocation = "selectedLocation"
     var selectedRedFlags = [String]()
     var enteredNumbers = ""
     var enteredWebpages = ""
@@ -77,11 +77,13 @@ class ReportTableViewController: UITableViewController {
             cell.photosCollectionView.backgroundColor = .yellow
             cell.photosCollectionView.delegate = self
             cell.photosCollectionView.dataSource = self
-            
-            
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddressTableViewCell", for: indexPath) as! AddressTableViewCell
+            cell.addLocationButton.addTarget(self, action: #selector(addLocation), for: .touchUpInside)
+            cell.mapIconButton.addTarget(self, action: #selector(addLocation), for: .touchUpInside)
+            cell.addLocationButton.setTitle("Add Location", for: .normal)
+//            cell.addLocationButton.setTitle(selectedLocation, for: .selected)
             cell.backgroundColor = .green
             return cell
         case 2:
@@ -110,7 +112,9 @@ class ReportTableViewController: UITableViewController {
         }
     }
     
-
+    @objc func addLocation() {
+        print("add location")
+    }
     
     
 //    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -10,6 +10,10 @@ import UIKit
 
 class AddressTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var businessAddressLabel: UILabel!
+    @IBOutlet weak var mapIconButton: UIButton!
+    @IBOutlet weak var addLocationButton: UIButton!
+    
     // Button presents modal view of Google Map to select Place Name/Location Address
     
     override func awakeFromNib() {
