@@ -18,13 +18,9 @@ class AddPhotoCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
 //        addImageIcon.backgroundColor = .yellow
 //        addImageIcon.image = #imageLiteral(resourceName: "cam1")
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-    
-    
-    
+    } 
 }

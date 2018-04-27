@@ -74,8 +74,11 @@ class ReportTableViewController: UITableViewController {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotosTableViewCell", for: indexPath) as! PhotosTableViewCell
             cell.backgroundColor = .yellow
+            cell.photosCollectionView.backgroundColor = .yellow
             cell.photosCollectionView.delegate = self
             cell.photosCollectionView.dataSource = self
+            
+            
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddressTableViewCell", for: indexPath) as! AddressTableViewCell
@@ -176,19 +179,10 @@ extension ReportTableViewController: UICollectionViewDelegateFlowLayout, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch indexPath.row {
-        case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddPhotoCollectionViewCell", for: indexPath) as! AddPhotoCollectionViewCell
-            let addPhotoIcon = #imageLiteral(resourceName: "cam1")
-            cell.addImageIcon.image = addPhotoIcon
-            return cell
-            
-        default:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
-            let uploadedPhoto = #imageLiteral(resourceName: "cam2")
-            cell.uploadedImage.image = uploadedPhoto
-            return cell
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddPhotoCollectionViewCell", for: indexPath) as! AddPhotoCollectionViewCell
+        let addPhotoIcon = #imageLiteral(resourceName: "cam1")
+        cell.addImageIcon.image = addPhotoIcon
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView,
