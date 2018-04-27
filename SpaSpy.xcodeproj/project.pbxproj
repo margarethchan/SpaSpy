@@ -27,6 +27,13 @@
 		81DC1D7B209274C300915C70 /* TopicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D7A209274C300915C70 /* TopicInfoView.swift */; };
 		81DC1D7D209274DC00915C70 /* HistoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D7C209274DB00915C70 /* HistoryCollectionViewController.swift */; };
 		81DC1D7F209274ED00915C70 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D7E209274ED00915C70 /* HistoryView.swift */; };
+		81DC1D822093873800915C70 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D812093873700915C70 /* PhotosTableViewCell.swift */; };
+		81DC1D842093874400915C70 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D832093874400915C70 /* AddressTableViewCell.swift */; };
+		81DC1D862093875300915C70 /* BusinessTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D852093875300915C70 /* BusinessTypeTableViewCell.swift */; };
+		81DC1D882093875D00915C70 /* RedFlagsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D872093875D00915C70 /* RedFlagsTableViewCell.swift */; };
+		81DC1D8A2093876B00915C70 /* NumbersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D892093876B00915C70 /* NumbersTableViewCell.swift */; };
+		81DC1D8C2093877C00915C70 /* WebpagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D8B2093877C00915C70 /* WebpagesTableViewCell.swift */; };
+		81DC1D8E2093878500915C70 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D8D2093878500915C70 /* NotesTableViewCell.swift */; };
 		A4F278D2C07E38F58E370DB8 /* Pods_SpaSpy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 297F6580FD2C5D0116DF5EF2 /* Pods_SpaSpy.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +63,13 @@
 		81DC1D7A209274C300915C70 /* TopicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicInfoView.swift; sourceTree = "<group>"; };
 		81DC1D7C209274DB00915C70 /* HistoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewController.swift; sourceTree = "<group>"; };
 		81DC1D7E209274ED00915C70 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		81DC1D812093873700915C70 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
+		81DC1D832093874400915C70 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
+		81DC1D852093875300915C70 /* BusinessTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessTypeTableViewCell.swift; sourceTree = "<group>"; };
+		81DC1D872093875D00915C70 /* RedFlagsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedFlagsTableViewCell.swift; sourceTree = "<group>"; };
+		81DC1D892093876B00915C70 /* NumbersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersTableViewCell.swift; sourceTree = "<group>"; };
+		81DC1D8B2093877C00915C70 /* WebpagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebpagesTableViewCell.swift; sourceTree = "<group>"; };
+		81DC1D8D2093878500915C70 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +175,7 @@
 			children = (
 				81DC1D66209273DE00915C70 /* ReportTableViewController.swift */,
 				81DC1D6A2092740200915C70 /* ReportView.swift */,
+				81DC1D802093870800915C70 /* ReportTVCells */,
 				81DC1D6C2092741400915C70 /* CameraView.swift */,
 				81DC1D6E2092741E00915C70 /* FlagsView.swift */,
 			);
@@ -194,6 +209,20 @@
 				81DC1D7E209274ED00915C70 /* HistoryView.swift */,
 			);
 			path = HistoryPage;
+			sourceTree = "<group>";
+		};
+		81DC1D802093870800915C70 /* ReportTVCells */ = {
+			isa = PBXGroup;
+			children = (
+				81DC1D812093873700915C70 /* PhotosTableViewCell.swift */,
+				81DC1D832093874400915C70 /* AddressTableViewCell.swift */,
+				81DC1D852093875300915C70 /* BusinessTypeTableViewCell.swift */,
+				81DC1D872093875D00915C70 /* RedFlagsTableViewCell.swift */,
+				81DC1D892093876B00915C70 /* NumbersTableViewCell.swift */,
+				81DC1D8B2093877C00915C70 /* WebpagesTableViewCell.swift */,
+				81DC1D8D2093878500915C70 /* NotesTableViewCell.swift */,
+			);
+			path = ReportTVCells;
 			sourceTree = "<group>";
 		};
 		D775A04B0504308512CECDD8 /* Pods */ = {
@@ -346,11 +375,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				81DC1D732092744300915C70 /* SearchViewController.swift in Sources */,
+				81DC1D8C2093877C00915C70 /* WebpagesTableViewCell.swift in Sources */,
+				81DC1D8A2093876B00915C70 /* NumbersTableViewCell.swift in Sources */,
 				81DC1D592090FC1600915C70 /* APIKeys.swift in Sources */,
 				81DC1D7B209274C300915C70 /* TopicInfoView.swift in Sources */,
+				81DC1D822093873800915C70 /* PhotosTableViewCell.swift in Sources */,
 				81DC1D712092743100915C70 /* SearchView.swift in Sources */,
 				81DC1D6D2092741400915C70 /* CameraView.swift in Sources */,
+				81DC1D842093874400915C70 /* AddressTableViewCell.swift in Sources */,
 				81DC1D6F2092741E00915C70 /* FlagsView.swift in Sources */,
+				81DC1D862093875300915C70 /* BusinessTypeTableViewCell.swift in Sources */,
+				81DC1D8E2093878500915C70 /* NotesTableViewCell.swift in Sources */,
 				81DC1D772092749300915C70 /* LearnViewController.swift in Sources */,
 				81DC1D67209273DE00915C70 /* ReportTableViewController.swift in Sources */,
 				81DC1D6B2092740200915C70 /* ReportView.swift in Sources */,
@@ -359,6 +394,7 @@
 				81DC1D752092746300915C70 /* VenueDetailView.swift in Sources */,
 				81DC1D7D209274DC00915C70 /* HistoryCollectionViewController.swift in Sources */,
 				81DC1D65209273B200915C70 /* SignInViewController.swift in Sources */,
+				81DC1D882093875D00915C70 /* RedFlagsTableViewCell.swift in Sources */,
 				81DC1D69209273F200915C70 /* SignInView.swift in Sources */,
 				81DC1D79209274A500915C70 /* TopicsTableViewController.swift in Sources */,
 			);
