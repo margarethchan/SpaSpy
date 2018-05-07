@@ -7,20 +7,42 @@
 //
 
 import UIKit
+import SnapKit
 
 class AddPhotoCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var addImageIcon: UIImageView!
+    lazy var addImageIcon: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = #imageLiteral(resourceName: "cam1")
+        return imageView
+    }()
+    
     // image of a camera
     
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        addImageIcon.backgroundColor = .yellow
-//        addImageIcon.image = #imageLiteral(resourceName: "cam1")
+        commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    } 
+        commonInit()
+    }
+    
+    private func commonInit() {
+        backgroundColor = .white
+        setupViews()
+        setUpConstraints()
+    }
+    
+    private func setupViews() {
+        contentView.addSubview(addImageIcon)
+    }
+    
+    private func setUpConstraints() {
+        addImageIcon.snp.makeConstraints { (make) in
+            make.top.leading.trailing.bottom.equalTo(contentView)
+        }
+    }
 }
