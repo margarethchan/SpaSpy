@@ -39,7 +39,9 @@ class BusinessTypeTableViewCell: UITableViewCell {
     
     lazy var otherBusinessTypeTextField: UITextField = {
         let tf = UITextField()
-        tf.backgroundColor = .gray
+        tf.backgroundColor = .lightGray
+        tf.placeholder = "Other Type of Business"
+        tf.borderStyle = .roundedRect
         return tf
     }()
     
@@ -80,8 +82,8 @@ class BusinessTypeTableViewCell: UITableViewCell {
         otherBusinessTypeTextField.snp.makeConstraints { (make) in
             make.centerX.equalTo(contentView)
             make.top.equalTo(businessTypeCollectionView.snp.bottom).offset(10)
-            make.height.equalTo(30)
-            make.width.equalTo(contentView.snp.width).multipliedBy(0.75)
+            make.height.equalTo(40)
+            make.width.equalTo(contentView.snp.width).multipliedBy(0.9)
             make.bottom.equalTo(contentView.snp.bottom).offset(-10)
         }
         

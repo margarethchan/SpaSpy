@@ -77,7 +77,7 @@ class RedFlagsTableViewCell: UITableViewCell {
             make.centerX.equalTo(contentView)
             make.top.equalTo(redFlagsLabel.snp.bottom).offset(10)
             make.height.equalTo(30)
-            make.width.equalTo(contentView.snp.width).multipliedBy(0.75)
+            make.width.equalTo(contentView.snp.width).multipliedBy(0.9)
             make.bottom.equalTo(contentView.snp.bottom).offset(-10)
         }
         
