@@ -40,13 +40,7 @@ class ReportTableViewController: UITableViewController {
         self.tableView.allowsSelection = false
         self.tableView.bounces = false
         self.tableView.separatorStyle = .none
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
 
@@ -99,6 +93,7 @@ class ReportTableViewController: UITableViewController {
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "RedFlagsTableViewCell", for: indexPath) as! RedFlagsTableViewCell
             cell.backgroundColor = .cyan
+            cell.addRedFlagsButton.addTarget(self, action: #selector(selectRedFlags), for: .touchUpInside)
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "NumbersTableViewCell", for: indexPath) as! NumbersTableViewCell
@@ -122,45 +117,15 @@ class ReportTableViewController: UITableViewController {
         print("add location")
     }
     
+    @objc func selectRedFlags() {
+        let flagsVC = FlagsTableViewController()
+        let detailedNavigationController = UINavigationController(rootViewController: flagsVC)
+        detailedNavigationController.modalTransitionStyle = .crossDissolve
+        self.navigationController?.pushViewController(flagsVC, animated: true)
+
+        print("open red flags view")    
+    }
     
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 100
-//    }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation
@@ -175,105 +140,4 @@ class ReportTableViewController: UITableViewController {
 }
 
 
-extension ReportTableViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
-    
-
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch collectionView.tag {
-        case 0:
-            //        return uploadedPhotos.count
-            return 5
-        case 1:
-            //            return selectedBusinessTypes.count
-            return 5
-        default:
-            return 1
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch collectionView.tag {
-        case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddPhotoCollectionViewCell", for: indexPath) as! AddPhotoCollectionViewCell
-            let addPhotoIcon = #imageLiteral(resourceName: "cam1")
-            cell.addImageIcon.image = addPhotoIcon
-            return cell
-        case 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BusinessTypeCollectionViewCell", for: indexPath) as! BusinessTypeCollectionViewCell
-            let businessType = businessTypes[indexPath.row]
-            cell.businessTypeLabel.text = businessType
-            collectionView.allowsMultipleSelection = true
-            return cell
-        default:
-            let cell = UICollectionViewCell()
-            return cell
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        switch collectionView.tag {
-        case 0:
-            let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-            let availableWidth = view.frame.width - paddingSpace
-            let widthPerItem = availableWidth / itemsPerRow
-            return CGSize(width: widthPerItem, height: widthPerItem)
-        case 1:
-            let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-            let availableWidth = view.frame.width - paddingSpace
-            let widthPerItem = availableWidth / itemsPerRow
-            return CGSize(width: widthPerItem, height: widthPerItem / 2)
-        default:
-            return CGSize(width: 5.0, height: 5.0)
-        }
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return sectionInsets
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return sectionInsets.left
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch collectionView.tag {
-        case 0:
-            print("add photo cell selected")
-        case 1:
-            print("select business type cell selected")
-            let cell = collectionView.cellForItem(at: indexPath)as! BusinessTypeCollectionViewCell
-            let businessType = businessTypes[indexPath.row]
-            
-
-            /// do this at completion submission of report, not here
-//            if cell.isSelected {
-//                selectedBusinessTypes.append(businessType)
-//                print(selectedBusinessTypes)
-//            }
-            ///
-            
-        default:
-            print("")
-        }
-    }
-    
-    
-    
-    
-    
-    
-}
 
