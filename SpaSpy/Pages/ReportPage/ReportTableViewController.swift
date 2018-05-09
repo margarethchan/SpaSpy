@@ -118,12 +118,12 @@ class ReportTableViewController: UITableViewController {
     }
     
     @objc func selectRedFlags() {
-        let flagsVC = FlagsTableViewController()
-        let detailedNavigationController = UINavigationController(rootViewController: flagsVC)
-        detailedNavigationController.modalTransitionStyle = .crossDissolve
-        self.navigationController?.pushViewController(flagsVC, animated: true)
+        let flagsVC = FlagsViewController()
+        flagsVC.modalPresentationStyle = .overFullScreen
+        flagsVC.modalTransitionStyle = .crossDissolve
+        self.present(flagsVC, animated: false, completion: nil)
 
-        print("open red flags view")    
+        print("open modal red flags view")
     }
     
 
