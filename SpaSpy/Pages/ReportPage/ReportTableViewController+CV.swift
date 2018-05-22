@@ -19,7 +19,7 @@ extension ReportTableViewController: UICollectionViewDelegateFlowLayout, UIColle
         switch collectionView.tag {
         case 0:
             //        return uploadedPhotos.count
-            return 5
+            return 10
         case 1:
             //            return selectedBusinessTypes.count
             return 5
@@ -55,12 +55,12 @@ extension ReportTableViewController: UICollectionViewDelegateFlowLayout, UIColle
         case 0:
             let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
             let availableWidth = view.frame.width - paddingSpace
-            let widthPerItem = availableWidth / itemsPerRow
+            let widthPerItem = availableWidth / itemsPerRow - 5
             return CGSize(width: widthPerItem, height: widthPerItem)
         case 1:
             let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
             let availableWidth = view.frame.width - paddingSpace
-            let widthPerItem = availableWidth / itemsPerRow
+            let widthPerItem = availableWidth / itemsPerRow - 10
             return CGSize(width: widthPerItem, height: widthPerItem / 2)
         default:
             return CGSize(width: 5.0, height: 5.0)
