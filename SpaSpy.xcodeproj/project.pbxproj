@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81690EBD20A5424800F2EBDE /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81690EBC20A5424800F2EBDE /* CameraViewController.swift */; };
+		81690EBF20A5425C00F2EBDE /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81690EBE20A5425C00F2EBDE /* LocationViewController.swift */; };
+		81690EC120A5426B00F2EBDE /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81690EC020A5426B00F2EBDE /* LocationView.swift */; };
 		8192069A20A1459700C074C7 /* ReportTableViewController+CV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8192069920A1459700C074C7 /* ReportTableViewController+CV.swift */; };
 		8192911120A2425900172899 /* FlagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8192911020A2425900172899 /* FlagsViewController.swift */; };
 		8192911320A2499B00172899 /* RedFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8192911220A2499B00172899 /* RedFlags.swift */; };
@@ -49,6 +52,9 @@
 		297F6580FD2C5D0116DF5EF2 /* Pods_SpaSpy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpaSpy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E4BAAF94B01908B509C87D0 /* Pods-SpaSpy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaSpy.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpaSpy/Pods-SpaSpy.release.xcconfig"; sourceTree = "<group>"; };
 		62FD98FDFBAC69080F0569E7 /* Pods-SpaSpy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaSpy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpaSpy/Pods-SpaSpy.debug.xcconfig"; sourceTree = "<group>"; };
+		81690EBC20A5424800F2EBDE /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		81690EBE20A5425C00F2EBDE /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		81690EC020A5426B00F2EBDE /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		8192069920A1459700C074C7 /* ReportTableViewController+CV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportTableViewController+CV.swift"; sourceTree = "<group>"; };
 		8192911020A2425900172899 /* FlagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsViewController.swift; sourceTree = "<group>"; };
 		8192911220A2499B00172899 /* RedFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedFlags.swift; sourceTree = "<group>"; };
@@ -197,6 +203,9 @@
 				81DC1D6A2092740200915C70 /* ReportView.swift */,
 				81DC1D802093870800915C70 /* ReportTVCells */,
 				81DC1D6C2092741400915C70 /* CameraView.swift */,
+				81690EBC20A5424800F2EBDE /* CameraViewController.swift */,
+				81690EC020A5426B00F2EBDE /* LocationView.swift */,
+				81690EBE20A5425C00F2EBDE /* LocationViewController.swift */,
 				81DC1D6E2092741E00915C70 /* FlagsView.swift */,
 				8192911020A2425900172899 /* FlagsViewController.swift */,
 				8192911420A24A7B00172899 /* FlagTableViewCell.swift */,
@@ -421,12 +430,15 @@
 				81DC1D962093DD2900915C70 /* BusinessTypeCollectionViewCell.swift in Sources */,
 				8192911520A24A7B00172899 /* FlagTableViewCell.swift in Sources */,
 				81DC1D752092746300915C70 /* VenueDetailView.swift in Sources */,
+				81690EC120A5426B00F2EBDE /* LocationView.swift in Sources */,
 				8192911120A2425900172899 /* FlagsViewController.swift in Sources */,
 				81DC1D7D209274DC00915C70 /* HistoryCollectionViewController.swift in Sources */,
 				81DC1D982093DF1500915C70 /* BusinessType.swift in Sources */,
 				81DC1D65209273B200915C70 /* SignInViewController.swift in Sources */,
+				81690EBF20A5425C00F2EBDE /* LocationViewController.swift in Sources */,
 				81DC1D882093875D00915C70 /* RedFlagsTableViewCell.swift in Sources */,
 				81DC1D69209273F200915C70 /* SignInView.swift in Sources */,
+				81690EBD20A5424800F2EBDE /* CameraViewController.swift in Sources */,
 				81DC1D942093A7B200915C70 /* AddPhotoCollectionViewCell.swift in Sources */,
 				81DC1D79209274A500915C70 /* TopicsTableViewController.swift in Sources */,
 			);

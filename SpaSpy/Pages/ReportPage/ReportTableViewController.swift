@@ -79,6 +79,7 @@ class ReportTableViewController: UITableViewController {
             cell.mapIconButton.addTarget(self, action: #selector(addLocation), for: .touchUpInside)
             cell.addLocationButton.setTitle("Add Location", for: .normal)
 //            cell.addLocationButton.setTitle(selectedLocation, for: .selected)
+            cell.addLocationButton.addTarget(self, action: #selector(addLocation), for: .touchUpInside)
             cell.backgroundColor = .green
             return cell
         case 2:
@@ -112,9 +113,15 @@ class ReportTableViewController: UITableViewController {
             return cell
         }
     }
+
     
     @objc func addLocation() {
-        print("add location")
+        let locationVC = LocationViewController()
+        locationVC.modalPresentationStyle = .overFullScreen
+        locationVC.modalTransitionStyle = .crossDissolve
+        self.present(locationVC, animated: false, completion: nil)
+        
+        print("open add location view")
     }
     
     @objc func selectRedFlags() {

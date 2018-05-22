@@ -68,14 +68,15 @@ class FlagTableViewCell: UITableViewCell {
     
     private func setUpConstraints() {
         switchObject.snp.makeConstraints { (make) in
-            make.centerY.equalTo(contentView)
-            make.trailing.equalTo(contentView).offset(-5)
+            make.centerY.equalTo(contentView.snp.centerY)
+            make.trailing.equalTo(contentView.snp.trailing).offset(-5)
             
         }
 
 
         flagLabel.snp.makeConstraints { (make) in
-            make.centerY.leading.equalTo(contentView)
+            make.centerY.equalTo(contentView.snp.centerY)
+            make.leading.equalTo(contentView.snp.leading)
             make.trailing.equalTo(switchObject.snp.leading).offset(-5)
         }
         

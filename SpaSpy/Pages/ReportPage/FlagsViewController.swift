@@ -13,14 +13,6 @@ class FlagsViewController: UIViewController {
     let flagsView = FlagsView()
     
     let redFlagList = redFlags
-//    
-//    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-//        super.init(nibName: nibNameOrNil, bundle: nil)
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +23,23 @@ class FlagsViewController: UIViewController {
         flagsView.redFlagsTableView.delegate = self
         flagsView.redFlagsTableView.register(FlagTableViewCell.self, forCellReuseIdentifier: "FlagCell")
         
+        flagsView.cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
+        flagsView.doneButton.addTarget(self, action: #selector(done), for: .touchUpInside)
+        
         // Do any additional setup after loading the view.
     }
+    
+    @objc func cancel() {
+        print("cancel")
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    @objc func done() {
+        print("done")
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
