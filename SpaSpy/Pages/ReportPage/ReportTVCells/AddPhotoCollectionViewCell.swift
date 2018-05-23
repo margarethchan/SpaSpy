@@ -14,6 +14,7 @@ class AddPhotoCollectionViewCell: UICollectionViewCell {
     lazy var addImageIcon: UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "cam1")
+        imageView.backgroundColor = .clear
         return imageView
     }()
     
@@ -31,7 +32,7 @@ class AddPhotoCollectionViewCell: UICollectionViewCell {
     }
     
     private func commonInit() {
-        backgroundColor = .white
+//        backgroundColor = .white
         setupViews()
         setUpConstraints()
     }

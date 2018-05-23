@@ -7,16 +7,26 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ReportTableViewController: UITableViewController {
 
-    var uploadedPhotos = [Photo]()
-    var selectedBusinessTypes = [String]()
-    var selectedLocation = "selectedLocation"
-    var selectedRedFlags = [String]()
-    var enteredNumbers = ""
-    var enteredWebpages = ""
-    var enteredNotes = ""
+    public var uploadedPhotos = [UIImage]() {
+        didSet {
+            print("------Image added to uploadedPhotos: \(uploadedPhotos)")
+        }
+    }
+    public var selectedBusinessTypes = [String]()
+    private var selectedLocation = "selectedLocation"
+    private var selectedRedFlags = [String]()
+    private var enteredNumbers = ""
+    private var enteredWebpages = ""
+    private var enteredNotes = ""
+    
+    private let imagePickerVC = UIImagePickerController()
+    private var currentSelectedImage: UIImage!
+    public var currentSelectedPhotoCell: AddPhotoCollectionViewCell!
+    public var currentSelectedPhotoCellIndexPath: IndexPath!
     
     // UICollectionView reference values
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
@@ -35,15 +45,73 @@ class ReportTableViewController: UITableViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 100
+        self.tableView.estimatedRowHeight = 150
         self.tableView.reloadData()
         self.tableView.allowsSelection = false
         self.tableView.bounces = false
         self.tableView.separatorStyle = .none
+        
 
     }
 
-
+    @objc public func changeImageButtonTapped() {
+        
+        let photoAlert = Alert.create(withTitle: "Upload a Photo", andMessage: nil, withPreferredStyle: .actionSheet)
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            Alert.addAction(withTitle: "Camera", style: .default, andHandler: { (_) in
+                self.imagePickerVC.sourceType = .camera
+                self.checkAVAuthorization()
+            }, to: photoAlert)
+        }
+        Alert.addAction(withTitle: "Photo Library", style: .default, andHandler: { (_) in
+            self.imagePickerVC.sourceType = .photoLibrary
+            self.checkAVAuthorization()
+        }, to: photoAlert)
+        Alert.addAction(withTitle: "Cancel", style: .cancel, andHandler: nil, to: photoAlert)
+        //Present the controller
+        self.present(photoAlert, animated: true, completion: nil)
+    }
+    
+    private func checkAVAuthorization() {
+        let status = AVCaptureDevice.authorizationStatus(for: .video)
+        switch status {
+        case .notDetermined:
+            print("notDetermined")
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted) in
+                if granted {
+                    self.showImagePicker()
+                } else {
+                    self.deniedPhotoAlert()
+                }
+            })
+        case .denied:
+            print("denied")
+            deniedPhotoAlert()
+        case .authorized:
+            print("authorized")
+            showImagePicker()
+        case .restricted:
+            print("restricted")
+        }
+    }
+    
+    private func showImagePicker() {
+        imagePickerVC.delegate = self
+        imagePickerVC.sourceType = .photoLibrary
+        present(imagePickerVC, animated: true, completion: nil)
+    }
+    
+    
+    private func deniedPhotoAlert() {
+        let settingsAlert = Alert.create(withTitle: "Please Allow Photo Access", andMessage: "This will allow you to share photos from your library and your camera.", withPreferredStyle: .alert)
+        Alert.addAction(withTitle: "Cancel", style: .cancel, andHandler: nil, to: settingsAlert)
+        Alert.addAction(withTitle: "Settings", style: .default, andHandler: { (_) in
+            UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
+        }, to: settingsAlert)
+        self.present(settingsAlert, animated: true, completion: nil)
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -72,6 +140,8 @@ class ReportTableViewController: UITableViewController {
             cell.photosCollectionView.delegate = self
             cell.photosCollectionView.dataSource = self
             cell.photosCollectionView.tag = 0
+            cell.addPhotoButton.addTarget(self, action: #selector(changeImageButtonTapped), for: .touchUpInside)
+            cell.removePhotoButton.addTarget(self, action: #selector(removeLastPhoto), for: .touchUpInside)
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddressTableViewCell", for: indexPath) as! AddressTableViewCell
@@ -115,6 +185,27 @@ class ReportTableViewController: UITableViewController {
     }
 
     
+    @objc func removeLastPhoto() {
+        if uploadedPhotos.count > 0 {
+        uploadedPhotos.popLast()
+            print("remove last photo")
+            let tvc = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! PhotosTableViewCell
+            tvc.photosCollectionView.reloadData()
+        } else {
+            print("no photos to remove")
+        }
+    }
+    
+    
+    @objc func addPhoto() {
+        let cameraVC = CameraViewController()
+        cameraVC.modalPresentationStyle = .overFullScreen
+        cameraVC.modalTransitionStyle = .crossDissolve
+        self.present(cameraVC, animated: false, completion: nil)
+
+        print("open add photo view")
+    }
+    
     @objc func addLocation() {
         let locationVC = LocationViewController()
         locationVC.modalPresentationStyle = .overFullScreen
@@ -147,4 +238,36 @@ class ReportTableViewController: UITableViewController {
 }
 
 
+extension ReportTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard (info[UIImagePickerControllerOriginalImage] as? UIImage) != nil else { print("image is nil"); return }
+        
+        var selectedImageFromImagePicker: UIImage?
+        
+        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+            selectedImageFromImagePicker = editedImage
+        } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            selectedImageFromImagePicker = originalImage
+        }
+        
+        // refer to the path of the photo collection view image view selected
+        let photoTVC = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! PhotosTableViewCell
+        
+        if let selectedImage = selectedImageFromImagePicker {
+            DispatchQueue.main.async {
+
+//                self.currentSelectedPhotoCell.addImageIcon.image = selectedImage
+                self.uploadedPhotos.append(selectedImage)
+                
+                photoTVC.photosCollectionView.reloadData()
+            }
+        }
+        dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+}
 

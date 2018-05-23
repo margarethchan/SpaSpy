@@ -7,7 +7,8 @@
 //
 
 import Foundation
+import UIKit
 
 struct Photo {
-    
+    let image: UIImage
 }

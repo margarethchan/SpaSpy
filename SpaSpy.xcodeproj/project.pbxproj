@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8163873020B4ED6D005F5308 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8163872F20B4ED6D005F5308 /* Alert.swift */; };
 		81690EBD20A5424800F2EBDE /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81690EBC20A5424800F2EBDE /* CameraViewController.swift */; };
 		81690EBF20A5425C00F2EBDE /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81690EBE20A5425C00F2EBDE /* LocationViewController.swift */; };
 		81690EC120A5426B00F2EBDE /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81690EC020A5426B00F2EBDE /* LocationView.swift */; };
@@ -52,6 +53,7 @@
 		297F6580FD2C5D0116DF5EF2 /* Pods_SpaSpy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpaSpy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E4BAAF94B01908B509C87D0 /* Pods-SpaSpy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaSpy.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpaSpy/Pods-SpaSpy.release.xcconfig"; sourceTree = "<group>"; };
 		62FD98FDFBAC69080F0569E7 /* Pods-SpaSpy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaSpy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpaSpy/Pods-SpaSpy.debug.xcconfig"; sourceTree = "<group>"; };
+		8163872F20B4ED6D005F5308 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		81690EBC20A5424800F2EBDE /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		81690EBE20A5425C00F2EBDE /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		81690EC020A5426B00F2EBDE /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		81DC1D5D209101E600915C70 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8163872F20B4ED6D005F5308 /* Alert.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				81DC1D842093874400915C70 /* AddressTableViewCell.swift in Sources */,
 				81DC1D922093A55400915C70 /* Photo.swift in Sources */,
 				81DC1D6F2092741E00915C70 /* FlagsView.swift in Sources */,
+				8163873020B4ED6D005F5308 /* Alert.swift in Sources */,
 				81DC1D862093875300915C70 /* BusinessTypeTableViewCell.swift in Sources */,
 				81DC1D8E2093878500915C70 /* NotesTableViewCell.swift in Sources */,
 				81DC1D772092749300915C70 /* LearnViewController.swift in Sources */,

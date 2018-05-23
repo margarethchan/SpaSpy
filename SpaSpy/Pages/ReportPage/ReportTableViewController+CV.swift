@@ -18,11 +18,16 @@ extension ReportTableViewController: UICollectionViewDelegateFlowLayout, UIColle
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView.tag {
         case 0:
-            //        return uploadedPhotos.count
-            return 10
+            if uploadedPhotos.count > 0 {
+                return uploadedPhotos.count
+                
+            } else {
+                return 1
+            }
+
         case 1:
-            //            return selectedBusinessTypes.count
-            return 5
+                        return businessTypes.count
+//            return 5
         default:
             return 1
         }
@@ -32,9 +37,16 @@ extension ReportTableViewController: UICollectionViewDelegateFlowLayout, UIColle
         switch collectionView.tag {
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddPhotoCollectionViewCell", for: indexPath) as! AddPhotoCollectionViewCell
-            let addPhotoIcon = #imageLiteral(resourceName: "cam1")
-            cell.addImageIcon.image = addPhotoIcon
-            return cell
+            if indexPath.row < uploadedPhotos.count {
+                let uploadedImage = uploadedPhotos[indexPath.row]
+                cell.addImageIcon.image = uploadedImage
+                return cell
+            } else {
+                let addPhotoIcon = #imageLiteral(resourceName: "cam1")
+                cell.addImageIcon.image = addPhotoIcon
+                cell.addImageIcon.backgroundColor = .clear
+                return cell
+            }
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BusinessTypeCollectionViewCell", for: indexPath) as! BusinessTypeCollectionViewCell
             let businessType = businessTypes[indexPath.row]
@@ -55,12 +67,12 @@ extension ReportTableViewController: UICollectionViewDelegateFlowLayout, UIColle
         case 0:
             let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
             let availableWidth = view.frame.width - paddingSpace
-            let widthPerItem = availableWidth / itemsPerRow - 5
+            let widthPerItem = availableWidth / itemsPerRow
             return CGSize(width: widthPerItem, height: widthPerItem)
         case 1:
             let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
             let availableWidth = view.frame.width - paddingSpace
-            let widthPerItem = availableWidth / itemsPerRow - 10
+            let widthPerItem = availableWidth / itemsPerRow
             return CGSize(width: widthPerItem, height: widthPerItem / 2)
         default:
             return CGSize(width: 5.0, height: 5.0)
@@ -83,10 +95,20 @@ extension ReportTableViewController: UICollectionViewDelegateFlowLayout, UIColle
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionView.tag {
         case 0:
-            print("add photo cell selected")
+            let cell = collectionView.cellForItem(at: indexPath) as! AddPhotoCollectionViewCell
+            if cell.addImageIcon.image == UIImage(named: "cam1") {
+                print("add photo cell selected")
+                changeImageButtonTapped()
+            }
+            
+            
+//            let photo = uploadedPhotos[indexPath.row]
+//            self.currentSelectedPhotoCell = cell
+//            self.currentSelectedPhotoCellIndexPath = indexPath
+//            changeImageButtonTapped()
         case 1:
             print("select business type cell selected")
-            let cell = collectionView.cellForItem(at: indexPath)as! BusinessTypeCollectionViewCell
+            let cell = collectionView.cellForItem(at: indexPath) as! BusinessTypeCollectionViewCell
             let businessType = businessTypes[indexPath.row]
             
             
