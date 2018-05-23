@@ -193,6 +193,10 @@ class ReportTableViewController: UITableViewController {
             tvc.photosCollectionView.reloadData()
         } else {
             print("no photos to remove")
+            
+            let noPhotoAlert = Alert.createErrorAlert(withMessage: "No Photos to Remove")
+            //Present the controller
+            self.present(noPhotoAlert, animated: true, completion: nil)
         }
     }
     
