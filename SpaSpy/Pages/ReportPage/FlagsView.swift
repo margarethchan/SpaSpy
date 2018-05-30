@@ -19,8 +19,8 @@ class FlagsView: UIView {
     
     lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .red
-        view.layer.cornerRadius = 20
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 15
         view.layer.masksToBounds = true
         return view
     }()
@@ -31,15 +31,24 @@ class FlagsView: UIView {
     lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.setTitle("Cancel", for: .normal)
-        button.backgroundColor = .green
+        button.setTitleColor(UIColor.black, for: .normal)
+//        button.backgroundColor = .green
         return button
+    }()
+    
+    lazy var flagsLabel: UILabel = {
+        let lb = UILabel()
+       lb.text = "Select Red Flags"
+        lb.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        return lb
     }()
     
     // Top Right = Done
     lazy var doneButton: UIButton = {
         let button = UIButton()
         button.setTitle("Done", for: .normal)
-        button.backgroundColor = .yellow
+//        button.backgroundColor = .yellow
+        button.setTitleColor(UIColor(red:0.39, green:0.82, blue:1.00, alpha:1.0), for: .normal)
         return button
     }()
     
@@ -49,7 +58,7 @@ class FlagsView: UIView {
        let tbv = UITableView()
         tbv.separatorStyle = .singleLine
         tbv.allowsSelection = false
-        
+        tbv.showsVerticalScrollIndicator = false
         return tbv
     }()
     
@@ -66,30 +75,31 @@ class FlagsView: UIView {
     }
     
     private func commonInit() {
-        backgroundColor = .white
+        backgroundColor = .clear
         setupViews()
-        setupConstraints()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
     }
     
     private func setupViews() {
         setupBlurEffectView()
         addSubview(dismissView)
-        addSubview(containerView)
-        addSubview(cancelButton)
-        addSubview(doneButton)
-        addSubview(redFlagsTableView)
+        setupConstraints()
+
     }
     
     // add blur effect to modal view bg
     private func setupBlurEffectView() {
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.regular) // .light, .dark, .prominent, .regular, .extraLight
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark) // .light, .dark, .prominent, .regular, .extraLight
         let visualEffect = UIVisualEffectView(frame: UIScreen.main.bounds)
         visualEffect.effect = blurEffect
         addSubview(visualEffect)
     }
     
     private func setupConstraints() {
-        
+        addSubview(containerView)
         containerView.snp.makeConstraints { (make) in
             make.centerX.equalTo(self.snp.centerX)
             make.centerY.equalTo(self.snp.centerY)
@@ -97,19 +107,29 @@ class FlagsView: UIView {
             make.height.equalTo(self.snp.height).multipliedBy(0.95)
         }
         
+        containerView.addSubview(cancelButton)
         cancelButton.snp.makeConstraints { (make) in
             make.top.equalTo(containerView.snp.top).offset(10)
             make.leading.equalTo(containerView.snp.leading).offset(10)
         }
         
+        containerView.addSubview(flagsLabel)
+        flagsLabel.snp.makeConstraints { (make) in
+            make.centerX.equalTo(containerView.snp.centerX)
+            make.centerY.equalTo(cancelButton.snp.centerY)
+        }
+        
+       containerView.addSubview(doneButton)
         doneButton.snp.makeConstraints { (make) in
             make.top.equalTo(containerView.snp.top).offset(10)
             make.trailing.equalTo(containerView.snp.trailing).offset(-10)
         }
         
+        containerView.addSubview(redFlagsTableView)
         redFlagsTableView.snp.makeConstraints { (make) in
             make.top.equalTo(doneButton.snp.bottom).offset(20)
-            make.leading.trailing.equalTo(containerView)
+            make.leading.equalTo(containerView).offset(10)
+            make.trailing.equalTo(containerView).offset(-10)
             make.bottom.equalTo(containerView.snp.bottom).offset(-20)
         }
         

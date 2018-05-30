@@ -17,8 +17,8 @@ class FlagTableViewCell: UITableViewCell {
         label.text = "Flag Description"
         label.textAlignment = .left
         label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
-        label.backgroundColor = .green
+        label.font = UIFont.systemFont(ofSize: 17)
+//        label.backgroundColor = .green
         return label
     }()
     
@@ -26,7 +26,7 @@ class FlagTableViewCell: UITableViewCell {
        let s = UISwitch()
         s.onTintColor = .red
         s.tintColor = .gray
-        s.backgroundColor = .cyan
+//        s.backgroundColor = .cyan
         return s
     }()
     

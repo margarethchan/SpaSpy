@@ -23,8 +23,8 @@ class LocationView: UIView {
     
     lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .red
-        view.layer.cornerRadius = 20
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 15
         view.layer.masksToBounds = true
         return view
     }()
@@ -32,7 +32,7 @@ class LocationView: UIView {
     lazy var dismissButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named:"dismissButtonIcon"), for: .normal)
-        button.backgroundColor = .orange
+//        button.backgroundColor = .orange
 //        button.layer.mask = self.containerView.layer
 //        button.layer.masksToBounds = true
         return button
@@ -43,14 +43,14 @@ class LocationView: UIView {
         lb.text = "Add Location"
         lb.font = UIFont.systemFont(ofSize: 17, weight: .bold)
         lb.textAlignment = .center
-        lb.backgroundColor = .blue
+//        lb.backgroundColor = .blue
         return lb
     }()
     
     lazy var searchBar: UISearchBar = {
        let searchBar = UISearchBar()
         searchBar.barStyle = .default
-        searchBar.backgroundColor = .cyan
+//        searchBar.backgroundColor = .cyan
         searchBar.showsCancelButton = true
         searchBar.placeholder = "Enter a Location"
         return searchBar
@@ -66,9 +66,10 @@ class LocationView: UIView {
         let button = UIButton()
         button.setTitle("Select Location", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
-        button.backgroundColor = .blue
-//        button.layer.mask = self.containerView.layer
-//        button.layer.masksToBounds = true
+        button.backgroundColor = UIColor(red:0.39, green:0.82, blue:1.00, alpha:1.0)
+        button.clipsToBounds = true
+//        button.layer.cornerRadius = 20
+//        button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         return button
     }()
     
@@ -103,11 +104,11 @@ class LocationView: UIView {
         setupBlurEffectView()
         addSubview(dismissView)
         addSubview(containerView)
-        addSubview(dismissButton)
-        addSubview(titleLabel)
-        addSubview(searchBar)
-        addSubview(selectLocationButton)
-        addSubview(addLocationMap)
+        containerView.addSubview(dismissButton)
+        containerView.addSubview(titleLabel)
+        containerView.addSubview(searchBar)
+        containerView.addSubview(selectLocationButton)
+        containerView.addSubview(addLocationMap)
 //        addSubview(mapView)
 
     }
