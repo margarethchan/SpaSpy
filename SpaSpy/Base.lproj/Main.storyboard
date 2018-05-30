@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -181,7 +182,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="y79-Fh-X1a" kind="relationship" relationship="viewControllers" id="JcQ-f2-VSP"/>
-                        <segue destination="Lif-aF-XkR" kind="relationship" relationship="viewControllers" id="vfv-Ud-DR2"/>
                         <segue destination="3VH-Bp-pD6" kind="relationship" relationship="viewControllers" id="QHx-yY-vdp"/>
                         <segue destination="NSJ-LK-SlK" kind="relationship" relationship="viewControllers" id="zI1-qh-6bt"/>
                     </connections>
@@ -224,46 +224,11 @@
             </objects>
             <point key="canvasLocation" x="4516" y="312.59370314842579"/>
         </scene>
-        <!--History-->
-        <scene sceneID="ono-no-wgE">
-            <objects>
-                <collectionViewController id="gUr-4H-Wfc" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="byU-x9-uan">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7I2-lM-ju4">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="L7C-ZP-uwv">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="gUr-4H-Wfc" id="KSS-hM-BkG"/>
-                            <outlet property="delegate" destination="gUr-4H-Wfc" id="PO1-Og-xUf"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" title="History" id="9lw-2Z-ARh"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7Cg-dl-UpK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4516" y="1143.7781109445277"/>
-        </scene>
         <!--Report-->
         <scene sceneID="Mkp-Vj-F8v">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y79-Fh-X1a" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Report" id="R07-4F-yqq"/>
+                    <tabBarItem key="tabBarItem" title="Report" image="tasknew" id="R07-4F-yqq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yeu-o1-HJY">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -301,7 +266,7 @@
         <scene sceneID="MKR-Cn-2Ok">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3VH-Bp-pD6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Learn" id="TZ7-Rd-Ind"/>
+                    <tabBarItem key="tabBarItem" title="Learn" image="info1" id="TZ7-Rd-Ind"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qVn-2v-Ggu">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -320,7 +285,7 @@
         <scene sceneID="5a1-iv-TZC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NSJ-LK-SlK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" id="tfe-TT-5QZ"/>
+                    <tabBarItem key="tabBarItem" title="History" image="taskdone" id="tfe-TT-5QZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fbq-ka-kfZ">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -328,15 +293,98 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="gUr-4H-Wfc" kind="relationship" relationship="rootViewController" id="xFH-O8-uoe"/>
+                        <segue destination="tOI-tJ-zq9" kind="relationship" relationship="rootViewController" id="xnk-tE-pmP"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8v-MI-fKU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3576.8000000000002" y="1143.7781109445277"/>
         </scene>
+        <!--History Table View Controller-->
+        <scene sceneID="HSs-fx-14E">
+            <objects>
+                <tableViewController id="tOI-tJ-zq9" customClass="HistoryTableViewController" customModule="SpaSpy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wfE-fm-Uh2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="cbA-Pk-uzh" customClass="HistoryTableViewCell" customModule="SpaSpy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="200"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cbA-Pk-uzh" id="tZx-b3-B8s">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="199.66666666666666"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G9u-wp-QD4">
+                                            <rect key="frame" x="0.0" y="0.0" width="124.33333333333333" height="199.66666666666666"/>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="qJN-hL-JZJ">
+                                            <rect key="frame" x="134.33333333333337" y="21" width="249.66666666666663" height="158"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7S-bu-UYg">
+                                                    <rect key="frame" x="0.0" y="0.0" width="249.66666666666666" height="20.333333333333332"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Business Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Agh-Vr-dBX">
+                                                    <rect key="frame" x="0.0" y="20.333333333333336" width="249.66666666666666" height="117.33333333333331"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business Type(s)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esu-pf-oK9">
+                                                    <rect key="frame" x="0.0" y="137.66666666666666" width="249.66666666666666" height="20.333333333333343"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="esu-pf-oK9" firstAttribute="top" secondItem="Agh-Vr-dBX" secondAttribute="bottom" id="J0o-wz-MTf"/>
+                                                <constraint firstAttribute="trailing" secondItem="n7S-bu-UYg" secondAttribute="trailing" id="fcj-u8-Qs5"/>
+                                                <constraint firstAttribute="trailing" secondItem="esu-pf-oK9" secondAttribute="trailing" id="jy4-jB-eQX"/>
+                                                <constraint firstAttribute="trailing" secondItem="Agh-Vr-dBX" secondAttribute="trailing" id="lAM-hy-Lpx"/>
+                                                <constraint firstItem="Agh-Vr-dBX" firstAttribute="top" secondItem="n7S-bu-UYg" secondAttribute="bottom" constant="3.5527136788005009e-15" id="xOy-K3-AJX"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="G9u-wp-QD4" firstAttribute="leading" secondItem="tZx-b3-B8s" secondAttribute="leading" id="0d1-mu-esq"/>
+                                        <constraint firstItem="qJN-hL-JZJ" firstAttribute="leading" secondItem="G9u-wp-QD4" secondAttribute="trailing" constant="10" id="3k4-OY-0xt"/>
+                                        <constraint firstItem="qJN-hL-JZJ" firstAttribute="top" secondItem="tZx-b3-B8s" secondAttribute="topMargin" constant="10" id="FgH-xl-hHV"/>
+                                        <constraint firstItem="G9u-wp-QD4" firstAttribute="width" secondItem="tZx-b3-B8s" secondAttribute="width" multiplier="0.3" id="N1c-GP-YeH"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="qJN-hL-JZJ" secondAttribute="bottom" constant="10" id="TyU-nA-UzP"/>
+                                        <constraint firstAttribute="bottom" secondItem="G9u-wp-QD4" secondAttribute="bottom" id="kSs-WQ-mWI"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="qJN-hL-JZJ" secondAttribute="trailing" constant="10" id="owP-NJ-mb4"/>
+                                        <constraint firstItem="G9u-wp-QD4" firstAttribute="top" secondItem="tZx-b3-B8s" secondAttribute="top" id="seE-9l-4EG"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="businessAddress" destination="Agh-Vr-dBX" id="Xu8-py-yuR"/>
+                                    <outlet property="businessImage" destination="G9u-wp-QD4" id="DcW-DJ-jZH"/>
+                                    <outlet property="businessName" destination="n7S-bu-UYg" id="Lba-3v-F2W"/>
+                                    <outlet property="businessTypes" destination="esu-pf-oK9" id="BNZ-zN-shp"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="tOI-tJ-zq9" id="k8H-oF-YRo"/>
+                            <outlet property="delegate" destination="tOI-tJ-zq9" id="1g0-KY-J6p"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="3Re-sg-AgM"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mqb-wO-re9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4601.449275362319" y="1126.6304347826087"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="info1" width="26" height="26"/>
         <image name="menu1" width="30" height="30"/>
+        <image name="taskdone" width="30" height="30"/>
+        <image name="tasknew" width="30" height="30"/>
     </resources>
 </document>

@@ -14,20 +14,23 @@ class RedFlagsTableViewCell: UITableViewCell {
     lazy var redFlagsLabel: UILabel = {
         let label = UILabel()
         label.text = "Red Flags"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
     
     lazy var flagIconButton: UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "flag1"), for: .normal)
-        button.backgroundColor = .red
+        button.setImage(#imageLiteral(resourceName: "flagtrianglewhite"), for: .normal)
+//        button.backgroundColor = .red
         return button
     }()
     
     lazy var addRedFlagsButton: UIButton = {
         let button = UIButton()
         button.setTitle("Set Red Flags", for: .normal)
-        button.backgroundColor = .orange
+        button.backgroundColor = UIColor(red:0.39, green:0.82, blue:1.00, alpha:1.0)
+        button.layer.borderWidth = 1
+        button.setTitleColor(UIColor.black, for: .normal)
         return button
     }()
     
@@ -70,7 +73,7 @@ class RedFlagsTableViewCell: UITableViewCell {
 
     private func setUpConstraints() {
         redFlagsLabel.snp.makeConstraints { (make) in
-            make.top.leading.equalTo(contentView)
+            make.top.leading.equalTo(contentView).offset(10)
         }
         
         addRedFlagsButton.snp.makeConstraints { (make) in
@@ -82,7 +85,8 @@ class RedFlagsTableViewCell: UITableViewCell {
         }
         
         flagIconButton.snp.makeConstraints { (make) in
-            make.leading.equalTo(addRedFlagsButton.snp.leading)
+            make.leading.equalTo(addRedFlagsButton.snp.leading).offset(5)
+            make.centerY.equalTo(addRedFlagsButton.snp.centerY)
             make.centerY.equalTo(addRedFlagsButton.snp.centerY)
             make.height.width.equalTo(25)
         }

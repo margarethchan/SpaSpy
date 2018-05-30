@@ -8,9 +8,13 @@
 
 import UIKit
 import SnapKit
+import GoogleMaps
 
 class LocationView: UIView {
 
+    var locationManager = CLLocationManager()
+    var addLocationMap: GMSMapView!
+    
     lazy var dismissView: UIButton = {
         let button = UIButton(frame: UIScreen.main.bounds)
         button.backgroundColor = .clear
@@ -48,14 +52,15 @@ class LocationView: UIView {
         searchBar.barStyle = .default
         searchBar.backgroundColor = .cyan
         searchBar.showsCancelButton = true
+        searchBar.placeholder = "Enter a Location"
         return searchBar
     }()
     
-    lazy var mapView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .green
-        return view
-    }()
+//    lazy var mapView: UIView = {
+//        let view = UIView()
+//        view.backgroundColor = .green
+//        return view
+//    }()
     
     lazy var selectLocationButton: UIButton = {
         let button = UIButton()
@@ -79,6 +84,16 @@ class LocationView: UIView {
     
     private func commonInit() {
         backgroundColor = .white
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.distanceFilter = 50
+        locationManager.startUpdatingLocation()
+        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
+        addLocationMap = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        addLocationMap.isMyLocationEnabled = true
+        
+        
         setupViews()
         setupConstraints()
     }
@@ -92,7 +107,8 @@ class LocationView: UIView {
         addSubview(titleLabel)
         addSubview(searchBar)
         addSubview(selectLocationButton)
-        addSubview(mapView)
+        addSubview(addLocationMap)
+//        addSubview(mapView)
 
     }
     
@@ -142,7 +158,7 @@ class LocationView: UIView {
 //            make.edges.equalTo(self.containerView)
         }
 
-        mapView.snp.makeConstraints { (make) in
+        addLocationMap.snp.makeConstraints { (make) in
             make.width.equalTo(containerView)
             make.top.equalTo(searchBar.snp.bottom)
             make.bottom.equalTo(selectLocationButton.snp.top)

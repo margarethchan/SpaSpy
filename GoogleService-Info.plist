@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>195254278445-1giv0c8vlpgv6bd757imir7pgp50p9if.apps.googleusercontent.com</string>
+	<string>439926388667-8lpi4153r5ln2jc8bbc3p9dd2vabb6lu.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.195254278445-1giv0c8vlpgv6bd757imir7pgp50p9if</string>
+	<string>com.googleusercontent.apps.439926388667-8lpi4153r5ln2jc8bbc3p9dd2vabb6lu</string>
 	<key>API_KEY</key>
-	<string>AIzaSyA0zocMtn8JQDE_7FmFEAzXrBEXArydkM0</string>
+	<string>AIzaSyBeBdDWZDKy1aza8XDRZCFFVQV0BPfmo4I</string>
 	<key>GCM_SENDER_ID</key>
-	<string>195254278445</string>
+	<string>439926388667</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>MHC.SpaSpy</string>
 	<key>PROJECT_ID</key>
-	<string>spaspy-b6147</string>
+	<string>spaspy-41feb</string>
 	<key>STORAGE_BUCKET</key>
-	<string>spaspy-b6147.appspot.com</string>
+	<string>spaspy-41feb.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:195254278445:ios:7f4901a2d54121b2</string>
+	<string>1:439926388667:ios:7f4901a2d54121b2</string>
 	<key>DATABASE_URL</key>
-	<string>https://spaspy-b6147.firebaseio.com</string>
+	<string>https://spaspy-41feb.firebaseio.com</string>
 </dict>
 </plist>

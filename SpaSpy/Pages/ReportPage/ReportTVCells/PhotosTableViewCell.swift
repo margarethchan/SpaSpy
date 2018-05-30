@@ -14,20 +14,25 @@ class PhotosTableViewCell: UITableViewCell {
     lazy var photosLabel: UILabel = {
         let label = UILabel()
         label.text = "Photos"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
     
     lazy var addPhotoButton: UIButton = {
         let button = UIButton()
         button.setTitle("Add Photo", for: .normal)
-        button.backgroundColor = .orange
+        button.backgroundColor = UIColor(red:0.39, green:0.82, blue:1.00, alpha:1.0)
+        button.layer.borderWidth = 1
+        button.setTitleColor(UIColor.black, for: .normal)
         return button
     }()
     
     lazy var removePhotoButton: UIButton = {
         let button = UIButton()
         button.setTitle("Remove Last Photo", for: .normal)
-        button.backgroundColor = .green
+        button.backgroundColor = .lightGray
+        button.layer.borderWidth = 1
+        button.setTitleColor(UIColor.black, for: .normal)
         return button
     }()
     
@@ -44,7 +49,6 @@ class PhotosTableViewCell: UITableViewCell {
         layout.minimumLineSpacing = cellSpacing
         layout.minimumInteritemSpacing = cellSpacing
         let cv = UICollectionView(frame: self.bounds, collectionViewLayout: layout)
-        //        categoriesCV.backgroundColor = .white
         cv.register(AddPhotoCollectionViewCell.self, forCellWithReuseIdentifier: "AddPhotoCollectionViewCell")
         cv.showsHorizontalScrollIndicator = false
         cv.backgroundColor = .clear
@@ -78,7 +82,7 @@ class PhotosTableViewCell: UITableViewCell {
     
     private func setUpConstraints() {
         photosLabel.snp.makeConstraints { (make) in
-            make.top.leading.equalTo(contentView)
+            make.top.leading.equalTo(contentView).offset(10)
         }
         
         addPhotoButton.snp.makeConstraints { (make) in

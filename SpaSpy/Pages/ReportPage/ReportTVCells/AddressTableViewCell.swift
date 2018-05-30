@@ -15,20 +15,23 @@ class AddressTableViewCell: UITableViewCell {
     lazy var businessAddressLabel: UILabel = {
         let label = UILabel()
         label.text = "Business Address"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
     
     lazy var mapIconButton: UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "map1"), for: .normal)
-        button.backgroundColor = .red
+        button.setImage(#imageLiteral(resourceName: "pinwhite1"), for: .normal)
+//        button.backgroundColor = .red
         return button
     }()
     
     lazy var addLocationButton: UIButton = {
         let button = UIButton()
         button.setTitle("Add Location", for: .normal)
-        button.backgroundColor = .orange
+        button.backgroundColor = UIColor(red:0.39, green:0.82, blue:1.00, alpha:1.0)
+        button.layer.borderWidth = 1
+        button.setTitleColor(UIColor.black, for: .normal)
         return button
     }()
     
@@ -73,7 +76,7 @@ class AddressTableViewCell: UITableViewCell {
     
     private func setUpConstraints() {
         businessAddressLabel.snp.makeConstraints { (make) in
-            make.top.leading.equalTo(contentView)
+            make.top.leading.equalTo(contentView).offset(10)
         }
         
         addLocationButton.snp.makeConstraints { (make) in
@@ -85,7 +88,7 @@ class AddressTableViewCell: UITableViewCell {
         }
         
         mapIconButton.snp.makeConstraints { (make) in
-            make.leading.equalTo(addLocationButton.snp.leading)
+            make.leading.equalTo(addLocationButton.snp.leading).offset(5)
             make.centerY.equalTo(addLocationButton.snp.centerY)
             make.height.width.equalTo(25)
         }

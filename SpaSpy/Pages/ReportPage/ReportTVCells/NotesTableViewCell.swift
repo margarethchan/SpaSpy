@@ -16,15 +16,18 @@ class NotesTableViewCell: UITableViewCell {
     lazy var notesLabel: UILabel = {
         let label = UILabel()
         label.text = "Notes"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
     
     lazy var notesTextView: UITextView = {
         let tv = UITextView()
         tv.text = "Other Notes"
-        tv.backgroundColor = .lightGray
-        tv.textColor = .gray
+//        tv.backgroundColor = .lightGray
+        tv.isEditable = true
+        tv.textColor = .lightGray
         tv.isScrollEnabled = true
+        tv.layer.borderWidth = 1
         tv.font = UIFont.systemFont(ofSize: 17)
         return tv
     }()
@@ -68,7 +71,7 @@ class NotesTableViewCell: UITableViewCell {
     
     private func setUpConstraints() {
         notesLabel.snp.makeConstraints { (make) in
-            make.top.leading.equalTo(contentView)
+            make.top.leading.equalTo(contentView).offset(10)
         }
         
         notesTextView.snp.makeConstraints { (make) in

@@ -14,6 +14,7 @@ class BusinessTypeTableViewCell: UITableViewCell {
     lazy var businessTypeLabel: UILabel = {
         let label = UILabel()
         label.text = "Business Type"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
     
@@ -30,21 +31,30 @@ class BusinessTypeTableViewCell: UITableViewCell {
         layout.minimumLineSpacing = cellSpacing
         layout.minimumInteritemSpacing = cellSpacing
         let cv = UICollectionView(frame: self.bounds, collectionViewLayout: layout)
-        //        categoriesCV.backgroundColor = .white
         cv.register(BusinessTypeCollectionViewCell.self, forCellWithReuseIdentifier: "BusinessTypeCollectionViewCell")
         cv.showsHorizontalScrollIndicator = false
-        cv.backgroundColor = .white
+        cv.backgroundColor = .clear
         return cv
     }()
     
-    lazy var otherBusinessTypeTextField: UITextField = {
-        let tf = UITextField()
-        tf.backgroundColor = .lightGray
-        tf.placeholder = "Other Type of Business"
-        tf.borderStyle = .roundedRect
-        return tf
+//    lazy var otherBusinessTypeTextField: UITextField = {
+//        let tf = UITextField()
+////        tf.backgroundColor = .lightGray
+//        tf.placeholder = " Other Type of Business"
+////        tf.borderStyle = .roundedRect
+//        tf.layer.borderWidth = 1
+//        return tf
+//    }()
+    lazy var otherBusinessTypeTextView: UITextView = {
+        let tv = UITextView()
+        tv.text = "Other Type of Business"
+        tv.isEditable = true
+        tv.textColor = .lightGray
+        tv.isScrollEnabled = true
+        tv.layer.borderWidth = 1
+        tv.font = UIFont.systemFont(ofSize: 17)
+        return tv
     }()
-    
     
      override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -65,12 +75,12 @@ class BusinessTypeTableViewCell: UITableViewCell {
     private func setupViews() {
         contentView.addSubview(businessTypeLabel)
         contentView.addSubview(businessTypeCollectionView)
-        contentView.addSubview(otherBusinessTypeTextField)
+        contentView.addSubview(otherBusinessTypeTextView)
     }
     
     private func setUpConstraints() {
         businessTypeLabel.snp.makeConstraints { (make) in
-            make.top.leading.equalTo(contentView)
+            make.top.leading.equalTo(contentView).offset(10)
         }
         
         businessTypeCollectionView.snp.makeConstraints { (make) in
@@ -79,7 +89,7 @@ class BusinessTypeTableViewCell: UITableViewCell {
             make.height.equalTo(40)
         }
         
-        otherBusinessTypeTextField.snp.makeConstraints { (make) in
+        otherBusinessTypeTextView.snp.makeConstraints { (make) in
             make.centerX.equalTo(contentView)
             make.top.equalTo(businessTypeCollectionView.snp.bottom).offset(10)
             make.height.equalTo(40)

@@ -27,7 +27,8 @@ class BusinessTypeCollectionViewCell: UICollectionViewCell {
     }
     
     private func commonInit() {
-        backgroundColor = .white
+        backgroundColor = UIColor(red:0.39, green:0.82, blue:1.00, alpha:1.0)
+        layer.borderWidth = 1
         setupViews()
         setUpConstraints()
     }
@@ -44,8 +45,8 @@ class BusinessTypeCollectionViewCell: UICollectionViewCell {
     
     override var isSelected: Bool {
         didSet {
-            self.layer.borderWidth = 3.0
-            self.layer.borderColor = isSelected ? UIColor.blue.cgColor : UIColor.clear.cgColor
+            self.layer.borderWidth = isSelected ? 3.0 : 1.0
+            self.layer.borderColor = isSelected ? UIColor.red.cgColor : UIColor.black.cgColor
         }
     }
     

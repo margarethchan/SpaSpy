@@ -16,15 +16,18 @@ class WebpagesTableViewCell: UITableViewCell {
     lazy var webpagesLabel: UILabel = {
         let label = UILabel()
         label.text = "Web Pages"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
     
     lazy var webpagesTextView: UITextView = {
         let tv = UITextView()
         tv.text = "Listed Web Pages"
-        tv.backgroundColor = .lightGray
-        tv.textColor = .gray
+        //        tv.backgroundColor = .lightGray
+        tv.isEditable = true
+        tv.textColor = .lightGray
         tv.isScrollEnabled = true
+        tv.layer.borderWidth = 1
         tv.font = UIFont.systemFont(ofSize: 17)
         return tv
     }()
@@ -68,7 +71,7 @@ class WebpagesTableViewCell: UITableViewCell {
     
     private func setUpConstraints() {
         webpagesLabel.snp.makeConstraints { (make) in
-            make.top.leading.equalTo(contentView)
+            make.top.leading.equalTo(contentView).offset(10)
         }
         
         webpagesTextView.snp.makeConstraints { (make) in

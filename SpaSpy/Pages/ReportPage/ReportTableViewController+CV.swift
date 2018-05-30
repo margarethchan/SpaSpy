@@ -20,14 +20,11 @@ extension ReportTableViewController: UICollectionViewDelegateFlowLayout, UIColle
         case 0:
             if uploadedPhotos.count > 0 {
                 return uploadedPhotos.count
-                
             } else {
                 return 1
             }
-
         case 1:
-                        return businessTypes.count
-//            return 5
+            return businessTypes.count
         default:
             return 1
         }
@@ -70,10 +67,10 @@ extension ReportTableViewController: UICollectionViewDelegateFlowLayout, UIColle
             let widthPerItem = availableWidth / itemsPerRow
             return CGSize(width: widthPerItem, height: widthPerItem)
         case 1:
-            let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+            let paddingSpace = sectionInsets.left * (5 + 1)
             let availableWidth = view.frame.width - paddingSpace
-            let widthPerItem = availableWidth / itemsPerRow
-            return CGSize(width: widthPerItem, height: widthPerItem / 2)
+            let widthPerItem = availableWidth / 4
+            return CGSize(width: widthPerItem, height: widthPerItem * 0.4)
         default:
             return CGSize(width: 5.0, height: 5.0)
         }
@@ -117,10 +114,14 @@ extension ReportTableViewController: UICollectionViewDelegateFlowLayout, UIColle
             //                selectedBusinessTypes.append(businessType)
             //                print(selectedBusinessTypes)
             //            }
-            ///
+            //
             
         default:
             print("")
         }
     }
+    
+    
+    
+
 }

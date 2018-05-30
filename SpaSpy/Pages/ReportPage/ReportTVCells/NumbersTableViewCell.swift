@@ -14,15 +14,28 @@ class NumbersTableViewCell: UITableViewCell {
     lazy var numbersLabel: UILabel = {
         let label = UILabel()
         label.text = "Phone Numbers"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
     
-    lazy var numbersTextField: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "Listed Phone Numbers"
-        tf.backgroundColor = .lightGray
-        tf.borderStyle = .roundedRect
-        return tf
+//    lazy var numbersTextField: UITextField = {
+//        let tf = UITextField()
+//        tf.placeholder = "Listed Phone Numbers"
+////        tf.backgroundColor = .lightGray
+////        tf.borderStyle = .roundedRect
+//        tf.layer.borderWidth = 1
+//        return tf
+//    }()
+    
+    lazy var numbersTextView: UITextView = {
+        let tv = UITextView()
+        tv.text = "Listed Phone Numbers"
+        tv.isEditable = true
+        tv.textColor = .lightGray
+        tv.isScrollEnabled = true
+        tv.layer.borderWidth = 1
+        tv.font = UIFont.systemFont(ofSize: 17)
+        return tv
     }()
     
     // Small Scrollable Text View
@@ -59,15 +72,15 @@ class NumbersTableViewCell: UITableViewCell {
     
     private func setupViews() {
         contentView.addSubview(numbersLabel)
-        contentView.addSubview(numbersTextField)
+        contentView.addSubview(numbersTextView)
     }
     
     private func setUpConstraints() {
         numbersLabel.snp.makeConstraints { (make) in
-            make.top.leading.equalTo(contentView)
+            make.top.leading.equalTo(contentView).offset(10)
         }
 
-        numbersTextField.snp.makeConstraints { (make) in
+        numbersTextView.snp.makeConstraints { (make) in
             make.top.equalTo(numbersLabel.snp.bottom).offset(10)
             make.centerX.equalTo(contentView)
             make.height.equalTo(40)
