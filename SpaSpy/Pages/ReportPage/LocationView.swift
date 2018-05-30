@@ -94,29 +94,18 @@ class LocationView: UIView {
         addLocationMap = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         addLocationMap.isMyLocationEnabled = true
         
-        
         setupViews()
         setupConstraints()
     }
-    
     
     private func setupViews() {
         setupBlurEffectView()
         addSubview(dismissView)
         addSubview(containerView)
-        containerView.addSubview(dismissButton)
-        containerView.addSubview(titleLabel)
-        containerView.addSubview(searchBar)
-        containerView.addSubview(selectLocationButton)
-        containerView.addSubview(addLocationMap)
-//        addSubview(mapView)
-
     }
     
-
-    
     private func setupBlurEffectView() {
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark) // .light, .dark, .prominent, .regular, .extraLight
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
         let visualEffect = UIVisualEffectView(frame: UIScreen.main.bounds)
         visualEffect.effect = blurEffect
         addSubview(visualEffect)
@@ -130,6 +119,7 @@ class LocationView: UIView {
             make.height.equalTo(self.snp.height).multipliedBy(0.95)
         }
         
+        containerView.addSubview(dismissButton)
         dismissButton.snp.makeConstraints { (make) in
             make.top.equalTo(containerView.snp.top).offset(10)
             make.leading.equalTo(containerView.snp.leading).offset(10)
@@ -137,6 +127,7 @@ class LocationView: UIView {
 //            make.edges.equalTo(self.containerView)
         }
         
+        containerView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
             make.centerX.equalTo(containerView.snp.centerX)
             make.top.equalTo(containerView.snp.top)
@@ -144,6 +135,7 @@ class LocationView: UIView {
             make.height.equalTo(50)
         }
         
+        containerView.addSubview(searchBar)
         searchBar.snp.makeConstraints { (make) in
             make.centerX.equalTo(containerView.snp.centerX)
             make.top.equalTo(titleLabel.snp.bottom)
@@ -151,6 +143,7 @@ class LocationView: UIView {
             make.height.equalTo(50)
         }
         
+        containerView.addSubview(selectLocationButton)
         selectLocationButton.snp.makeConstraints { (make) in
             make.centerX.equalTo(containerView.snp.centerX)
             make.bottom.equalTo(containerView.snp.bottom)
@@ -159,6 +152,7 @@ class LocationView: UIView {
 //            make.edges.equalTo(self.containerView)
         }
 
+        containerView.addSubview(addLocationMap)
         addLocationMap.snp.makeConstraints { (make) in
             make.width.equalTo(containerView)
             make.top.equalTo(searchBar.snp.bottom)

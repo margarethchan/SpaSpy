@@ -79,7 +79,7 @@ class RedFlagsTableViewCell: UITableViewCell {
         addRedFlagsButton.snp.makeConstraints { (make) in
             make.centerX.equalTo(contentView)
             make.top.equalTo(redFlagsLabel.snp.bottom).offset(10)
-            make.height.equalTo(30)
+            make.height.equalTo(40)
             make.width.equalTo(contentView.snp.width).multipliedBy(0.9)
             make.bottom.equalTo(contentView.snp.bottom).offset(-10)
         }

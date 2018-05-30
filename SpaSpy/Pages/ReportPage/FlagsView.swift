@@ -92,7 +92,7 @@ class FlagsView: UIView {
     
     // add blur effect to modal view bg
     private func setupBlurEffectView() {
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark) // .light, .dark, .prominent, .regular, .extraLight
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
         let visualEffect = UIVisualEffectView(frame: UIScreen.main.bounds)
         visualEffect.effect = blurEffect
         addSubview(visualEffect)
@@ -127,10 +127,10 @@ class FlagsView: UIView {
         
         containerView.addSubview(redFlagsTableView)
         redFlagsTableView.snp.makeConstraints { (make) in
-            make.top.equalTo(doneButton.snp.bottom).offset(20)
+            make.top.equalTo(doneButton.snp.bottom).offset(10)
             make.leading.equalTo(containerView).offset(10)
             make.trailing.equalTo(containerView).offset(-10)
-            make.bottom.equalTo(containerView.snp.bottom).offset(-20)
+            make.bottom.equalTo(containerView.snp.bottom)
         }
         
     }
