@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CE6A53A12155D9386B0A7374732AB9AC"
+               BlueprintIdentifier = "F8EE25654CF6FF00A7A5E566956085D4"
                BuildableName = "Pods_SpaSpy.framework"
                BlueprintName = "Pods-SpaSpy"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CE6A53A12155D9386B0A7374732AB9AC"
+            BlueprintIdentifier = "F8EE25654CF6FF00A7A5E566956085D4"
             BuildableName = "Pods_SpaSpy.framework"
             BlueprintName = "Pods-SpaSpy"
             ReferencedContainer = "container:Pods.xcodeproj">

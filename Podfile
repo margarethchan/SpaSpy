@@ -11,4 +11,5 @@ target 'SpaSpy' do
   pod 'GooglePlacePicker'
   pod 'GoogleMaps'
   pod 'SnapKit', '~> 4.0.0'
+  pod "SimplePDFSwift"
 end

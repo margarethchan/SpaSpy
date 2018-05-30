@@ -1,0 +1,6 @@
+framework module SimplePDFSwift {
+  umbrella header "SimplePDFSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}
