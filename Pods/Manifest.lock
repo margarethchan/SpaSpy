@@ -31,7 +31,7 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - SimplePDFSwift (0.2.1)
+  - SimplePDF (3.0.0)
   - SnapKit (4.0.0)
 
 DEPENDENCIES:
@@ -39,7 +39,7 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
-  - SimplePDFSwift
+  - SimplePDF
   - SnapKit (~> 4.0.0)
 
 SPEC REPOS:
@@ -53,7 +53,7 @@ SPEC REPOS:
     - GooglePlaces
     - GoogleToolboxForMac
     - nanopb
-    - SimplePDFSwift
+    - SimplePDF
     - SnapKit
 
 SPEC CHECKSUMS:
@@ -66,9 +66,9 @@ SPEC CHECKSUMS:
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  SimplePDFSwift: 98969bb38b924b473731c9c85cd78b467d15c633
+  SimplePDF: 903143ede36965886997a5c1bc6b8940b082ba20
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: 63ddd330cabda1637a2410542a6f1c2d2ce85113
+PODFILE CHECKSUM: 43267d23f7e1521bdcd31eddce574bfca722664f
 
 COCOAPODS: 1.5.0

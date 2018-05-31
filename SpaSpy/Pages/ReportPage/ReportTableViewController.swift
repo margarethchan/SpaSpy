@@ -8,17 +8,20 @@
 
 import UIKit
 import AVFoundation
+import SimplePDF
+
+
 
 class ReportTableViewController: UITableViewController {
-
+    /// CREATE PDF FROM REPORT
+    private let A4paperSize = CGSize(width: 595, height: 842)
+    private let pageMargin: CGFloat = 20.0
+    private var pdf: SimplePDF! = nil
+    ///
+    
     public var uploadedPhotos = [UIImage]() {
         didSet {
             print("------Image added to uploadedPhotos: \(uploadedPhotos)")
-//            if uploadedPhotos.count > 0 {
-//                self.tableView.cellForRow(at: 0)..removePhotoButton.isHidden = false
-//            } else {
-//                cell.removePhotoButton.isHidden = true
-//            }
         }
     }
     private var selectedLocation = "selectedLocation"
@@ -45,15 +48,80 @@ class ReportTableViewController: UITableViewController {
     
     @IBAction func reportButton(_ sender: UIBarButtonItem) {
         print("submit report")
-        // capture the values from each tableviewcell and save to Firebase
-        // uploadedPhotos= [UIImage]
-        // selectedLocation = String
-        // selectedBusinessTypes = [String]
-        // selectedRedFalgs = [String]
-        // enteredNumbers = String
-        // enteredWebpages = String
-        // enteredNotes = String
+        /// COLLECT DATA FOR PDF REPORT
+        pdf.setContentAlignment(.center)
         
+        // add logo image
+        let logoImage = #imageLiteral(resourceName: "icon_83.5")
+        pdf.addImage(logoImage)
+        pdf.addText("Spa Spy Report")
+        pdf.addLineSpace(30)
+        
+        pdf.setContentAlignment(.left)
+        // selectedLocation = String
+        pdf.addText("Business Location")
+        pdf.addLineSeparator()
+        pdf.addText(self.selectedLocation)
+        pdf.addLineSpace(20.0)
+        
+        // selectedBusinessTypes = [String]
+        pdf.addText("Business Types")
+        pdf.addLineSeparator()
+        self.selectedBusinessTypes.forEach { (type) in
+                pdf.addText(type)
+        }
+        pdf.addLineSpace(20.0)
+        
+        // selectedRedFlags = [String]
+        pdf.addText("Red Flags")
+        pdf.addLineSeparator()
+        self.selectedRedFlags.forEach { (flag) in
+            pdf.addText(flag)
+        }
+        pdf.addLineSpace(20.0)
+        
+        // enteredNumbers = String
+        pdf.addText("Business Phone Numbers")
+        pdf.addLineSeparator()
+        pdf.addText(enteredNumbers)
+        pdf.addLineSpace(20.0)
+        
+        // enteredWebpages = String
+        pdf.addText("Business Webpages")
+        pdf.addLineSeparator()
+        pdf.addText(enteredWebpages)
+        pdf.addLineSpace(20.0)
+        
+        // enteredNotes = String
+        pdf.addText("Other Notes")
+        pdf.addLineSeparator()
+        pdf.addText(enteredNotes)
+        pdf.addLineSpace(20.0)
+        
+        // uploadedPhotos= [UIImage]
+        pdf.addText("Photos of the Business")
+        pdf.addLineSeparator()
+        self.uploadedPhotos.forEach { (image) in
+            pdf.addImage(image)
+            pdf.beginNewPage()
+        }
+        
+        // Generate PDF data and save to a local file.
+        if let documentDirectories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
+            
+            let fileName = "example.pdf"
+            let documentsFileName = documentDirectories + "/" + fileName
+            
+            let pdfData = pdf.generatePDFdata()
+            do{
+//                try pdfData.writeToFile(documentsFileName, options: .DataWritingAtomic)
+                try pdfData.write(to: URL(fileURLWithPath: documentsFileName), options: .atomicWrite)
+                print("\nThe generated pdf can be found at:")
+                print("\n\t\(documentsFileName)\n")
+            }catch{
+                print(error)
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -66,6 +134,7 @@ class ReportTableViewController: UITableViewController {
         self.tableView.allowsSelection = false
         self.tableView.bounces = false
         self.tableView.separatorStyle = .none
+        self.pdf = SimplePDF(pageSize: A4paperSize, pageMarginLeft: pageMargin, pageMarginTop: pageMargin, pageMarginBottom: pageMargin, pageMarginRight: pageMargin)
     }
 
     
@@ -105,9 +174,9 @@ class ReportTableViewController: UITableViewController {
             cell.addLocationButton.addTarget(self, action: #selector(addLocation), for: .touchUpInside)
             cell.mapIconButton.addTarget(self, action: #selector(addLocation), for: .touchUpInside)
             cell.addLocationButton.setTitle("Add Location", for: .normal)
-//            cell.addLocationButton.setTitle(selectedLocation, for: .selected)
+            cell.addLocationButton.setTitle(selectedLocation, for: .selected)
             cell.addLocationButton.addTarget(self, action: #selector(addLocation), for: .touchUpInside)
-//            cell.backgroundColor = .green
+//            self.selectedLocation =
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessTypeTableViewCell", for: indexPath) as! BusinessTypeTableViewCell
@@ -117,23 +186,29 @@ class ReportTableViewController: UITableViewController {
             cell.businessTypeCollectionView.dataSource = self
             cell.businessTypeCollectionView.tag = 1
             cell.businessTypeCollectionView.allowsMultipleSelection = true
+//            self.selectedBusinessTypes
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "RedFlagsTableViewCell", for: indexPath) as! RedFlagsTableViewCell
 //            cell.backgroundColor = .cyan
             cell.addRedFlagsButton.addTarget(self, action: #selector(selectRedFlags), for: .touchUpInside)
+            // collect flagged items and add to the array
+//            self.selectedRedFlags
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "NumbersTableViewCell", for: indexPath) as! NumbersTableViewCell
 //            cell.backgroundColor = .red
+            self.enteredNumbers = cell.numbersTextView.text
         return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "WebpagesTableViewCell", for: indexPath) as! WebpagesTableViewCell
 //            cell.backgroundColor = .orange
+            self.enteredWebpages = cell.webpagesTextView.text
             return cell
         case 6:
             let cell = tableView.dequeueReusableCell(withIdentifier: "NotesTableViewCell", for: indexPath) as! NotesTableViewCell
 //            cell.backgroundColor = .brown
+            self.enteredNotes = cell.notesTextView.text
             return cell
         default:
             let cell = UITableViewCell()

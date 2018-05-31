@@ -10,7 +10,8 @@
 #endif
 #endif
 
+#import "SimplePDF.h"
 
-FOUNDATION_EXPORT double SimplePDFSwiftVersionNumber;
-FOUNDATION_EXPORT const unsigned char SimplePDFSwiftVersionString[];
+FOUNDATION_EXPORT double SimplePDFVersionNumber;
+FOUNDATION_EXPORT const unsigned char SimplePDFVersionString[];
 
