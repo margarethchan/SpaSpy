@@ -13,7 +13,7 @@ extension ReportTableViewController: UITextViewDelegate {
         textView.becomeFirstResponder()
         switch textView.tag {
         case 2:
-            if textView.text == "Other Type of Business" {
+            if textView.text == "Other Type of Service" {
                 textView.text = ""
             }
         case 4:
@@ -39,7 +39,7 @@ extension ReportTableViewController: UITextViewDelegate {
         switch textView.tag {
         case 2:
             if textView.text == "" {
-                textView.text = "Other Type of Business"
+                textView.text = "Other Type of Service"
             }
         case 4:
             if textView.text == "" {

@@ -23,21 +23,23 @@ class ReportTableViewController: UITableViewController {
     /// BUSINESS PHOTOS
     public var uploadedPhotos = [UIImage]() {
         didSet {
-            print("uploadedPhotos: \(uploadedPhotos)")
+            print("1. uploadedPhotos: \(uploadedPhotos)")
         }
     }
     public let imagePickerVC = UIImagePickerController()
     private var currentSelectedImage: UIImage!
     
     /// BUSINESS ADDRESS VALUES
+    private var selectedLocation: GMSPlace?
+    
     private var selectedLocationName = "" {
         didSet {
-            print("selectedLocationName: \(selectedLocationName)")
+            print("2. selectedLocationName: \(selectedLocationName)")
         }
     }
     private var selectedLocationAddress = "" {
         didSet {
-            print("selectedLocationAddress: \(selectedLocationAddress)")
+            print("3. selectedLocationAddress: \(selectedLocationAddress)")
         }
     }
     var placesClient: GMSPlacesClient!
@@ -45,33 +47,31 @@ class ReportTableViewController: UITableViewController {
 
     public var selectedBusinessTypes = [String]() {
         didSet {
-            print("Selected Business Types: \(selectedBusinessTypes)")
+            print("4. Selected Business Types: \(selectedBusinessTypes)")
         }
     }
     private var selectedRedFlags = [String]() {
         didSet {
-            print("Selected Red Flags: \(selectedRedFlags)")
+            print("5. Selected Red Flags: \(selectedRedFlags)")
         }
     }
     public var enteredNumbers = "" {
         didSet {
-            print("Phone Numbers: \(enteredNumbers)")
+            print("6. Phone Numbers: \(enteredNumbers)")
         }
     }
     public var enteredWebpages = "" {
         didSet {
-            print("Webpages: \(enteredWebpages)")
+            print("7. Webpages: \(enteredWebpages)")
         }
     }
     public var enteredNotes = "" {
         didSet {
-            print("Notes: \(enteredNotes)")
+            print("8. Notes: \(enteredNotes)")
         }
     }
     
     private var now = Date()
-    
-  
         
     // UICollectionView reference values
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
@@ -98,10 +98,10 @@ class ReportTableViewController: UITableViewController {
         
         let businessTypeTVC = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? BusinessTypeTableViewCell
         businessTypeTVC?.businessTypeCollectionView.reloadData()
-        businessTypeTVC?.otherBusinessTypeTextView.text = "Other Type of Business"
+        businessTypeTVC?.otherBusinessTypeTextView.text = "Other Type of Service"
         
         let flagsTVC = self.tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? RedFlagsTableViewCell
-        flagsTVC?.redFlagsLabel.text = selectedRedFlags.count.description + " Selected Flags"
+        flagsTVC?.selectedFlagsLabel.text = selectedRedFlags.count.description + " Selected Flags"
         
         let numbersTVC = self.tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as? NumbersTableViewCell
         numbersTVC?.numbersTextView.text = "Listed Phone Numbers"
@@ -116,12 +116,26 @@ class ReportTableViewController: UITableViewController {
         print("form cleared")
     }
     
+    private func addBusinessTypeInputs() {
+        let businessTypeTVC = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? BusinessTypeTableViewCell
+        let businessTypeCV = businessTypeTVC?.businessTypeCollectionView
+        let selectedTypesIndexPaths = businessTypeCV?.indexPathsForSelectedItems
+        selectedTypesIndexPaths?.forEach({ (indexpath) in
+            let businessTypeCell = businessTypeCV?.cellForItem(at: indexpath) as! BusinessTypeCollectionViewCell
+            self.selectedBusinessTypes.append(businessTypeCell.businessTypeLabel.text!)
+        })
+        if businessTypeTVC?.otherBusinessTypeTextView.text != "Other Type of Business" {
+            self.selectedBusinessTypes.append((businessTypeTVC?.otherBusinessTypeTextView.text)!)
+        }
+    }
+    
     /// NAV BAR BUTTONS
     @IBAction func clearFormButton(_ sender: UIBarButtonItem) {
         clearForm()
     }
     
     @IBAction func reportButton(_ sender: UIBarButtonItem) {
+        self.view.endEditing(true)
         print("submit report")
         /// COLLECT DATA FOR PDF REPORT
         pdf.setContentAlignment(.center)
@@ -131,34 +145,29 @@ class ReportTableViewController: UITableViewController {
         pdf.addText("Spa Spy Report", font: UIFont.boldSystemFont(ofSize: 20), textColor: .blue)
         pdf.addLineSpace(10.0)
         
-        let currentTimestamp = DateFormatter.dateFormatter.string(from: now)
+        let currentTimestampFull = DateFormatter.dateFormatterFull.string(from: now)
+        let currentTimestampShort = DateFormatter.dateFormatterShort.string(from: now)
         
-        pdf.addText("Reported on: " + currentTimestamp, font: UIFont.systemFont(ofSize: 10), textColor: .black)
+        pdf.addText("Reported on: " + currentTimestampFull, font: UIFont.systemFont(ofSize: 10), textColor: .black)
         pdf.addLineSpace(30)
         
         pdf.setContentAlignment(.left)
-
+        
         pdf.addText("Business Location", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
         pdf.addLineSeparator(height: 0.5)
-        pdf.addText(self.selectedLocationName)
+        if self.selectedLocationAddress != "" {
+            pdf.addText((self.selectedLocation?.name)!)
+            pdf.addText(self.selectedLocationAddress)
+            pdf.addText("Coordinates: ")
+            pdf.addText("Lat: " + (self.selectedLocation?.coordinate.latitude.description)! + " Long: " + (self.selectedLocation?.coordinate.longitude.description)!)
+        } else {
+            pdf.addText("No Location Selected")
+        }
         pdf.addLineSpace(20.0)
         
         pdf.addText("Business Types", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
         pdf.addLineSeparator(height: 0.5)
-        
-        
-        
-        let businessTypeIndexPath = IndexPath(row: 2, section: 0)
-        let businessTypeTVCell = self.tableView.cellForRow(at: businessTypeIndexPath) as! BusinessTypeTableViewCell
-        let businessTypeCV = businessTypeTVCell.businessTypeCollectionView
-        let selectedTypesIndexPaths = businessTypeCV.indexPathsForSelectedItems
-        selectedTypesIndexPaths?.forEach({ (indexpath) in
-            let businessTypeCell = businessTypeCV.cellForItem(at: indexpath) as! BusinessTypeCollectionViewCell
-            self.selectedBusinessTypes.append(businessTypeCell.businessTypeLabel.text!)
-        })
-        if businessTypeTVCell.otherBusinessTypeTextView.text != "Other Type of Business" {
-            self.selectedBusinessTypes.append(businessTypeTVCell.otherBusinessTypeTextView.text)
-        }
+        addBusinessTypeInputs()
         if !self.selectedBusinessTypes.isEmpty {
             self.selectedBusinessTypes.forEach { (type) in
                 pdf.addText(type)
@@ -171,8 +180,12 @@ class ReportTableViewController: UITableViewController {
         
         pdf.addText("Red Flags", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
         pdf.addLineSeparator(height: 0.5)
-        self.selectedRedFlags.forEach { (flag) in
-            pdf.addText(flag)
+        if !self.selectedRedFlags.isEmpty {
+            self.selectedRedFlags.forEach { (flag) in
+                pdf.addText(flag)
+            }
+        } else {
+            pdf.addText("No Red Flags Selected")
         }
         pdf.addLineSpace(20.0)
         
@@ -200,10 +213,19 @@ class ReportTableViewController: UITableViewController {
             pdf.beginNewPage()
         }
         
+     
+        
+        
         // Generate PDF data and save to a local file.
         if let documentDirectories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
             
-            let fileName = "example.pdf"
+            // Generate PDF File Name
+            
+            let separators = CharacterSet(charactersIn: "/, ")
+            let fileName = currentTimestampShort.components(separatedBy: separators).joined(separator: "") + ".pdf"
+//            let fileName = "example.pdf"
+            
+            
             let documentsFileName = documentDirectories + "/" + fileName
             
             let pdfData = pdf.generatePDFdata()
@@ -216,7 +238,7 @@ class ReportTableViewController: UITableViewController {
             }
         }
         
-        print("REPORT CREATED: Photos: \(uploadedPhotos.count), Name: \(selectedLocationName), Address: \(selectedLocationAddress), Business Types: \(selectedBusinessTypes), Red Flags: \(selectedRedFlags.count), Phone Numbers: \(enteredNumbers), Webpages: \(enteredWebpages), Notes: \(enteredNotes)")
+        print("REPORT CREATED:  Photos: \(uploadedPhotos.count), Name: \(selectedLocationName), Address: \(selectedLocationAddress), Business Types: \(selectedBusinessTypes), Red Flags: \(selectedRedFlags.count), Phone Numbers: \(enteredNumbers), Webpages: \(enteredWebpages), Notes: \(enteredNotes)")
         
         clearForm()
     }
@@ -270,7 +292,7 @@ class ReportTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddressTableViewCell", for: indexPath) as! AddressTableViewCell
             cell.addLocationButton.addTarget(self, action: #selector(addLocation), for: .touchUpInside)
             cell.mapIconButton.addTarget(self, action: #selector(addLocation), for: .touchUpInside)
-            if self.selectedLocationName == "" {
+            if self.selectedLocationAddress == "" {
                 cell.addLocationButton.setTitle("Add Location", for: .normal)
             } else {
                 cell.addLocationButton.setTitle("Change Location", for: .normal)
@@ -344,6 +366,7 @@ class ReportTableViewController: UITableViewController {
                 businessAddressCell.businessNameLabel.text = place.name
                 businessAddressCell.businessAddressLabel.text = (place.formattedAddress != nil) ? place.formattedAddress! : "Lat: \(place.coordinate.latitude) + Long: \(place.coordinate.longitude)"
                 // set address variables on form
+                self.selectedLocation = place
                 self.selectedLocationName = place.name
                 self.selectedLocationAddress = (place.formattedAddress != nil) ? place.formattedAddress! : "Lat: \(place.coordinate.latitude), Long: \(place.coordinate.longitude)"
                 self.tableView.reloadData()

@@ -47,6 +47,7 @@
 		81EE7D5E20BF2B4A00ECCA3C /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D5D20BF2B4A00ECCA3C /* HistoryTableViewCell.swift */; };
 		81EE7D6020C2495F00ECCA3C /* ReportTableViewController+TextViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D5F20C2495F00ECCA3C /* ReportTableViewController+TextViews.swift */; };
 		81EE7D6220C2FD8500ECCA3C /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D6120C2FD8500ECCA3C /* DateFormatter.swift */; };
+		81EE7D6420C3199A00ECCA3C /* PDFNameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D6320C3199A00ECCA3C /* PDFNameGenerator.swift */; };
 		A4F278D2C07E38F58E370DB8 /* Pods_SpaSpy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 297F6580FD2C5D0116DF5EF2 /* Pods_SpaSpy.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +97,7 @@
 		81EE7D5D20BF2B4A00ECCA3C /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		81EE7D5F20C2495F00ECCA3C /* ReportTableViewController+TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportTableViewController+TextViews.swift"; sourceTree = "<group>"; };
 		81EE7D6120C2FD8500ECCA3C /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		81EE7D6320C3199A00ECCA3C /* PDFNameGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFNameGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				81DC1D972093DF1500915C70 /* BusinessType.swift */,
 				8192911220A2499B00172899 /* RedFlags.swift */,
 				81EE7D6120C2FD8500ECCA3C /* DateFormatter.swift */,
+				81EE7D6320C3199A00ECCA3C /* PDFNameGenerator.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81EE7D6220C2FD8500ECCA3C /* DateFormatter.swift in Sources */,
+				81EE7D6420C3199A00ECCA3C /* PDFNameGenerator.swift in Sources */,
 				81DC1D732092744300915C70 /* SearchViewController.swift in Sources */,
 				81DC1D8C2093877C00915C70 /* WebpagesTableViewCell.swift in Sources */,
 				81DC1D8A2093876B00915C70 /* NumbersTableViewCell.swift in Sources */,

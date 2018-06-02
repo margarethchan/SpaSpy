@@ -11,10 +11,18 @@ import Foundation
 // Timestamp Generator
 
 extension DateFormatter {
-    static let dateFormatter: DateFormatter = {
+    static let dateFormatterFull: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.full
-        dateFormatter.timeStyle = .full
+        dateFormatter.timeStyle = .long
+        dateFormatter.timeZone = TimeZone.current
+        return dateFormatter
+    }()
+    
+    static let dateFormatterShort: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeStyle = .short
         dateFormatter.timeZone = TimeZone.current
         return dateFormatter
     }()

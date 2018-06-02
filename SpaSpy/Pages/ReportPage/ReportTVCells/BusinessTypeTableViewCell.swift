@@ -13,7 +13,7 @@ class BusinessTypeTableViewCell: UITableViewCell {
 
     lazy var businessTypeLabel: UILabel = {
         let label = UILabel()
-        label.text = "Business Type"
+        label.text = "Business Services"
         label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
@@ -39,7 +39,7 @@ class BusinessTypeTableViewCell: UITableViewCell {
     
     lazy var otherBusinessTypeTextView: UITextView = {
         let tv = UITextView()
-        tv.text = "Other Type of Business"
+        tv.text = "Other Type of Service"
         tv.isEditable = true
         tv.textColor = .lightGray
         tv.isScrollEnabled = true
