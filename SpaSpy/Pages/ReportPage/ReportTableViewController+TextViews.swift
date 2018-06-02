@@ -41,14 +41,20 @@ extension ReportTableViewController: UITextViewDelegate {
         case 4:
             if textView.text == "" {
                 textView.text = "Listed Phone Numbers"
+            } else {
+                self.enteredNumbers = textView.text
             }
         case 5:
             if textView.text == "" {
                 textView.text = "Listed Web Pages"
+            } else {
+                self.enteredWebpages = textView.text
             }
         case 6:
             if textView.text == "" {
                 textView.text = "Other Notes"
+            } else {
+                self.enteredNotes = textView.text
             }
         default:
             textView.text = ""

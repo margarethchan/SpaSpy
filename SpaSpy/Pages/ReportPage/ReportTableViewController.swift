@@ -53,9 +53,21 @@ class ReportTableViewController: UITableViewController {
             print("Selected Red Flags: \(selectedRedFlags)")
         }
     }
-    private var enteredNumbers = ""
-    private var enteredWebpages = ""
-    private var enteredNotes = ""
+    public var enteredNumbers = "" {
+        didSet {
+            print("Phone Numbers: \(enteredNumbers)")
+        }
+    }
+    public var enteredWebpages = "" {
+        didSet {
+            print("Webpages: \(enteredWebpages)")
+        }
+    }
+    public var enteredNotes = "" {
+        didSet {
+            print("Notes: \(enteredNotes)")
+        }
+    }
 
     
     // UICollectionView reference values
@@ -129,7 +141,7 @@ class ReportTableViewController: UITableViewController {
             let businessTypeCell = businessTypeCV.cellForItem(at: indexpath) as! BusinessTypeCollectionViewCell
             self.selectedBusinessTypes.append(businessTypeCell.businessTypeLabel.text!)
         })
-        if businessTypeTVCell.otherBusinessTypeTextView.text != "" && businessTypeTVCell.otherBusinessTypeTextView.text != "Other Type of Business" {
+        if businessTypeTVCell.otherBusinessTypeTextView.text != "Other Type of Business" {
             self.selectedBusinessTypes.append(businessTypeTVCell.otherBusinessTypeTextView.text)
         }
         self.selectedBusinessTypes.forEach { (type) in
@@ -263,19 +275,16 @@ class ReportTableViewController: UITableViewController {
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "NumbersTableViewCell", for: indexPath) as! NumbersTableViewCell
-            self.enteredNumbers = cell.numbersTextView.text
             cell.numbersTextView.delegate = self
             cell.numbersTextView.tag = indexPath.row
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "WebpagesTableViewCell", for: indexPath) as! WebpagesTableViewCell
-            self.enteredWebpages = cell.webpagesTextView.text
             cell.webpagesTextView.delegate = self
             cell.webpagesTextView.tag = indexPath.row
             return cell
         case 6:
             let cell = tableView.dequeueReusableCell(withIdentifier: "NotesTableViewCell", for: indexPath) as! NotesTableViewCell
-            self.enteredNotes = cell.notesTextView.text
             cell.notesTextView.delegate = self
             cell.notesTextView.tag = indexPath.row
             return cell

@@ -68,6 +68,7 @@ extension FlagsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FlagCell", for: indexPath) as! FlagTableViewCell
         let flagDescription = redFlags[indexPath.row]
         cell.flagLabel.text = flagDescription
+//        cell.selectionStyle = .default
         if self.selectedFlags.contains(flagDescription) {
             cell.backgroundColor = .red
         }
@@ -78,12 +79,6 @@ extension FlagsViewController: UITableViewDelegate, UITableViewDataSource {
         return 40.0
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FlagCell", for: indexPath) as! FlagTableViewCell
-        let flagDescription = redFlags[indexPath.row]
-        cell.flagLabel.text = flagDescription
-        cell.contentView.backgroundColor = .red
-    }
 }
 
 

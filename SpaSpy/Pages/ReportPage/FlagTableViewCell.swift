@@ -20,6 +20,16 @@ class FlagTableViewCell: UITableViewCell {
         return label
     }()
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        if selected {
+            self.contentView.backgroundColor = .red
+        } else {
+            self.contentView.backgroundColor = .clear
+        }
+    }
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: nil)
         commonInit()
