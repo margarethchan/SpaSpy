@@ -37,14 +37,6 @@ class BusinessTypeTableViewCell: UITableViewCell {
         return cv
     }()
     
-//    lazy var otherBusinessTypeTextField: UITextField = {
-//        let tf = UITextField()
-////        tf.backgroundColor = .lightGray
-//        tf.placeholder = " Other Type of Business"
-////        tf.borderStyle = .roundedRect
-//        tf.layer.borderWidth = 1
-//        return tf
-//    }()
     lazy var otherBusinessTypeTextView: UITextView = {
         let tv = UITextView()
         tv.text = "Other Type of Business"

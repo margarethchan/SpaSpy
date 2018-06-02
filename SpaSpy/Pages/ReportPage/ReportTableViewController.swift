@@ -154,7 +154,6 @@ class ReportTableViewController: UITableViewController {
         self.pdf = SimplePDF(pageSize: A4paperSize, pageMarginLeft: pageMargin, pageMarginTop: pageMargin, pageMarginBottom: pageMargin, pageMarginRight: pageMargin)
         
         placesClient = GMSPlacesClient.shared()
-
     }
     
 
@@ -205,34 +204,36 @@ class ReportTableViewController: UITableViewController {
             cell.businessTypeCollectionView.dataSource = self
             cell.businessTypeCollectionView.tag = 1
             cell.businessTypeCollectionView.allowsMultipleSelection = true
-//            self.selectedBusinessTypes
+            cell.otherBusinessTypeTextView.delegate = self
+            cell.otherBusinessTypeTextView.tag = indexPath.row
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "RedFlagsTableViewCell", for: indexPath) as! RedFlagsTableViewCell
             cell.addRedFlagsButton.addTarget(self, action: #selector(selectRedFlags), for: .touchUpInside)
             cell.selectedFlagsLabel.text = selectedRedFlags.count.description + " Selected Flags"
-            
             if self.selectedRedFlags.isEmpty {
                 cell.addRedFlagsButton.setTitle("Set Red Flags", for: .normal)
             } else {
                 cell.addRedFlagsButton.setTitle("Edit Red Flags", for: .normal)
             }
-            
-            
-            // collect flagged items and add to the array
-//            self.selectedRedFlags
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "NumbersTableViewCell", for: indexPath) as! NumbersTableViewCell
             self.enteredNumbers = cell.numbersTextView.text
-        return cell
+            cell.numbersTextView.delegate = self
+            cell.numbersTextView.tag = indexPath.row
+            return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "WebpagesTableViewCell", for: indexPath) as! WebpagesTableViewCell
             self.enteredWebpages = cell.webpagesTextView.text
+            cell.webpagesTextView.delegate = self
+            cell.webpagesTextView.tag = indexPath.row
             return cell
         case 6:
             let cell = tableView.dequeueReusableCell(withIdentifier: "NotesTableViewCell", for: indexPath) as! NotesTableViewCell
             self.enteredNotes = cell.notesTextView.text
+            cell.notesTextView.delegate = self
+            cell.notesTextView.tag = indexPath.row
             return cell
         default:
             let cell = UITableViewCell()

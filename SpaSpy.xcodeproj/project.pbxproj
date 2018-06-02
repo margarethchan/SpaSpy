@@ -45,6 +45,7 @@
 		81DC1D982093DF1500915C70 /* BusinessType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D972093DF1500915C70 /* BusinessType.swift */; };
 		81EE7D5C20BF2B0B00ECCA3C /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D5B20BF2B0B00ECCA3C /* HistoryTableViewController.swift */; };
 		81EE7D5E20BF2B4A00ECCA3C /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D5D20BF2B4A00ECCA3C /* HistoryTableViewCell.swift */; };
+		81EE7D6020C2495F00ECCA3C /* ReportTableViewController+TextViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D5F20C2495F00ECCA3C /* ReportTableViewController+TextViews.swift */; };
 		A4F278D2C07E38F58E370DB8 /* Pods_SpaSpy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 297F6580FD2C5D0116DF5EF2 /* Pods_SpaSpy.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		81DC1D972093DF1500915C70 /* BusinessType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessType.swift; sourceTree = "<group>"; };
 		81EE7D5B20BF2B0B00ECCA3C /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		81EE7D5D20BF2B4A00ECCA3C /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		81EE7D5F20C2495F00ECCA3C /* ReportTableViewController+TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportTableViewController+TextViews.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 				81DC1D66209273DE00915C70 /* ReportTableViewController.swift */,
 				8192069920A1459700C074C7 /* ReportTableViewController+CV.swift */,
 				8163873320B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift */,
+				81EE7D5F20C2495F00ECCA3C /* ReportTableViewController+TextViews.swift */,
 				81DC1D6A2092740200915C70 /* ReportView.swift */,
 				81DC1D802093870800915C70 /* ReportTVCells */,
 				81DC1D6E2092741E00915C70 /* FlagsView.swift */,
@@ -426,6 +429,7 @@
 				8163873020B4ED6D005F5308 /* Alert.swift in Sources */,
 				81DC1D862093875300915C70 /* BusinessTypeTableViewCell.swift in Sources */,
 				81DC1D8E2093878500915C70 /* NotesTableViewCell.swift in Sources */,
+				81EE7D6020C2495F00ECCA3C /* ReportTableViewController+TextViews.swift in Sources */,
 				81DC1D772092749300915C70 /* LearnViewController.swift in Sources */,
 				81EE7D5E20BF2B4A00ECCA3C /* HistoryTableViewCell.swift in Sources */,
 				81DC1D67209273DE00915C70 /* ReportTableViewController.swift in Sources */,

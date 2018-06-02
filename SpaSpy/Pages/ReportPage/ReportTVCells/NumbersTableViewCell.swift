@@ -18,15 +18,6 @@ class NumbersTableViewCell: UITableViewCell {
         return label
     }()
     
-//    lazy var numbersTextField: UITextField = {
-//        let tf = UITextField()
-//        tf.placeholder = "Listed Phone Numbers"
-////        tf.backgroundColor = .lightGray
-////        tf.borderStyle = .roundedRect
-//        tf.layer.borderWidth = 1
-//        return tf
-//    }()
-    
     lazy var numbersTextView: UITextView = {
         let tv = UITextView()
         tv.text = "Listed Phone Numbers"
@@ -37,8 +28,6 @@ class NumbersTableViewCell: UITableViewCell {
         tv.font = UIFont.systemFont(ofSize: 17)
         return tv
     }()
-    
-    // Small Scrollable Text View
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,9 +40,6 @@ class NumbersTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    
-    // custom table view cell
-    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         commonInit()

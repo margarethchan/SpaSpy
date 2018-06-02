@@ -28,7 +28,6 @@ class RedFlagsTableViewCell: UITableViewCell {
     lazy var flagIconButton: UIButton = {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "flagtrianglewhite"), for: .normal)
-//        button.backgroundColor = .red
         return button
     }()
     
@@ -41,22 +40,12 @@ class RedFlagsTableViewCell: UITableViewCell {
         return button
     }()
     
-    // Presents a modal view with a tableview of red flags with switches set to off for user to switch on for applicable cases
-    // Present FlagsView modally
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    //    override func setSelected(_ selected: Bool, animated: Bool) {
-    //        super.setSelected(selected, animated: animated)
-    //
-    //        // Configure the view for the selected state
-    //    }        super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
-//    }
 
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
