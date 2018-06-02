@@ -10,6 +10,7 @@ import UIKit
 
 extension ReportTableViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.becomeFirstResponder()
         switch textView.tag {
         case 2:
             if textView.text == "Other Type of Business" {
@@ -32,7 +33,9 @@ extension ReportTableViewController: UITextViewDelegate {
         }
     }
     
+    
     func textViewDidEndEditing(_ textView: UITextView) {
+        textView.resignFirstResponder()
         switch textView.tag {
         case 2:
             if textView.text == "" {
@@ -59,5 +62,14 @@ extension ReportTableViewController: UITextViewDelegate {
         default:
             textView.text = ""
         }
+    }
+    
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
 }

@@ -68,8 +68,11 @@ class ReportTableViewController: UITableViewController {
             print("Notes: \(enteredNotes)")
         }
     }
-
     
+    private var now = Date()
+    
+  
+        
     // UICollectionView reference values
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     let itemsPerRow: CGFloat = 4
@@ -125,18 +128,25 @@ class ReportTableViewController: UITableViewController {
         
         let logoImage = #imageLiteral(resourceName: "icon_83.5")
         pdf.addImage(logoImage)
-        pdf.addText("Spa Spy Report")
+        pdf.addText("Spa Spy Report", font: UIFont.boldSystemFont(ofSize: 20), textColor: .blue)
+        pdf.addLineSpace(10.0)
+        
+        let currentTimestamp = DateFormatter.dateFormatter.string(from: now)
+        
+        pdf.addText("Reported on: " + currentTimestamp, font: UIFont.systemFont(ofSize: 10), textColor: .black)
         pdf.addLineSpace(30)
         
         pdf.setContentAlignment(.left)
 
-        pdf.addText("Business Location")
-        pdf.addLineSeparator()
+        pdf.addText("Business Location", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
+        pdf.addLineSeparator(height: 0.5)
         pdf.addText(self.selectedLocationName)
         pdf.addLineSpace(20.0)
         
-        pdf.addText("Business Types")
-        pdf.addLineSeparator()
+        pdf.addText("Business Types", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
+        pdf.addLineSeparator(height: 0.5)
+        
+        
         
         let businessTypeIndexPath = IndexPath(row: 2, section: 0)
         let businessTypeTVCell = self.tableView.cellForRow(at: businessTypeIndexPath) as! BusinessTypeTableViewCell
@@ -149,35 +159,42 @@ class ReportTableViewController: UITableViewController {
         if businessTypeTVCell.otherBusinessTypeTextView.text != "Other Type of Business" {
             self.selectedBusinessTypes.append(businessTypeTVCell.otherBusinessTypeTextView.text)
         }
-        self.selectedBusinessTypes.forEach { (type) in
-            pdf.addText(type)
+        if !self.selectedBusinessTypes.isEmpty {
+            self.selectedBusinessTypes.forEach { (type) in
+                pdf.addText(type)
+            }
+        } else {
+            pdf.addText("No Business Type Selected")
+            
         }
         pdf.addLineSpace(20.0)
         
-        pdf.addText("Red Flags")
-        pdf.addLineSeparator()
+        pdf.addText("Red Flags", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
+        pdf.addLineSeparator(height: 0.5)
         self.selectedRedFlags.forEach { (flag) in
             pdf.addText(flag)
         }
         pdf.addLineSpace(20.0)
         
-        pdf.addText("Business Phone Numbers")
-        pdf.addLineSeparator()
+        pdf.addText("Business Phone Numbers", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
+        pdf.addLineSeparator(height: 0.5)
         pdf.addText(enteredNumbers)
         pdf.addLineSpace(20.0)
         
-        pdf.addText("Business Webpages")
-        pdf.addLineSeparator()
+        pdf.addText("Business Webpages", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
+        pdf.addLineSeparator(height: 0.5)
         pdf.addText(enteredWebpages)
         pdf.addLineSpace(20.0)
         
-        pdf.addText("Other Notes")
-        pdf.addLineSeparator()
+        let notesTVC = self.tableView.cellForRow(at: IndexPath(row: 6, section: 0)) as? NotesTableViewCell
+        notesTVC?.notesTextView.resignFirstResponder()
+        pdf.addText("Other Notes", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
+        pdf.addLineSeparator(height: 0.5)
         pdf.addText(enteredNotes)
         pdf.addLineSpace(20.0)
         
-        pdf.addText("Photos of the Business")
-        pdf.addLineSeparator()
+        pdf.addText("Photos of the Business", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
+        pdf.addLineSeparator(height: 0.5)
         self.uploadedPhotos.forEach { (image) in
             pdf.addImage(image)
             pdf.beginNewPage()
@@ -199,7 +216,7 @@ class ReportTableViewController: UITableViewController {
             }
         }
         
-        print("Photos: \(uploadedPhotos.count), Name: \(selectedLocationName), Address: \(selectedLocationAddress), Business Types: \(selectedBusinessTypes), Red Flags: \(selectedRedFlags.count), Phone Numbers: \(enteredNumbers), Webpages: \(enteredWebpages), Notes: \(enteredNotes)")
+        print("REPORT CREATED: Photos: \(uploadedPhotos.count), Name: \(selectedLocationName), Address: \(selectedLocationAddress), Business Types: \(selectedBusinessTypes), Red Flags: \(selectedRedFlags.count), Phone Numbers: \(enteredNumbers), Webpages: \(enteredWebpages), Notes: \(enteredNotes)")
         
         clearForm()
     }

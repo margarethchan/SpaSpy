@@ -29,6 +29,7 @@ class NotesTableViewCell: UITableViewCell {
         tv.isScrollEnabled = true
         tv.layer.borderWidth = 1
         tv.font = UIFont.systemFont(ofSize: 17)
+        tv.keyboardType = .default
         return tv
     }()
     
