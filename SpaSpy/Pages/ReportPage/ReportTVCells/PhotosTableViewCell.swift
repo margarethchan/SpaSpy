@@ -101,9 +101,9 @@ class PhotosTableViewCell: UITableViewCell {
         
         photosCollectionView.snp.makeConstraints { (make) in
             make.leading.trailing.equalTo(contentView)
-            make.top.equalTo(addPhotoButton.snp.bottom).offset(10)
-            make.height.equalTo(90)
-            make.bottom.equalTo(contentView.snp.bottom).offset(-10)
+            make.top.equalTo(addPhotoButton.snp.bottom)
+            make.height.equalTo(120)
+            make.bottom.equalTo(contentView.snp.bottom)
         }
         
     }

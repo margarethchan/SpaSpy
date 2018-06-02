@@ -32,7 +32,7 @@ class AddPhotoCollectionViewCell: UICollectionViewCell {
     }
     
     private func commonInit() {
-//        backgroundColor = .white
+        backgroundColor = .white
         setupViews()
         setUpConstraints()
     }

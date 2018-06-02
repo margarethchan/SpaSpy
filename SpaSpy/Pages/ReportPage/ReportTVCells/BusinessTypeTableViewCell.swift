@@ -77,13 +77,13 @@ class BusinessTypeTableViewCell: UITableViewCell {
         
         businessTypeCollectionView.snp.makeConstraints { (make) in
             make.leading.trailing.equalTo(contentView)
-            make.top.equalTo(businessTypeLabel.snp.bottom).offset(10)
-            make.height.equalTo(40)
+            make.top.equalTo(businessTypeLabel.snp.bottom)
+            make.height.equalTo(60)
         }
         
         otherBusinessTypeTextView.snp.makeConstraints { (make) in
             make.centerX.equalTo(contentView)
-            make.top.equalTo(businessTypeCollectionView.snp.bottom).offset(10)
+            make.top.equalTo(businessTypeCollectionView.snp.bottom)
             make.height.equalTo(40)
             make.width.equalTo(contentView.snp.width).multipliedBy(0.9)
             make.bottom.equalTo(contentView.snp.bottom).offset(-10)
