@@ -10,8 +10,6 @@
 		8163873020B4ED6D005F5308 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8163872F20B4ED6D005F5308 /* Alert.swift */; };
 		8163873420B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8163873320B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift */; };
 		8163877D20B6679E005F5308 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8163877C20B6679D005F5308 /* GoogleService-Info.plist */; };
-		81690EBF20A5425C00F2EBDE /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81690EBE20A5425C00F2EBDE /* LocationViewController.swift */; };
-		81690EC120A5426B00F2EBDE /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81690EC020A5426B00F2EBDE /* LocationView.swift */; };
 		8192069A20A1459700C074C7 /* ReportTableViewController+CV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8192069920A1459700C074C7 /* ReportTableViewController+CV.swift */; };
 		8192911120A2425900172899 /* FlagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8192911020A2425900172899 /* FlagsViewController.swift */; };
 		8192911320A2499B00172899 /* RedFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8192911220A2499B00172899 /* RedFlags.swift */; };
@@ -57,8 +55,6 @@
 		8163872F20B4ED6D005F5308 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		8163873320B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportTableViewController+ImagePicker.swift"; sourceTree = "<group>"; };
 		8163877C20B6679D005F5308 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
-		81690EBE20A5425C00F2EBDE /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
-		81690EC020A5426B00F2EBDE /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		8192069920A1459700C074C7 /* ReportTableViewController+CV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportTableViewController+CV.swift"; sourceTree = "<group>"; };
 		8192911020A2425900172899 /* FlagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsViewController.swift; sourceTree = "<group>"; };
 		8192911220A2499B00172899 /* RedFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedFlags.swift; sourceTree = "<group>"; };
@@ -208,8 +204,6 @@
 				8163873320B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift */,
 				81DC1D6A2092740200915C70 /* ReportView.swift */,
 				81DC1D802093870800915C70 /* ReportTVCells */,
-				81690EC020A5426B00F2EBDE /* LocationView.swift */,
-				81690EBE20A5425C00F2EBDE /* LocationViewController.swift */,
 				81DC1D6E2092741E00915C70 /* FlagsView.swift */,
 				8192911020A2425900172899 /* FlagsViewController.swift */,
 				8192911420A24A7B00172899 /* FlagTableViewCell.swift */,
@@ -441,12 +435,10 @@
 				81DC1D962093DD2900915C70 /* BusinessTypeCollectionViewCell.swift in Sources */,
 				8192911520A24A7B00172899 /* FlagTableViewCell.swift in Sources */,
 				81DC1D752092746300915C70 /* VenueDetailView.swift in Sources */,
-				81690EC120A5426B00F2EBDE /* LocationView.swift in Sources */,
 				8192911120A2425900172899 /* FlagsViewController.swift in Sources */,
 				81DC1D7D209274DC00915C70 /* HistoryCollectionViewController.swift in Sources */,
 				81DC1D982093DF1500915C70 /* BusinessType.swift in Sources */,
 				81DC1D65209273B200915C70 /* SignInViewController.swift in Sources */,
-				81690EBF20A5425C00F2EBDE /* LocationViewController.swift in Sources */,
 				81DC1D882093875D00915C70 /* RedFlagsTableViewCell.swift in Sources */,
 				81DC1D69209273F200915C70 /* SignInView.swift in Sources */,
 				81DC1D942093A7B200915C70 /* AddPhotoCollectionViewCell.swift in Sources */,
@@ -598,7 +590,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HRCUFV4R99;
 				INFOPLIST_FILE = SpaSpy/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = MHC.SpaSpy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -614,7 +609,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HRCUFV4R99;
 				INFOPLIST_FILE = SpaSpy/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = MHC.SpaSpy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

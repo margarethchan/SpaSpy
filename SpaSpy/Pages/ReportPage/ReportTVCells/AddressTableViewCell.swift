@@ -12,17 +12,30 @@ import SnapKit
 
 class AddressTableViewCell: UITableViewCell {
     
-    lazy var businessAddressLabel: UILabel = {
+    lazy var businessAddressHeaderLabel: UILabel = {
         let label = UILabel()
         label.text = "Business Address"
         label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
     
+    lazy var businessNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "No location selected"
+        label.font = UIFont.systemFont(ofSize: 17)
+        return label
+    }()
+    
+    lazy var businessAddressLabel: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.font = UIFont.italicSystemFont(ofSize: 17)
+        return label
+    }()
+    
     lazy var mapIconButton: UIButton = {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "pinwhite1"), for: .normal)
-//        button.backgroundColor = .red
         return button
     }()
     
@@ -34,23 +47,6 @@ class AddressTableViewCell: UITableViewCell {
         button.setTitleColor(UIColor.black, for: .normal)
         return button
     }()
-    
-    // Presents a modal view with a tableview of red flags with switches set to off for user to switch on for applicable cases
-    // Present FlagsView modally
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
-    
-    // setup custom view
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -69,14 +65,28 @@ class AddressTableViewCell: UITableViewCell {
     }
     
     private func setupViews() {
+        contentView.addSubview(businessAddressHeaderLabel)
+        contentView.addSubview(businessNameLabel)
         contentView.addSubview(businessAddressLabel)
         contentView.addSubview(addLocationButton)
         contentView.addSubview(mapIconButton)
     }
     
     private func setUpConstraints() {
-        businessAddressLabel.snp.makeConstraints { (make) in
+        businessAddressHeaderLabel.snp.makeConstraints { (make) in
             make.top.leading.equalTo(contentView).offset(10)
+        }
+        
+        businessNameLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(businessAddressHeaderLabel.snp.bottom).offset(10)
+            make.leading.equalTo(contentView.snp.leading).offset(10)
+            make.trailing.equalTo(contentView.snp.trailing).offset(-10)
+        }
+        
+        businessAddressLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(businessNameLabel.snp.bottom).offset(10)
+            make.leading.equalTo(contentView.snp.leading).offset(10)
+            make.trailing.equalTo(contentView.snp.trailing).offset(-10)
         }
         
         addLocationButton.snp.makeConstraints { (make) in
