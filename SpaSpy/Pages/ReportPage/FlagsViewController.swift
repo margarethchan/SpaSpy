@@ -18,11 +18,7 @@ class FlagsViewController: UIViewController {
     
     private let flagsView = FlagsView()
     private let redFlagList = redFlags
-    public var selectedFlags = [String]() {
-        didSet {
-            print("selectedFlags: \(selectedFlags)")
-        }
-    }
+    public var selectedFlags = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +31,7 @@ class FlagsViewController: UIViewController {
         
         flagsView.cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
         flagsView.doneButton.addTarget(self, action: #selector(done), for: .touchUpInside)
-        
-        // Do any additional setup after loading the view.
+
     }
     
     @objc func cancel() {
@@ -47,8 +42,6 @@ class FlagsViewController: UIViewController {
     
     @objc func done() {
         print("done")
-        // export the selected flags
-//        delegate?.saveFlags(fromList: selectedFlags)
         let selectedFlagsIndexPaths = self.flagsView.redFlagsTableView.indexPathsForSelectedRows
         selectedFlagsIndexPaths?.forEach({ (indexpath) in
             let flagCell = self.flagsView.redFlagsTableView.cellForRow(at: indexpath) as! FlagTableViewCell
@@ -63,7 +56,6 @@ class FlagsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }
 
 
@@ -75,8 +67,10 @@ extension FlagsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FlagCell", for: indexPath) as! FlagTableViewCell
         let flagDescription = redFlags[indexPath.row]
-        cell.configureCell(withFlagDescription: flagDescription, selected: cell.isSelected)
-//        cell.flagLabel.text = flagDescription
+        cell.flagLabel.text = flagDescription
+        if self.selectedFlags.contains(flagDescription) {
+            cell.backgroundColor = .red
+        }
         return cell
     }
     
@@ -84,6 +78,12 @@ extension FlagsViewController: UITableViewDelegate, UITableViewDataSource {
         return 40.0
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FlagCell", for: indexPath) as! FlagTableViewCell
+        let flagDescription = redFlags[indexPath.row]
+        cell.flagLabel.text = flagDescription
+        cell.contentView.backgroundColor = .red
+    }
 }
 
 

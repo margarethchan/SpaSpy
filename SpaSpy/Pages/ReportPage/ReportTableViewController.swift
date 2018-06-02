@@ -52,7 +52,11 @@ class ReportTableViewController: UITableViewController {
     
 
     private var selectedBusinessTypes = [String]()
-    private var selectedRedFlags = [String]()
+    private var selectedRedFlags = [String]() {
+        didSet {
+            print("Selected Red Flags on Report: \(selectedRedFlags)")
+        }
+    }
     private var enteredNumbers = ""
     private var enteredWebpages = ""
     private var enteredNotes = ""
@@ -280,6 +284,7 @@ class ReportTableViewController: UITableViewController {
         flagsVC.modalTransitionStyle = .crossDissolve
         self.present(flagsVC, animated: false, completion: nil)
         flagsVC.delegate = self
+        flagsVC.selectedFlags = self.selectedRedFlags
         print("open modal red flags view")
     }
 }
@@ -290,9 +295,5 @@ extension ReportTableViewController: SetSelectedFlagsDelegate {
         self.selectedRedFlags = flags
         self.tableView.reloadData()
     }
-    
-
-    
-    
 }
 

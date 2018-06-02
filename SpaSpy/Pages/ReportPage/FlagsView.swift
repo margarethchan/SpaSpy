@@ -25,14 +25,10 @@ class FlagsView: UIView {
         return view
     }()
     
-    
-    // Nav Buttons
-    // Top Left = Cancel
     lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.setTitle("Cancel", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
-//        button.backgroundColor = .green
         return button
     }()
     
@@ -43,27 +39,22 @@ class FlagsView: UIView {
         return lb
     }()
     
-    // Top Right = Done
+
     lazy var doneButton: UIButton = {
         let button = UIButton()
         button.setTitle("Done", for: .normal)
-//        button.backgroundColor = .yellow
         button.setTitleColor(UIColor(red:0.39, green:0.82, blue:1.00, alpha:1.0), for: .normal)
         return button
     }()
-    
-    // Table View
+
     
     lazy var redFlagsTableView: UITableView = {
        let tbv = UITableView()
         tbv.separatorStyle = .singleLine
-//        tbv.allowsSelection = true
         tbv.allowsMultipleSelection = true
         tbv.showsVerticalScrollIndicator = false
         return tbv
     }()
-    
-    // setup custom view
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
@@ -88,10 +79,8 @@ class FlagsView: UIView {
         setupBlurEffectView()
         addSubview(dismissView)
         setupConstraints()
-
     }
     
-    // add blur effect to modal view bg
     private func setupBlurEffectView() {
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
         let visualEffect = UIVisualEffectView(frame: UIScreen.main.bounds)
@@ -133,7 +122,5 @@ class FlagsView: UIView {
             make.trailing.equalTo(containerView).offset(-10)
             make.bottom.equalTo(containerView.snp.bottom)
         }
-        
     }
-    
 }
