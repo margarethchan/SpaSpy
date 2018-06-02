@@ -74,8 +74,8 @@ class ReportTableViewController: UITableViewController {
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     let itemsPerRow: CGFloat = 4
     
-    /// NAV BAR BUTTONS
-    @IBAction func clearFormButton(_ sender: UIBarButtonItem) {
+    
+    private func clearForm() {
         self.uploadedPhotos = [UIImage]()
         self.currentSelectedImage = nil
         self.selectedLocationName = ""
@@ -85,14 +85,14 @@ class ReportTableViewController: UITableViewController {
         self.enteredNumbers = ""
         self.enteredWebpages = ""
         self.enteredNotes = ""
-
+        
         let photoTVC = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? PhotosTableViewCell
         photoTVC?.photosCollectionView.reloadData()
-
+        
         let addressTVC = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? AddressTableViewCell
         addressTVC?.businessNameLabel.text = "No location selected"
         addressTVC?.businessAddressLabel.text = "No address for location"
-
+        
         let businessTypeTVC = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? BusinessTypeTableViewCell
         businessTypeTVC?.businessTypeCollectionView.reloadData()
         businessTypeTVC?.otherBusinessTypeTextView.text = "Other Type of Business"
@@ -110,7 +110,12 @@ class ReportTableViewController: UITableViewController {
         notesTVC?.notesTextView.text = "Other Notes"
         
         self.tableView.reloadData()
-        print("clear form")
+        print("form cleared")
+    }
+    
+    /// NAV BAR BUTTONS
+    @IBAction func clearFormButton(_ sender: UIBarButtonItem) {
+        clearForm()
     }
     
     @IBAction func reportButton(_ sender: UIBarButtonItem) {
@@ -195,6 +200,8 @@ class ReportTableViewController: UITableViewController {
         }
         
         print("Photos: \(uploadedPhotos.count), Name: \(selectedLocationName), Address: \(selectedLocationAddress), Business Types: \(selectedBusinessTypes), Red Flags: \(selectedRedFlags.count), Phone Numbers: \(enteredNumbers), Webpages: \(enteredWebpages), Notes: \(enteredNotes)")
+        
+        clearForm()
     }
     
     override func viewDidLoad() {
