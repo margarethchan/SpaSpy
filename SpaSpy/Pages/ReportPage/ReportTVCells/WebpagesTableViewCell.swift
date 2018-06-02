@@ -23,7 +23,6 @@ class WebpagesTableViewCell: UITableViewCell {
     lazy var webpagesTextView: UITextView = {
         let tv = UITextView()
         tv.text = "Listed Web Pages"
-        //        tv.backgroundColor = .lightGray
         tv.isEditable = true
         tv.textColor = .lightGray
         tv.isScrollEnabled = true

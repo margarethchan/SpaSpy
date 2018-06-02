@@ -97,25 +97,10 @@ extension ReportTableViewController: UICollectionViewDelegateFlowLayout, UIColle
                 print("add photo cell selected")
                 changeImageButtonTapped()
             }
-            
-            
-//            let photo = uploadedPhotos[indexPath.row]
-//            self.currentSelectedPhotoCell = cell
-//            self.currentSelectedPhotoCellIndexPath = indexPath
-//            changeImageButtonTapped()
         case 1:
             print("select business type cell selected")
             let cell = collectionView.cellForItem(at: indexPath) as! BusinessTypeCollectionViewCell
             let businessType = businessTypes[indexPath.row]
-            
-            
-            /// do this at completion submission of report, not here
-            //            if cell.isSelected {
-            //                selectedBusinessTypes.append(businessType)
-            //                print(selectedBusinessTypes)
-            //            }
-            //
-            
         default:
             print("")
         }

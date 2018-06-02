@@ -28,7 +28,7 @@ class AddressTableViewCell: UITableViewCell {
     
     lazy var businessAddressLabel: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.text = "No address for location"
         label.font = UIFont.italicSystemFont(ofSize: 17)
         return label
     }()

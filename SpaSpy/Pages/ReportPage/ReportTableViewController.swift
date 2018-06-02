@@ -13,14 +13,6 @@ import GoogleMaps
 import GooglePlaces
 import GooglePlacePicker
 
-//protocol SetAddressDelegate: class {
-//    func setBusinessName(ofName: String)
-//    func setBusinessAddress(atAddress: String)
-//}
-
-
-
-
 class ReportTableViewController: UITableViewController {
     /// CREATE PDF FROM REPORT
     private let A4paperSize = CGSize(width: 595, height: 842)
@@ -51,10 +43,14 @@ class ReportTableViewController: UITableViewController {
     var placesClient: GMSPlacesClient!
     
 
-    private var selectedBusinessTypes = [String]()
+    public var selectedBusinessTypes = [String]() {
+        didSet {
+            print("Selected Business Types: \(selectedBusinessTypes)")
+        }
+    }
     private var selectedRedFlags = [String]() {
         didSet {
-            print("Selected Red Flags on Report: \(selectedRedFlags)")
+            print("Selected Red Flags: \(selectedRedFlags)")
         }
     }
     private var enteredNumbers = ""
@@ -68,6 +64,40 @@ class ReportTableViewController: UITableViewController {
     
     /// NAV BAR BUTTONS
     @IBAction func clearFormButton(_ sender: UIBarButtonItem) {
+        self.uploadedPhotos = [UIImage]()
+        self.currentSelectedImage = nil
+        self.selectedLocationName = ""
+        self.selectedLocationAddress = ""
+        self.selectedBusinessTypes = [String]()
+        self.selectedRedFlags = [String]()
+        self.enteredNumbers = ""
+        self.enteredWebpages = ""
+        self.enteredNotes = ""
+
+        let photoTVC = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? PhotosTableViewCell
+        photoTVC?.photosCollectionView.reloadData()
+
+        let addressTVC = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? AddressTableViewCell
+        addressTVC?.businessNameLabel.text = "No location selected"
+        addressTVC?.businessAddressLabel.text = "No address for location"
+
+        let businessTypeTVC = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? BusinessTypeTableViewCell
+        businessTypeTVC?.businessTypeCollectionView.reloadData()
+        businessTypeTVC?.otherBusinessTypeTextView.text = "Other Type of Business"
+        
+        let flagsTVC = self.tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? RedFlagsTableViewCell
+        flagsTVC?.redFlagsLabel.text = selectedRedFlags.count.description + " Selected Flags"
+        
+        let numbersTVC = self.tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as? NumbersTableViewCell
+        numbersTVC?.numbersTextView.text = "Listed Phone Numbers"
+        
+        let webpagesTVC = self.tableView.cellForRow(at: IndexPath(row: 5, section: 0)) as? WebpagesTableViewCell
+        webpagesTVC?.webpagesTextView.text = "Listed Web Pages"
+        
+        let notesTVC = self.tableView.cellForRow(at: IndexPath(row: 6, section: 0)) as? NotesTableViewCell
+        notesTVC?.notesTextView.text = "Other Notes"
+        
+        self.tableView.reloadData()
         print("clear form")
     }
     
@@ -90,6 +120,18 @@ class ReportTableViewController: UITableViewController {
         
         pdf.addText("Business Types")
         pdf.addLineSeparator()
+        
+        let businessTypeIndexPath = IndexPath(row: 2, section: 0)
+        let businessTypeTVCell = self.tableView.cellForRow(at: businessTypeIndexPath) as! BusinessTypeTableViewCell
+        let businessTypeCV = businessTypeTVCell.businessTypeCollectionView
+        let selectedTypesIndexPaths = businessTypeCV.indexPathsForSelectedItems
+        selectedTypesIndexPaths?.forEach({ (indexpath) in
+            let businessTypeCell = businessTypeCV.cellForItem(at: indexpath) as! BusinessTypeCollectionViewCell
+            self.selectedBusinessTypes.append(businessTypeCell.businessTypeLabel.text!)
+        })
+        if businessTypeTVCell.otherBusinessTypeTextView.text != "" && businessTypeTVCell.otherBusinessTypeTextView.text != "Other Type of Business" {
+            self.selectedBusinessTypes.append(businessTypeTVCell.otherBusinessTypeTextView.text)
+        }
         self.selectedBusinessTypes.forEach { (type) in
             pdf.addText(type)
         }
@@ -139,6 +181,8 @@ class ReportTableViewController: UITableViewController {
                 print(error)
             }
         }
+        
+        print("Photos: \(uploadedPhotos.count), Name: \(selectedLocationName), Address: \(selectedLocationAddress), Business Types: \(selectedBusinessTypes), Red Flags: \(selectedRedFlags.count), Phone Numbers: \(enteredNumbers), Webpages: \(enteredWebpages), Notes: \(enteredNotes)")
     }
     
     override func viewDidLoad() {
