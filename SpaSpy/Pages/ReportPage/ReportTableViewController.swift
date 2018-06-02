@@ -13,10 +13,13 @@ import GoogleMaps
 import GooglePlaces
 import GooglePlacePicker
 
-protocol setAddressDelegate: class {
-    func setBusinessName(ofName: String)
-    func setBusinessAddress(atAddress: String)
-}
+//protocol SetAddressDelegate: class {
+//    func setBusinessName(ofName: String)
+//    func setBusinessAddress(atAddress: String)
+//}
+
+
+
 
 class ReportTableViewController: UITableViewController {
     /// CREATE PDF FROM REPORT
@@ -84,7 +87,7 @@ class ReportTableViewController: UITableViewController {
         pdf.addText("Business Types")
         pdf.addLineSeparator()
         self.selectedBusinessTypes.forEach { (type) in
-                pdf.addText(type)
+            pdf.addText(type)
         }
         pdf.addLineSpace(20.0)
         
@@ -203,6 +206,15 @@ class ReportTableViewController: UITableViewController {
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "RedFlagsTableViewCell", for: indexPath) as! RedFlagsTableViewCell
             cell.addRedFlagsButton.addTarget(self, action: #selector(selectRedFlags), for: .touchUpInside)
+            cell.selectedFlagsLabel.text = selectedRedFlags.count.description + " Selected Flags"
+            
+            if self.selectedRedFlags.isEmpty {
+                cell.addRedFlagsButton.setTitle("Set Red Flags", for: .normal)
+            } else {
+                cell.addRedFlagsButton.setTitle("Edit Red Flags", for: .normal)
+            }
+            
+            
             // collect flagged items and add to the array
 //            self.selectedRedFlags
             return cell
@@ -273,23 +285,14 @@ class ReportTableViewController: UITableViewController {
 }
 
 
-extension ReportTableViewController: setSelectedFlagsDelegate {
-    func saveFlags(fromList: [String]) {
-        self.selectedRedFlags = fromList
+extension ReportTableViewController: SetSelectedFlagsDelegate {
+    func setSelected(flags: [String]) {
+        self.selectedRedFlags = flags
+        self.tableView.reloadData()
     }
+    
+
+    
+    
 }
 
-extension ReportTableViewController: setAddressDelegate {
-    func setBusinessName(ofName: String) {
-        self.selectedLocationName = ofName
-        self.tableView.reloadData()
-    }
-    
-    func setBusinessAddress(atAddress: String) {
-        self.selectedLocationName = atAddress
-        self.tableView.reloadData()
-    }
-    
-    
-    
-}

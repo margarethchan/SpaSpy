@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import SnapKit
 
 class FlagTableViewCell: UITableViewCell {
 
+//    var value : Bool = false
     
     // label
     lazy var flagLabel: UILabel = {
@@ -22,14 +24,23 @@ class FlagTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy var switchObject: UISwitch = {
-       let s = UISwitch()
-        s.onTintColor = .red
-        s.tintColor = .gray
-//        s.backgroundColor = .cyan
-        return s
-    }()
+//    lazy var switchObject: UISwitch = {
+//       let s = UISwitch()
+//        s.onTintColor = .red
+//        s.tintColor = .gray
+////        s.backgroundColor = .cyan
+//        return s
+//    }()
 
+//    @objc func flagSelected(sender: UISwitch) {
+//        self.value = sender.isOn
+//    }
+    
+        override func setSelected(_ selected: Bool, animated: Bool) {
+            super.setSelected(selected, animated: animated)
+    
+            // Configure the view for the selected state
+        }
     
     // custom table view cell
     
@@ -43,6 +54,12 @@ class FlagTableViewCell: UITableViewCell {
         commonInit()
     }
     
+    public func configureCell(withFlagDescription: String, selected: Bool) -> Bool {
+        self.flagLabel.text = withFlagDescription
+        self.isSelected = selected
+        return selected
+    }
+    
     private func commonInit() {
         backgroundColor = .white
         setupViews()
@@ -50,22 +67,22 @@ class FlagTableViewCell: UITableViewCell {
     }
     
     private func setupViews() {
-        contentView.addSubview(switchObject)
+//        contentView.addSubview(switchObject)
         contentView.addSubview(flagLabel)
     }
     
     private func setUpConstraints() {
-        switchObject.snp.makeConstraints { (make) in
-            make.centerY.equalTo(contentView.snp.centerY)
-            make.trailing.equalTo(contentView.snp.trailing).offset(-5)
-            
-        }
+//        switchObject.snp.makeConstraints { (make) in
+//            make.centerY.equalTo(contentView.snp.centerY)
+//            make.trailing.equalTo(contentView.snp.trailing).offset(-5)
+//
+//        }
 
 
         flagLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(contentView.snp.centerY)
-            make.leading.equalTo(contentView.snp.leading)
-            make.trailing.equalTo(switchObject.snp.leading).offset(-5)
+            make.leading.trailing.equalTo(contentView)
+//            make.trailing.equalTo(switchObject.snp.leading).offset(-5)
         }
         
         

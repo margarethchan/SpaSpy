@@ -18,6 +18,13 @@ class RedFlagsTableViewCell: UITableViewCell {
         return label
     }()
     
+    lazy var selectedFlagsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "No Flags Selected"
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        return label
+    }()
+    
     lazy var flagIconButton: UIButton = {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "flagtrianglewhite"), for: .normal)
@@ -42,11 +49,14 @@ class RedFlagsTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    //    override func setSelected(_ selected: Bool, animated: Bool) {
+    //        super.setSelected(selected, animated: animated)
+    //
+    //        // Configure the view for the selected state
+    //    }        super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
+//    }
 
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -67,6 +77,7 @@ class RedFlagsTableViewCell: UITableViewCell {
     
     private func setupViews() {
         contentView.addSubview(redFlagsLabel)
+        contentView.addSubview(selectedFlagsLabel)
         contentView.addSubview(addRedFlagsButton)
         contentView.addSubview(flagIconButton)
     }
@@ -76,9 +87,16 @@ class RedFlagsTableViewCell: UITableViewCell {
             make.top.leading.equalTo(contentView).offset(10)
         }
         
+        selectedFlagsLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(redFlagsLabel.snp.bottom).offset(10)
+            make.centerX.equalTo(contentView)
+//            make.leading.equalTo(contentView.snp.leading).offset(10)
+//            make.trailing.equalTo(contentView.snp.trailing).offset(-10)
+        }
+        
         addRedFlagsButton.snp.makeConstraints { (make) in
             make.centerX.equalTo(contentView)
-            make.top.equalTo(redFlagsLabel.snp.bottom).offset(10)
+            make.top.equalTo(selectedFlagsLabel.snp.bottom).offset(10)
             make.height.equalTo(40)
             make.width.equalTo(contentView.snp.width).multipliedBy(0.9)
             make.bottom.equalTo(contentView.snp.bottom).offset(-10)

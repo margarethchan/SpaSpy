@@ -57,7 +57,8 @@ class FlagsView: UIView {
     lazy var redFlagsTableView: UITableView = {
        let tbv = UITableView()
         tbv.separatorStyle = .singleLine
-        tbv.allowsSelection = false
+//        tbv.allowsSelection = true
+        tbv.allowsMultipleSelection = true
         tbv.showsVerticalScrollIndicator = false
         return tbv
     }()

@@ -8,17 +8,21 @@
 
 import UIKit
 
-protocol setSelectedFlagsDelegate: class {
-    func saveFlags(fromList: [String])
+protocol SetSelectedFlagsDelegate: class {
+    func setSelected(flags: [String])
 }
 
 class FlagsViewController: UIViewController {
 
-    weak var delegate: setSelectedFlagsDelegate?
+    weak var delegate: SetSelectedFlagsDelegate?
     
     private let flagsView = FlagsView()
     private let redFlagList = redFlags
-    public var selectedFlags = [String]()
+    public var selectedFlags = [String]() {
+        didSet {
+            print("selectedFlags: \(selectedFlags)")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +48,13 @@ class FlagsViewController: UIViewController {
     @objc func done() {
         print("done")
         // export the selected flags
-        delegate?.saveFlags(fromList: selectedFlags)
+//        delegate?.saveFlags(fromList: selectedFlags)
+        let selectedFlagsIndexPaths = self.flagsView.redFlagsTableView.indexPathsForSelectedRows
+        selectedFlagsIndexPaths?.forEach({ (indexpath) in
+            let flagCell = self.flagsView.redFlagsTableView.cellForRow(at: indexpath) as! FlagTableViewCell
+            self.selectedFlags.append(flagCell.flagLabel.text!)
+        })
+        delegate?.setSelected(flags: self.selectedFlags)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -64,11 +74,9 @@ extension FlagsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FlagCell", for: indexPath) as! FlagTableViewCell
-        let flag = redFlags[indexPath.row]
-        cell.flagLabel.text = flag
-        if cell.switchObject.isOn {
-            selectedFlags.append(flag)
-        }
+        let flagDescription = redFlags[indexPath.row]
+        cell.configureCell(withFlagDescription: flagDescription, selected: cell.isSelected)
+//        cell.flagLabel.text = flagDescription
         return cell
     }
     
@@ -77,3 +85,6 @@ extension FlagsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
 }
+
+
+
