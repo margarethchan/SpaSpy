@@ -12,6 +12,7 @@ import SimplePDF
 import GoogleMaps
 import GooglePlaces
 import GooglePlacePicker
+import MessageUI
 
 class ReportTableViewController: UITableViewController {
     /// CREATE PDF FROM REPORT
@@ -220,10 +221,8 @@ class ReportTableViewController: UITableViewController {
         if let documentDirectories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
             
             // Generate PDF File Name
-            
             let separators = CharacterSet(charactersIn: "/, ")
             let fileName = currentTimestampShort.components(separatedBy: separators).joined(separator: "") + ".pdf"
-//            let fileName = "example.pdf"
             
             
             let documentsFileName = documentDirectories + "/" + fileName
@@ -233,9 +232,31 @@ class ReportTableViewController: UITableViewController {
                 try pdfData.write(to: URL(fileURLWithPath: documentsFileName), options: .atomicWrite)
                 print("\nThe generated pdf can be found at:")
                 print("\n\t\(documentsFileName)\n")
+                
+                // Alert to Submit PDF via Email
+                let emailAlert = Alert.create(withTitle: "Email PDF to SpaSpy?", andMessage: "Would you like to email a PDF to SpaSpy?", withPreferredStyle: .alert)
+                Alert.addAction(withTitle: "Yes", style: .default, andHandler: { (_) in
+                    // Send PDF to My Email
+                    if MFMailComposeViewController.canSendMail() {
+                        let mailComposeViewController = MFMailComposeViewController()
+                        mailComposeViewController.setSubject("Spa Spy Report: " + fileName)
+                        mailComposeViewController.addAttachmentData(pdfData, mimeType: "application/pdf", fileName: fileName)
+                        mailComposeViewController.setToRecipients(["SpaSpyApp@gmail.com"])
+                        self.present(mailComposeViewController, animated: true, completion: nil)
+                    } else {
+                        print("No email sending capability on this device")
+                    }
+                }, to: emailAlert)
+                Alert.addAction(withTitle: "Cancel", style: .cancel, andHandler: nil, to: emailAlert)
+                self.present(emailAlert, animated: true, completion: nil)
             } catch {
                 print(error)
             }
+            
+
+
+            
+            
         }
         
         print("REPORT CREATED:  Photos: \(uploadedPhotos.count), Name: \(selectedLocationName), Address: \(selectedLocationAddress), Business Types: \(selectedBusinessTypes), Red Flags: \(selectedRedFlags.count), Phone Numbers: \(enteredNumbers), Webpages: \(enteredWebpages), Notes: \(enteredNotes)")
