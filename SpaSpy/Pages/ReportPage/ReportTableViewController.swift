@@ -275,7 +275,7 @@ class ReportTableViewController: UITableViewController {
         self.tableView.bounces = false
         self.tableView.separatorStyle = .none
         self.pdf = SimplePDF(pageSize: A4paperSize, pageMarginLeft: pageMargin, pageMarginTop: pageMargin, pageMarginBottom: pageMargin, pageMarginRight: pageMargin)
-        
+        self.imagePickerVC.delegate = self
         placesClient = GMSPlacesClient.shared()
     }
     
@@ -306,7 +306,7 @@ class ReportTableViewController: UITableViewController {
             cell.photosCollectionView.delegate = self
             cell.photosCollectionView.dataSource = self
             cell.photosCollectionView.tag = 0
-            cell.addPhotoButton.addTarget(self, action: #selector(changeImageButtonTapped), for: .touchUpInside)
+            cell.addPhotoButton.addTarget(self, action: #selector(addImageButtonPressed), for: .touchUpInside)
             cell.removePhotoButton.addTarget(self, action: #selector(removeLastPhoto), for: .touchUpInside)
             return cell
         case 1:

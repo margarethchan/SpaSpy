@@ -95,7 +95,7 @@ extension ReportTableViewController: UICollectionViewDelegateFlowLayout, UIColle
             let cell = collectionView.cellForItem(at: indexPath) as! AddPhotoCollectionViewCell
             if cell.addImageIcon.image == UIImage(named: "cam1") {
                 print("add photo cell selected")
-                changeImageButtonTapped()
+                addImageButtonPressed()
             }
         case 1:
             print("select business type cell selected")

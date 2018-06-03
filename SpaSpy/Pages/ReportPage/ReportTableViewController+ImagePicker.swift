@@ -13,7 +13,7 @@ extension ReportTableViewController: UIImagePickerControllerDelegate, UINavigati
     
     /// PHOTOS
     
-    @objc public func changeImageButtonTapped() {
+    @objc public func addImageButtonPressed() {
         
         let photoAlert = Alert.create(withTitle: "Upload a Photo", andMessage: nil, withPreferredStyle: .actionSheet)
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -27,7 +27,6 @@ extension ReportTableViewController: UIImagePickerControllerDelegate, UINavigati
             self.checkAVAuthorization()
         }, to: photoAlert)
         Alert.addAction(withTitle: "Cancel", style: .cancel, andHandler: nil, to: photoAlert)
-        //Present the controller
         self.present(photoAlert, animated: true, completion: nil)
     }
     
@@ -55,8 +54,6 @@ extension ReportTableViewController: UIImagePickerControllerDelegate, UINavigati
     }
     
     public func showImagePicker() {
-        imagePickerVC.delegate = self
-        imagePickerVC.sourceType = .photoLibrary
         present(imagePickerVC, animated: true, completion: nil)
     }
     
