@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		812A7C4920C4CDB6006820D9 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812A7C4820C4CDB6006820D9 /* AppUser.swift */; };
+		812A7C4B20C4CE6A006820D9 /* DBService+AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812A7C4A20C4CE6A006820D9 /* DBService+AppUser.swift */; };
+		812A7C4D20C4CFF6006820D9 /* AuthUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812A7C4C20C4CFF6006820D9 /* AuthUserService.swift */; };
 		8163873020B4ED6D005F5308 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8163872F20B4ED6D005F5308 /* Alert.swift */; };
 		8163873420B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8163873320B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift */; };
 		8163877D20B6679E005F5308 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8163877C20B6679D005F5308 /* GoogleService-Info.plist */; };
@@ -48,6 +51,10 @@
 		81EE7D6020C2495F00ECCA3C /* ReportTableViewController+TextViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D5F20C2495F00ECCA3C /* ReportTableViewController+TextViews.swift */; };
 		81EE7D6220C2FD8500ECCA3C /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D6120C2FD8500ECCA3C /* DateFormatter.swift */; };
 		81EE7D6420C3199A00ECCA3C /* PDFNameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D6320C3199A00ECCA3C /* PDFNameGenerator.swift */; };
+		81EE7D6620C46FB000ECCA3C /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D6520C46FB000ECCA3C /* DBService.swift */; };
+		81EE7D6820C4727200ECCA3C /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D6720C4727200ECCA3C /* Report.swift */; };
+		81EE7D6A20C4786800ECCA3C /* ReportTableViewController+PDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D6920C4786800ECCA3C /* ReportTableViewController+PDF.swift */; };
+		81EE7D6C20C4816800ECCA3C /* DBService+Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D6B20C4816800ECCA3C /* DBService+Report.swift */; };
 		A4F278D2C07E38F58E370DB8 /* Pods_SpaSpy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 297F6580FD2C5D0116DF5EF2 /* Pods_SpaSpy.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +62,9 @@
 		297F6580FD2C5D0116DF5EF2 /* Pods_SpaSpy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpaSpy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E4BAAF94B01908B509C87D0 /* Pods-SpaSpy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaSpy.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpaSpy/Pods-SpaSpy.release.xcconfig"; sourceTree = "<group>"; };
 		62FD98FDFBAC69080F0569E7 /* Pods-SpaSpy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaSpy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpaSpy/Pods-SpaSpy.debug.xcconfig"; sourceTree = "<group>"; };
+		812A7C4820C4CDB6006820D9 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
+		812A7C4A20C4CE6A006820D9 /* DBService+AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBService+AppUser.swift"; sourceTree = "<group>"; };
+		812A7C4C20C4CFF6006820D9 /* AuthUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserService.swift; sourceTree = "<group>"; };
 		8163872F20B4ED6D005F5308 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		8163873320B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportTableViewController+ImagePicker.swift"; sourceTree = "<group>"; };
 		8163877C20B6679D005F5308 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -98,6 +108,10 @@
 		81EE7D5F20C2495F00ECCA3C /* ReportTableViewController+TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportTableViewController+TextViews.swift"; sourceTree = "<group>"; };
 		81EE7D6120C2FD8500ECCA3C /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		81EE7D6320C3199A00ECCA3C /* PDFNameGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFNameGenerator.swift; sourceTree = "<group>"; };
+		81EE7D6520C46FB000ECCA3C /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
+		81EE7D6720C4727200ECCA3C /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		81EE7D6920C4786800ECCA3C /* ReportTableViewController+PDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportTableViewController+PDF.swift"; sourceTree = "<group>"; };
+		81EE7D6B20C4816800ECCA3C /* DBService+Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBService+Report.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +185,8 @@
 				8192911220A2499B00172899 /* RedFlags.swift */,
 				81EE7D6120C2FD8500ECCA3C /* DateFormatter.swift */,
 				81EE7D6320C3199A00ECCA3C /* PDFNameGenerator.swift */,
+				81EE7D6720C4727200ECCA3C /* Report.swift */,
+				812A7C4820C4CDB6006820D9 /* AppUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -179,6 +195,10 @@
 			isa = PBXGroup;
 			children = (
 				8163872F20B4ED6D005F5308 /* Alert.swift */,
+				81EE7D6520C46FB000ECCA3C /* DBService.swift */,
+				812A7C4A20C4CE6A006820D9 /* DBService+AppUser.swift */,
+				81EE7D6B20C4816800ECCA3C /* DBService+Report.swift */,
+				812A7C4C20C4CFF6006820D9 /* AuthUserService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -208,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				81DC1D66209273DE00915C70 /* ReportTableViewController.swift */,
+				81EE7D6920C4786800ECCA3C /* ReportTableViewController+PDF.swift */,
 				8192069920A1459700C074C7 /* ReportTableViewController+CV.swift */,
 				8163873320B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift */,
 				81EE7D5F20C2495F00ECCA3C /* ReportTableViewController+TextViews.swift */,
@@ -354,16 +375,20 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SpaSpy/Pods-SpaSpy-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/SimplePDF/SimplePDF.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimplePDF.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +448,9 @@
 				81DC1D732092744300915C70 /* SearchViewController.swift in Sources */,
 				81DC1D8C2093877C00915C70 /* WebpagesTableViewCell.swift in Sources */,
 				81DC1D8A2093876B00915C70 /* NumbersTableViewCell.swift in Sources */,
+				81EE7D6820C4727200ECCA3C /* Report.swift in Sources */,
+				81EE7D6A20C4786800ECCA3C /* ReportTableViewController+PDF.swift in Sources */,
+				81EE7D6620C46FB000ECCA3C /* DBService.swift in Sources */,
 				81DC1D592090FC1600915C70 /* APIKeys.swift in Sources */,
 				81EE7D5C20BF2B0B00ECCA3C /* HistoryTableViewController.swift in Sources */,
 				81DC1D7B209274C300915C70 /* TopicInfoView.swift in Sources */,
@@ -432,16 +460,19 @@
 				8192069A20A1459700C074C7 /* ReportTableViewController+CV.swift in Sources */,
 				81DC1D842093874400915C70 /* AddressTableViewCell.swift in Sources */,
 				81DC1D922093A55400915C70 /* Photo.swift in Sources */,
+				81EE7D6C20C4816800ECCA3C /* DBService+Report.swift in Sources */,
 				81DC1D6F2092741E00915C70 /* FlagsView.swift in Sources */,
 				8163873420B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift in Sources */,
 				8163873020B4ED6D005F5308 /* Alert.swift in Sources */,
 				81DC1D862093875300915C70 /* BusinessTypeTableViewCell.swift in Sources */,
+				812A7C4B20C4CE6A006820D9 /* DBService+AppUser.swift in Sources */,
 				81DC1D8E2093878500915C70 /* NotesTableViewCell.swift in Sources */,
 				81EE7D6020C2495F00ECCA3C /* ReportTableViewController+TextViews.swift in Sources */,
 				81DC1D772092749300915C70 /* LearnViewController.swift in Sources */,
 				81EE7D5E20BF2B4A00ECCA3C /* HistoryTableViewCell.swift in Sources */,
 				81DC1D67209273DE00915C70 /* ReportTableViewController.swift in Sources */,
 				81DC1D6B2092740200915C70 /* ReportView.swift in Sources */,
+				812A7C4920C4CDB6006820D9 /* AppUser.swift in Sources */,
 				81DC1D7F209274ED00915C70 /* HistoryView.swift in Sources */,
 				81DC1D422090F99800915C70 /* AppDelegate.swift in Sources */,
 				81DC1D962093DD2900915C70 /* BusinessTypeCollectionViewCell.swift in Sources */,
@@ -454,6 +485,7 @@
 				81DC1D882093875D00915C70 /* RedFlagsTableViewCell.swift in Sources */,
 				81DC1D69209273F200915C70 /* SignInView.swift in Sources */,
 				81DC1D942093A7B200915C70 /* AddPhotoCollectionViewCell.swift in Sources */,
+				812A7C4D20C4CFF6006820D9 /* AuthUserService.swift in Sources */,
 				81DC1D79209274A500915C70 /* TopicsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

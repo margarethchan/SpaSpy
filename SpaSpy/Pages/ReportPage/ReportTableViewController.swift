@@ -13,13 +13,15 @@ import GoogleMaps
 import GooglePlaces
 import GooglePlacePicker
 import MessageUI
+import FirebaseAuth
 
 class ReportTableViewController: UITableViewController {
-    /// CREATE PDF FROM REPORT
+    // MARK:- CREATE PDF :  CREATE PDF FROM REPORT
     private let A4paperSize = CGSize(width: 595, height: 842)
     private let pageMargin: CGFloat = 20.0
-    private var pdf: SimplePDF! = nil
-    
+    private var pdf: SimplePDF!
+    private var fileName: String = ""
+    private var pdfData: Data?
     
     /// BUSINESS PHOTOS
     public var uploadedPhotos = [UIImage]() {
@@ -27,6 +29,7 @@ class ReportTableViewController: UITableViewController {
             print("1. uploadedPhotos: \(uploadedPhotos)")
         }
     }
+    public var uploadedPhotoURLs = [String]()
     public let imagePickerVC = UIImagePickerController()
     private var currentSelectedImage: UIImage!
     
@@ -43,6 +46,18 @@ class ReportTableViewController: UITableViewController {
             print("3. selectedLocationAddress: \(selectedLocationAddress)")
         }
     }
+    
+    private var selectedLocationLatitude = "" {
+        didSet {
+            print("latitude: \(selectedLocationLatitude)")
+        }
+    }
+    private var selectedLocationLongitude = "" {
+        didSet {
+            print("longitude: \(selectedLocationLongitude)")
+        }
+    }
+    
     var placesClient: GMSPlacesClient!
     
 
@@ -78,6 +93,8 @@ class ReportTableViewController: UITableViewController {
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     let itemsPerRow: CGFloat = 4
     
+    private var currentTimestampFull = ""
+    private var currentTimestampShort = ""
     
     private func clearForm() {
         self.uploadedPhotos = [UIImage]()
@@ -125,7 +142,7 @@ class ReportTableViewController: UITableViewController {
             let businessTypeCell = businessTypeCV?.cellForItem(at: indexpath) as! BusinessTypeCollectionViewCell
             self.selectedBusinessTypes.append(businessTypeCell.businessTypeLabel.text!)
         })
-        if businessTypeTVC?.otherBusinessTypeTextView.text != "Other Type of Business" {
+        if businessTypeTVC?.otherBusinessTypeTextView.text != "Other Type of Service" {
             self.selectedBusinessTypes.append((businessTypeTVC?.otherBusinessTypeTextView.text)!)
         }
     }
@@ -135,131 +152,146 @@ class ReportTableViewController: UITableViewController {
         clearForm()
     }
     
-    @IBAction func reportButton(_ sender: UIBarButtonItem) {
+    private func finalizeInputs() {
         self.view.endEditing(true)
-        print("submit report")
-        /// COLLECT DATA FOR PDF REPORT
-        pdf.setContentAlignment(.center)
         
-        let logoImage = #imageLiteral(resourceName: "icon_83.5")
-        pdf.addImage(logoImage)
-        pdf.addText("Spa Spy Report", font: UIFont.boldSystemFont(ofSize: 20), textColor: .blue)
-        pdf.addLineSpace(10.0)
+        currentTimestampFull = DateFormatter.dateFormatterFull.string(from: now)
+        currentTimestampShort = DateFormatter.dateFormatterShort.string(from: now)
         
-        let currentTimestampFull = DateFormatter.dateFormatterFull.string(from: now)
-        let currentTimestampShort = DateFormatter.dateFormatterShort.string(from: now)
-        
-        pdf.addText("Reported on: " + currentTimestampFull, font: UIFont.systemFont(ofSize: 10), textColor: .black)
-        pdf.addLineSpace(30)
-        
-        pdf.setContentAlignment(.left)
-        
-        pdf.addText("Business Location", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
-        pdf.addLineSeparator(height: 0.5)
-        if self.selectedLocationAddress != "" {
-            pdf.addText((self.selectedLocation?.name)!)
-            pdf.addText(self.selectedLocationAddress)
-            pdf.addText("Coordinates: ")
-            pdf.addText("Lat: " + (self.selectedLocation?.coordinate.latitude.description)! + " Long: " + (self.selectedLocation?.coordinate.longitude.description)!)
-        } else {
-            pdf.addText("No Location Selected")
-        }
-        pdf.addLineSpace(20.0)
-        
-        pdf.addText("Business Types", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
-        pdf.addLineSeparator(height: 0.5)
         addBusinessTypeInputs()
-        if !self.selectedBusinessTypes.isEmpty {
-            self.selectedBusinessTypes.forEach { (type) in
-                pdf.addText(type)
-            }
-        } else {
-            pdf.addText("No Business Type Selected")
-            
-        }
-        pdf.addLineSpace(20.0)
         
-        pdf.addText("Red Flags", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
-        pdf.addLineSeparator(height: 0.5)
-        if !self.selectedRedFlags.isEmpty {
-            self.selectedRedFlags.forEach { (flag) in
-                pdf.addText(flag)
-            }
-        } else {
-            pdf.addText("No Red Flags Selected")
-        }
-        pdf.addLineSpace(20.0)
+        print("\n\tFINALIZED INPUTS:  Photos: \(uploadedPhotos.count), Name: \(selectedLocationName), Address: \(selectedLocationAddress), Business Types: \(selectedBusinessTypes), Red Flags: \(selectedRedFlags.count), Phone Numbers: \(enteredNumbers), Webpages: \(enteredWebpages), Notes: \(enteredNotes)\n")
+    }
+    
+    
+    @IBAction func reportButton(_ sender: UIBarButtonItem) {
+        finalizeInputs()
+        DBService.manager.saveReport(withImage: [], name: selectedLocationName, address: selectedLocationAddress, latitude: selectedLocationLatitude, longitude: selectedLocationLongitude, services: selectedBusinessTypes, redFlags: selectedRedFlags, phoneNumbers: enteredNumbers, webpages: enteredWebpages, notes: enteredNotes)
+//        collectPDFInputs()
+        reportSubmittedAlert()
+        clearForm()
+    }
+    private func collectPDFInputs() {
+        // MARK:- CREATE PDF : COLLECT DATA FOR PDF REPORT
         
-        pdf.addText("Business Phone Numbers", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
-        pdf.addLineSeparator(height: 0.5)
-        pdf.addText(enteredNumbers)
-        pdf.addLineSpace(20.0)
-        
-        pdf.addText("Business Webpages", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
-        pdf.addLineSeparator(height: 0.5)
-        pdf.addText(enteredWebpages)
-        pdf.addLineSpace(20.0)
-        
-        let notesTVC = self.tableView.cellForRow(at: IndexPath(row: 6, section: 0)) as? NotesTableViewCell
-        notesTVC?.notesTextView.resignFirstResponder()
-        pdf.addText("Other Notes", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
-        pdf.addLineSeparator(height: 0.5)
-        pdf.addText(enteredNotes)
-        pdf.addLineSpace(20.0)
-        
-        pdf.addText("Photos of the Business", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
-        pdf.addLineSeparator(height: 0.5)
-        self.uploadedPhotos.forEach { (image) in
-            pdf.addImage(image)
-            pdf.beginNewPage()
-        }
-        
-     
-        
-        
+         pdf.setContentAlignment(.center)
+         
+         let logoImage = #imageLiteral(resourceName: "icon_83.5")
+         pdf.addImage(logoImage)
+         pdf.addText("Spa Spy Report", font: UIFont.boldSystemFont(ofSize: 20), textColor: .blue)
+         pdf.addLineSpace(10.0)
+         
+         pdf.addText("Reported on: " + currentTimestampFull, font: UIFont.systemFont(ofSize: 10), textColor: .black)
+         pdf.addLineSpace(30)
+         
+         pdf.setContentAlignment(.left)
+         
+         pdf.addText("Business Location", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
+         pdf.addLineSeparator(height: 0.5)
+         if self.selectedLocationAddress != "" {
+         pdf.addText((self.selectedLocation?.name)!)
+         pdf.addText(self.selectedLocationAddress)
+         pdf.addText("Coordinates: ")
+         pdf.addText("Lat: " + (self.selectedLocation?.coordinate.latitude.description)! + " Long: " + (self.selectedLocation?.coordinate.longitude.description)!)
+         } else {
+         pdf.addText("No Location Selected")
+         }
+         pdf.addLineSpace(20.0)
+         
+         pdf.addText("Business Types", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
+         pdf.addLineSeparator(height: 0.5)
+         addBusinessTypeInputs()
+         if !self.selectedBusinessTypes.isEmpty {
+         self.selectedBusinessTypes.forEach { (type) in
+         pdf.addText(type)
+         }
+         } else {
+         pdf.addText("No Business Type Selected")
+         
+         }
+         pdf.addLineSpace(20.0)
+         
+         pdf.addText("Red Flags", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
+         pdf.addLineSeparator(height: 0.5)
+         if !self.selectedRedFlags.isEmpty {
+         self.selectedRedFlags.forEach { (flag) in
+         pdf.addText(flag)
+         }
+         } else {
+         pdf.addText("No Red Flags Selected")
+         }
+         pdf.addLineSpace(20.0)
+         
+         pdf.addText("Business Phone Numbers", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
+         pdf.addLineSeparator(height: 0.5)
+         pdf.addText(enteredNumbers)
+         pdf.addLineSpace(20.0)
+         
+         pdf.addText("Business Webpages", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
+         pdf.addLineSeparator(height: 0.5)
+         pdf.addText(enteredWebpages)
+         pdf.addLineSpace(20.0)
+         
+         let notesTVC = self.tableView.cellForRow(at: IndexPath(row: 6, section: 0)) as? NotesTableViewCell
+         pdf.addText("Other Notes", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
+         pdf.addLineSeparator(height: 0.5)
+         pdf.addText(enteredNotes)
+         pdf.addLineSpace(20.0)
+         
+         pdf.addText("Photos of the Business", font: UIFont.boldSystemFont(ofSize: 15), textColor: .blue)
+         pdf.addLineSeparator(height: 0.5)
+         self.uploadedPhotos.forEach { (image) in
+         pdf.addImage(image)
+         pdf.beginNewPage()
+         }
+
         // Generate PDF data and save to a local file.
+        createPDFfile()
+    }
+    private func createPDFfile() {
         if let documentDirectories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
             
             // Generate PDF File Name
             let separators = CharacterSet(charactersIn: "/, ")
-            let fileName = currentTimestampShort.components(separatedBy: separators).joined(separator: "") + ".pdf"
+            fileName = currentTimestampShort.components(separatedBy: separators).joined(separator: "") + ".pdf"
             
             
             let documentsFileName = documentDirectories + "/" + fileName
             
-            let pdfData = pdf.generatePDFdata()
+            pdfData = pdf.generatePDFdata()
             do {
                 // Write the PDF to file
-                try pdfData.write(to: URL(fileURLWithPath: documentsFileName), options: .atomicWrite)
+                try pdfData?.write(to: URL(fileURLWithPath: documentsFileName), options: .atomicWrite)
                 print("\nThe generated pdf can be found at:")
                 print("\n\t\(documentsFileName)\n")
                 
-                /// Alert to Submit PDF via Email
-//                let emailAlert = Alert.create(withTitle: "Email PDF to SpaSpy?", andMessage: "Would you like to email a PDF to SpaSpy?", withPreferredStyle: .alert)
-//                Alert.addAction(withTitle: "Yes", style: .default, andHandler: { (_) in
-//                    // Send PDF to My Email
-//                    if MFMailComposeViewController.canSendMail() {
-//                        let mailComposeViewController = MFMailComposeViewController()
-//                        mailComposeViewController.setSubject("Spa Spy Report: " + fileName)
-//                        mailComposeViewController.addAttachmentData(pdfData, mimeType: "application/pdf", fileName: fileName)
-//                        mailComposeViewController.setToRecipients(["SpaSpyApp@gmail.com"])
-//                        self.present(mailComposeViewController, animated: true, completion: nil)
-//                    } else {
-//                        print("No email sending capability on this device")
-//                    }
-//                }, to: emailAlert)
-//                Alert.addAction(withTitle: "Cancel", style: .cancel, andHandler: nil, to: emailAlert)
-//                self.present(emailAlert, animated: true, completion: nil)
+                print("\n\tREPORT CREATED:  Photos: \(uploadedPhotos.count), Name: \(selectedLocationName), Address: \(selectedLocationAddress), Business Types: \(selectedBusinessTypes), Red Flags: \(selectedRedFlags.count), Phone Numbers: \(enteredNumbers), Webpages: \(enteredWebpages), Notes: \(enteredNotes)\n")
                 
+                // MARK:- CREATE PDF : Alert to Submit PDF via Email
+//                sendPDFtoEmail()
             } catch {
                 print(error)
             }
         }
+    }
+    
+    private func sendPDFtoEmail() {
+        let emailAlert = Alert.create(withTitle: "Email PDF to SpaSpy?", andMessage: "Would you like to email a PDF to SpaSpy?", withPreferredStyle: .alert)
+        Alert.addAction(withTitle: "Yes", style: .default, andHandler: { (_) in
+            // Send PDF to My Email
+            if MFMailComposeViewController.canSendMail() {
+                let mailComposeViewController = MFMailComposeViewController()
+                mailComposeViewController.setSubject("Spa Spy Report: " + self.fileName)
+                mailComposeViewController.addAttachmentData(self.pdfData!, mimeType: "application/pdf", fileName: self.fileName)
+                mailComposeViewController.setToRecipients(["SpaSpyApp@gmail.com"])
+                self.present(mailComposeViewController, animated: true, completion: nil)
+            } else {
+                print("No email sending capability on this device")
+            }
+        }, to: emailAlert)
+        Alert.addAction(withTitle: "Cancel", style: .cancel, andHandler: nil, to: emailAlert)
+        self.present(emailAlert, animated: true, completion: nil)
         
-        print("REPORT CREATED:  Photos: \(uploadedPhotos.count), Name: \(selectedLocationName), Address: \(selectedLocationAddress), Business Types: \(selectedBusinessTypes), Red Flags: \(selectedRedFlags.count), Phone Numbers: \(enteredNumbers), Webpages: \(enteredWebpages), Notes: \(enteredNotes)")
-        
-        reportSubmittedAlert()
-        clearForm()
     }
     
     private func reportSubmittedAlert() {
@@ -279,7 +311,15 @@ class ReportTableViewController: UITableViewController {
         self.tableView.allowsSelection = false
         self.tableView.bounces = false
         self.tableView.separatorStyle = .none
+        
+        
+        AuthUserService.manager.signInAnon()
+
+
+        
+        // MARK:- CREATE PDF
         self.pdf = SimplePDF(pageSize: A4paperSize, pageMarginLeft: pageMargin, pageMarginTop: pageMargin, pageMarginBottom: pageMargin, pageMarginRight: pageMargin)
+        
         self.imagePickerVC.delegate = self
         placesClient = GMSPlacesClient.shared()
     }
@@ -288,7 +328,6 @@ class ReportTableViewController: UITableViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     /// MARK: - Table view data source
@@ -395,6 +434,8 @@ class ReportTableViewController: UITableViewController {
                 self.selectedLocation = place
                 self.selectedLocationName = place.name
                 self.selectedLocationAddress = (place.formattedAddress != nil) ? place.formattedAddress! : "Lat: \(place.coordinate.latitude), Long: \(place.coordinate.longitude)"
+                self.selectedLocationLatitude = place.coordinate.latitude.description
+                self.selectedLocationLongitude = place.coordinate.longitude.description
                 self.tableView.reloadData()
             } else {
                 businessAddressCell.businessNameLabel.text = "No location selected"
