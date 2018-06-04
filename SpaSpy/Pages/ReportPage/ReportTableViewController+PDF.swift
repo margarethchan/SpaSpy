@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import SimplePDF
+import MessageUI
 
 extension ReportTableViewController {
     

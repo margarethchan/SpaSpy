@@ -30,27 +30,27 @@ class ReportTableViewController: UITableViewController {
     private var currentSelectedImage: UIImage!
     
     /// BUSINESS ADDRESS VALUES
-    private var selectedLocation: GMSPlace?
-    private var selectedLocationName = ""
-    private var selectedLocationAddress = ""
-    private var selectedLocationLatitude = ""
-    private var selectedLocationLongitude = ""
+    public var selectedLocation: GMSPlace?
+    public var selectedLocationName = ""
+    public var selectedLocationAddress = ""
+    public var selectedLocationLatitude = ""
+    public var selectedLocationLongitude = ""
     var placesClient: GMSPlacesClient!
     
     public var selectedBusinessTypes = [String]()
-    private var selectedRedFlags = [String]()
+    public var selectedRedFlags = [String]()
     public var enteredNumbers = ""
     public var enteredWebpages = ""
     public var enteredNotes = ""
     
-    private var now = Date()
+    public var now = Date()
         
     // UICollectionView reference values
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     let itemsPerRow: CGFloat = 4
     
-    private var currentTimestampFull = ""
-    private var currentTimestampShort = ""
+    public var currentTimestampFull = ""
+    public var currentTimestampShort = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -152,43 +152,12 @@ class ReportTableViewController: UITableViewController {
         }
     }
 
-    @objc func addLocation() {
-        let businessAddressCellIndexPath = IndexPath(row: 1, section: 0)
-        let businessAddressCell = self.tableView.cellForRow(at: businessAddressCellIndexPath) as! AddressTableViewCell
-        
-        /// initial start location?
-        let center = CLLocationCoordinate2D(latitude: 37.788204, longitude: -122.411937)
-        let northEast = CLLocationCoordinate2D(latitude: center.latitude + 0.001, longitude: center.longitude + 0.001)
-        let southWest = CLLocationCoordinate2D(latitude: center.latitude - 0.001, longitude: center.longitude - 0.001)
-        let viewport = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
-        let config = GMSPlacePickerConfig(viewport: viewport)
-        let placePicker = GMSPlacePicker(config: config)
-        
-        placePicker.pickPlace(callback: {(place, error) -> Void in
-            if let error = error {
-                print("Pick Place error: \(error.localizedDescription)")
-                return
-            }
-            if let place = place {
-                businessAddressCell.businessNameLabel.text = place.name
-                businessAddressCell.businessAddressLabel.text = (place.formattedAddress != nil) ? place.formattedAddress! : "Lat: \(place.coordinate.latitude) + Long: \(place.coordinate.longitude)"
-                // set address variables on form
-                self.selectedLocation = place
-                self.selectedLocationName = place.name
-                self.selectedLocationAddress = (place.formattedAddress != nil) ? place.formattedAddress! : "Lat: \(place.coordinate.latitude), Long: \(place.coordinate.longitude)"
-                self.selectedLocationLatitude = place.coordinate.latitude.description
-                self.selectedLocationLongitude = place.coordinate.longitude.description
-                self.tableView.reloadData()
-            } else {
-                businessAddressCell.businessNameLabel.text = "No location selected"
-                businessAddressCell.businessAddressLabel.text = ""
-            }
-        })
-    }
+
     
-    private func addBusinessTypeInputs() {
+    public func addBusinessTypeInputs() {
         let businessTypeTVC = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? BusinessTypeTableViewCell
-        let selectedTypesIndexPaths = businessTypeTVC?.businessTypeCollectionView.indexPathsForSelectedItems
+        let businessTypeCV = businessTypeTVC?.businessTypeCollectionView
+        let selectedTypesIndexPaths = businessTypeCV?.indexPathsForSelectedItems
         selectedTypesIndexPaths?.forEach({ (indexpath) in
             let businessTypeCell = businessTypeCV?.cellForItem(at: indexpath) as! BusinessTypeCollectionViewCell
             self.selectedBusinessTypes.append(businessTypeCell.businessTypeLabel.text!)
@@ -270,3 +239,61 @@ extension ReportTableViewController: SetSelectedFlagsDelegate {
     }
 }
 
+extension ReportTableViewController: GMSPlacePickerViewControllerDelegate {
+    
+    @objc func addLocation() {
+        let config = GMSPlacePickerConfig(viewport: nil)
+        // nil viewport centers the map on the device current location instead of a prescribed viewport
+        let placePicker = GMSPlacePickerViewController(config: config)
+        placePicker.delegate = self
+        present(placePicker, animated: true, completion: nil)
+    }
+    
+    func placePicker(_ viewController: GMSPlacePickerViewController, didPick place: GMSPlace) {
+        // Dismiss the place picker, as it cannot dismiss itself.
+        viewController.dismiss(animated: true, completion: nil)
+        
+        let businessAddressCellIndexPath = IndexPath(row: 1, section: 0)
+        let businessAddressCell = self.tableView.cellForRow(at: businessAddressCellIndexPath) as! AddressTableViewCell
+        businessAddressCell.businessNameLabel.text = place.name
+        businessAddressCell.businessAddressLabel.text = (place.formattedAddress != nil) ? place.formattedAddress! : "Lat: \(place.coordinate.latitude) + Long: \(place.coordinate.longitude)"
+        // set address variables on form
+        self.selectedLocation = place
+        self.selectedLocationName = place.name
+        self.selectedLocationAddress = (place.formattedAddress != nil) ? place.formattedAddress! : "Lat: \(place.coordinate.latitude), Long: \(place.coordinate.longitude)"
+        self.selectedLocationLatitude = place.coordinate.latitude.description
+        self.selectedLocationLongitude = place.coordinate.longitude.description
+        self.tableView.reloadData()
+    }
+    
+    func placePickerDidCancel(_ viewController: GMSPlacePickerViewController) {
+        // Dismiss the place picker, as it cannot dismiss itself.
+        viewController.dismiss(animated: true, completion: nil)
+        
+        print("No place selected")
+    }
+    
+    
+    //        placePicker.pickPlace(callback: {(place, error) -> Void in
+    //            if let error = error {
+    //                print("Pick Place error: \(error.localizedDescription)")
+    //                return
+    //            }
+    //            if let place = place {
+    //                businessAddressCell.businessNameLabel.text = place.name
+    //                businessAddressCell.businessAddressLabel.text = (place.formattedAddress != nil) ? place.formattedAddress! : "Lat: \(place.coordinate.latitude) + Long: \(place.coordinate.longitude)"
+    //                // set address variables on form
+    //                self.selectedLocation = place
+    //                self.selectedLocationName = place.name
+    //                self.selectedLocationAddress = (place.formattedAddress != nil) ? place.formattedAddress! : "Lat: \(place.coordinate.latitude), Long: \(place.coordinate.longitude)"
+    //                self.selectedLocationLatitude = place.coordinate.latitude.description
+    //                self.selectedLocationLongitude = place.coordinate.longitude.description
+    //                self.tableView.reloadData()
+    //            } else {
+    //                businessAddressCell.businessNameLabel.text = "No location selected"
+    //                businessAddressCell.businessAddressLabel.text = ""
+    //            }
+    //        })
+    //    }
+    
+}

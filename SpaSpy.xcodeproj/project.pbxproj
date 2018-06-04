@@ -10,6 +10,7 @@
 		812A7C4920C4CDB6006820D9 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812A7C4820C4CDB6006820D9 /* AppUser.swift */; };
 		812A7C4B20C4CE6A006820D9 /* DBService+AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812A7C4A20C4CE6A006820D9 /* DBService+AppUser.swift */; };
 		812A7C4D20C4CFF6006820D9 /* AuthUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812A7C4C20C4CFF6006820D9 /* AuthUserService.swift */; };
+		812A7C7320C51E28006820D9 /* ReportTableViewController+Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812A7C7220C51E28006820D9 /* ReportTableViewController+Places.swift */; };
 		8163873020B4ED6D005F5308 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8163872F20B4ED6D005F5308 /* Alert.swift */; };
 		8163873420B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8163873320B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift */; };
 		8163877D20B6679E005F5308 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8163877C20B6679D005F5308 /* GoogleService-Info.plist */; };
@@ -64,6 +65,7 @@
 		812A7C4820C4CDB6006820D9 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		812A7C4A20C4CE6A006820D9 /* DBService+AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBService+AppUser.swift"; sourceTree = "<group>"; };
 		812A7C4C20C4CFF6006820D9 /* AuthUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserService.swift; sourceTree = "<group>"; };
+		812A7C7220C51E28006820D9 /* ReportTableViewController+Places.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportTableViewController+Places.swift"; sourceTree = "<group>"; };
 		8163872F20B4ED6D005F5308 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		8163873320B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportTableViewController+ImagePicker.swift"; sourceTree = "<group>"; };
 		8163877C20B6679D005F5308 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -226,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				81DC1D66209273DE00915C70 /* ReportTableViewController.swift */,
+				812A7C7220C51E28006820D9 /* ReportTableViewController+Places.swift */,
 				81EE7D6920C4786800ECCA3C /* ReportTableViewController+PDF.swift */,
 				8192069920A1459700C074C7 /* ReportTableViewController+CV.swift */,
 				8163873320B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift */,
@@ -475,6 +478,7 @@
 				8192911520A24A7B00172899 /* FlagTableViewCell.swift in Sources */,
 				81DC1D752092746300915C70 /* VenueDetailView.swift in Sources */,
 				8192911120A2425900172899 /* FlagsViewController.swift in Sources */,
+				812A7C7320C51E28006820D9 /* ReportTableViewController+Places.swift in Sources */,
 				81DC1D7D209274DC00915C70 /* HistoryCollectionViewController.swift in Sources */,
 				81DC1D982093DF1500915C70 /* BusinessType.swift in Sources */,
 				81DC1D65209273B200915C70 /* SignInViewController.swift in Sources */,
