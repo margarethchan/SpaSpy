@@ -25,7 +25,6 @@
 		81DC1D65209273B200915C70 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D64209273B200915C70 /* SignInViewController.swift */; };
 		81DC1D67209273DE00915C70 /* ReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D66209273DE00915C70 /* ReportTableViewController.swift */; };
 		81DC1D69209273F200915C70 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D68209273F200915C70 /* SignInView.swift */; };
-		81DC1D6B2092740200915C70 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D6A2092740200915C70 /* ReportView.swift */; };
 		81DC1D6F2092741E00915C70 /* FlagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D6E2092741E00915C70 /* FlagsView.swift */; };
 		81DC1D712092743100915C70 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D702092743100915C70 /* SearchView.swift */; };
 		81DC1D732092744300915C70 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D722092744300915C70 /* SearchViewController.swift */; };
@@ -82,7 +81,6 @@
 		81DC1D64209273B200915C70 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		81DC1D66209273DE00915C70 /* ReportTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTableViewController.swift; sourceTree = "<group>"; };
 		81DC1D68209273F200915C70 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		81DC1D6A2092740200915C70 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		81DC1D6E2092741E00915C70 /* FlagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsView.swift; sourceTree = "<group>"; };
 		81DC1D702092743100915C70 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		81DC1D722092744300915C70 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 				8192069920A1459700C074C7 /* ReportTableViewController+CV.swift */,
 				8163873320B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift */,
 				81EE7D5F20C2495F00ECCA3C /* ReportTableViewController+TextViews.swift */,
-				81DC1D6A2092740200915C70 /* ReportView.swift */,
 				81DC1D802093870800915C70 /* ReportTVCells */,
 				81DC1D6E2092741E00915C70 /* FlagsView.swift */,
 				8192911020A2425900172899 /* FlagsViewController.swift */,
@@ -471,7 +468,6 @@
 				81DC1D772092749300915C70 /* LearnViewController.swift in Sources */,
 				81EE7D5E20BF2B4A00ECCA3C /* HistoryTableViewCell.swift in Sources */,
 				81DC1D67209273DE00915C70 /* ReportTableViewController.swift in Sources */,
-				81DC1D6B2092740200915C70 /* ReportView.swift in Sources */,
 				812A7C4920C4CDB6006820D9 /* AppUser.swift in Sources */,
 				81DC1D7F209274ED00915C70 /* HistoryView.swift in Sources */,
 				81DC1D422090F99800915C70 /* AppDelegate.swift in Sources */,
