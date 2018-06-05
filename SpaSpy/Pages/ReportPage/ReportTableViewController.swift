@@ -51,6 +51,8 @@ class ReportTableViewController: UITableViewController {
     
     public var currentTimestampFull = ""
     public var currentTimestampShort = ""
+    
+    var mailComposeViewController: MFMailComposeViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +68,9 @@ class ReportTableViewController: UITableViewController {
         placesClient = GMSPlacesClient.shared()
         
         AuthUserService.manager.signInAnon()
+        
+        mailComposeViewController = MFMailComposeViewController()
+//        mailComposeViewController.delegate = self
     }
     
     /// NAV BAR BUTTONS
@@ -75,11 +80,10 @@ class ReportTableViewController: UITableViewController {
     
     @IBAction func reportButton(_ sender: UIBarButtonItem) {
         finalizeInputs()
-        DBService.manager.saveReport(withImage: [], name: selectedLocationName, address: selectedLocationAddress, latitude: selectedLocationLatitude, longitude: selectedLocationLongitude, services: selectedBusinessTypes, redFlags: selectedRedFlags, phoneNumbers: enteredNumbers, webpages: enteredWebpages, notes: enteredNotes)
+
+        DBService.manager.saveReport(withImages: uploadedPhotos, name: selectedLocationName, address: selectedLocationAddress, latitude: selectedLocationLatitude, longitude: selectedLocationLongitude, services: selectedBusinessTypes, redFlags: selectedRedFlags, phoneNumbers: enteredNumbers, webpages: enteredWebpages, notes: enteredNotes)
         /// Uncomment next line to enable PDF generating function when submitting report
-        /*
-                collectPDFInputs()
-         */
+//      collectPDFInputs()
         reportSubmittedAlert()
         clearForm()
     }
@@ -269,31 +273,6 @@ extension ReportTableViewController: GMSPlacePickerViewControllerDelegate {
     func placePickerDidCancel(_ viewController: GMSPlacePickerViewController) {
         // Dismiss the place picker, as it cannot dismiss itself.
         viewController.dismiss(animated: true, completion: nil)
-        
         print("No place selected")
     }
-    
-    
-    //        placePicker.pickPlace(callback: {(place, error) -> Void in
-    //            if let error = error {
-    //                print("Pick Place error: \(error.localizedDescription)")
-    //                return
-    //            }
-    //            if let place = place {
-    //                businessAddressCell.businessNameLabel.text = place.name
-    //                businessAddressCell.businessAddressLabel.text = (place.formattedAddress != nil) ? place.formattedAddress! : "Lat: \(place.coordinate.latitude) + Long: \(place.coordinate.longitude)"
-    //                // set address variables on form
-    //                self.selectedLocation = place
-    //                self.selectedLocationName = place.name
-    //                self.selectedLocationAddress = (place.formattedAddress != nil) ? place.formattedAddress! : "Lat: \(place.coordinate.latitude), Long: \(place.coordinate.longitude)"
-    //                self.selectedLocationLatitude = place.coordinate.latitude.description
-    //                self.selectedLocationLongitude = place.coordinate.longitude.description
-    //                self.tableView.reloadData()
-    //            } else {
-    //                businessAddressCell.businessNameLabel.text = "No location selected"
-    //                businessAddressCell.businessAddressLabel.text = ""
-    //            }
-    //        })
-    //    }
-    
 }

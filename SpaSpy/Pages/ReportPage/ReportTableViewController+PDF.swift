@@ -10,9 +10,9 @@ import Foundation
 import SimplePDF
 import MessageUI
 
-extension ReportTableViewController {
+extension ReportTableViewController: MFMailComposeViewControllerDelegate {
     
-    private func collectPDFInputs() {
+    public func collectPDFInputs() {
         // COLLECT DATA FOR PDF REPORT
         self.pdf = SimplePDF(pageSize: A4paperSize, pageMargin: pageMargin)
         
@@ -113,8 +113,12 @@ extension ReportTableViewController {
         let emailAlert = Alert.create(withTitle: "Email PDF to SpaSpy?", andMessage: "Would you like to email a PDF to SpaSpy?", withPreferredStyle: .alert)
         Alert.addAction(withTitle: "Yes", style: .default, andHandler: { (_) in
             // Send PDF to My Email
+            //let composeVC = MFMailComposeViewController()
+            //composeVC.mailComposeDelegate = self
+            
+            let mailComposeViewController = MFMailComposeViewController()
             if MFMailComposeViewController.canSendMail() {
-                let mailComposeViewController = MFMailComposeViewController()
+                mailComposeViewController.delegate = self
                 mailComposeViewController.setSubject("Spa Spy Report: " + self.fileName)
                 mailComposeViewController.addAttachmentData(self.pdfData!, mimeType: "application/pdf", fileName: self.fileName)
                 mailComposeViewController.setToRecipients(["SpaSpyApp@gmail.com"])
@@ -126,4 +130,11 @@ extension ReportTableViewController {
         Alert.addAction(withTitle: "Cancel", style: .cancel, andHandler: nil, to: emailAlert)
         self.present(emailAlert, animated: true, completion: nil)
     }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        
+    }
+    
+    
+
 }

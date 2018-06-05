@@ -23,4 +23,9 @@ class DBService: NSObject {
         usersRef = ref.child("users")
         super.init()
     }
+    
+    public func addImageURL(url: String, ref: DatabaseReference, id: String) {
+        ref.child(id).child("imageURL").setValue(url)
+        print("Added image url")
+    }
 }
