@@ -12,6 +12,7 @@ import Firebase
 import UIKit
 
 class StorageService {
+    
     private init() {
         storage = Storage.storage()
         storageRef = storage.reference()
@@ -33,21 +34,20 @@ class StorageService {
             }
         })
     }
-    public func storeReportImage(withImage image: UIImage?, reportID: String, andImageID imageID: String, completion: @escaping (_ error: String?) -> Void) {
+    public func storeReportImage(withImage image: UIImage?, reportID: String, andImageID imageID: String, completion: @escaping (_ error: String?, _ imageURLString: String?) -> Void) {
         guard let image = image else {
             print("No image uploaded"); return }
         let savedImageID = reportID + "_" + imageID
         guard let uploadTask = StorageService.manager.storeImage(image, imageID: savedImageID) else {
-            completion("Error uploading image")
+            completion("Error uploading image", nil)
             return
         }
-        
         uploadTask.observe(.success) { (taskSnapshot) in
             taskSnapshot.reference.downloadURL(completion: { (url, error) in
                 if let error = error {
                     print("error downloading url: \(error.localizedDescription)")
                 } else if let url = url {
-                    DBService.manager.addImageURLToReport(url: url.absoluteString, reportID: reportID)
+                    completion(nil, url.absoluteString)
                     print("image url: \(url.absoluteString)")
                 }
             })

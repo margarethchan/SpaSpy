@@ -16,6 +16,7 @@ import MessageUI
 import FirebaseAuth
 
 class ReportTableViewController: UITableViewController {
+    
     // MARK:- CREATE PDF :  CREATE PDF FROM REPORT
     public let A4paperSize = CGSize(width: 595, height: 842)
     public let pageMargin: CGFloat = 20.0
@@ -71,6 +72,7 @@ class ReportTableViewController: UITableViewController {
         
         mailComposeViewController = MFMailComposeViewController()
 //        mailComposeViewController.delegate = self
+
     }
     
     /// NAV BAR BUTTONS
@@ -234,7 +236,6 @@ class ReportTableViewController: UITableViewController {
     }
 
 }
-
 
 extension ReportTableViewController: SetSelectedFlagsDelegate {
     func setSelected(flags: [String]) {

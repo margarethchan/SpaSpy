@@ -13,20 +13,19 @@ import FirebaseDatabase
 extension DBService {
     
     public func saveReport(withImages images: [UIImage]?,
-                           name: String,
-                           address: String,
-                           latitude: String,
-                           longitude: String,
-                           services: [String],
-                           redFlags: [String],
-                           phoneNumbers: String,
-                           webpages: String,
-                           notes: String) {
+                               name: String,
+                               address: String,
+                               latitude: String,
+                               longitude: String,
+                               services: [String],
+                               redFlags: [String],
+                               phoneNumbers: String,
+                               webpages: String,
+                               notes: String) {
         guard let currentUser = AuthUserService.manager.getCurrentUser() else {
             print("Error: could not get current user id.")
             return
         }
-        
         
         let ref = reportsRef.childByAutoId()
         
@@ -54,22 +53,28 @@ extension DBService {
                 print("new report added to database!")
             }
         }
+        var counter = 0
         for image in images! {
             let imageID = images?.index(of: image)?.description
-            StorageService.manager.storeReportImage(withImage: image, reportID: report.reportID, andImageID: imageID!) { (error) in
+            StorageService.manager.storeReportImage(withImage: image, reportID: report.reportID, andImageID: imageID!) { (error, imageURLString) in
                 if let error = error {
                     print("Error saving image with report: \(error)")
+                } else if let imageURLString = imageURLString {
+                    self.uploadedURLs.append(imageURLString)
+                    counter += 1
+                    if counter == images?.count {
+                        DBService.manager.addImageURLsToReport(urls: self.uploadedURLs, reportID: report.reportID)
+                    }
                 }
             }
         }
     }
     
-    public func addImageURLToReport(url: String, reportID: String) {
-        addImageURL(url: url, ref: reportsRef, id: reportID)
+    public func addImageURLsToReport(urls: [String], reportID: String) {
+        addImageURLs(urls: urls, ref: reportsRef, reportID: reportID)
     }
-    
-    private func addImageURL(url: String, toRef ref: DatabaseReference, withID id: String) {
-        ref.child(id).child("imageURL").setValue(url)
+
+    public func addImageURLs(urls: [String], ref: DatabaseReference, reportID: String) {
+        ref.child(reportID).child("imageURLs").setValue(urls)
     }
-    
 }

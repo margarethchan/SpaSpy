@@ -17,15 +17,12 @@ class DBService: NSObject {
     
     static let manager = DBService()
     
+    public var uploadedURLs = [String]()
+    
     private override init() {
         ref = Database.database().reference()
         reportsRef = ref.child("reports")
         usersRef = ref.child("users")
         super.init()
-    }
-    
-    public func addImageURL(url: String, ref: DatabaseReference, id: String) {
-        ref.child(id).child("imageURL").setValue(url)
-        print("Added image url")
     }
 }
