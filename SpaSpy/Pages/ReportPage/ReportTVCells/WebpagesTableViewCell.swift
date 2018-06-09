@@ -10,8 +10,13 @@ import UIKit
 import SnapKit
 
 class WebpagesTableViewCell: UITableViewCell {
-
-    // Medium Scrollable Text View
+    
+    lazy var icon: UIImageView = {
+        let image = UIImageView()
+        image.image = #imageLiteral(resourceName: "webwhite")
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
     
     lazy var webpagesLabel: UILabel = {
         let label = UILabel()
@@ -32,22 +37,6 @@ class WebpagesTableViewCell: UITableViewCell {
         return tv
     }()
     
-    // Small Scrollable Text View
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
-    
-    // custom table view cell
-    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         commonInit()
@@ -59,21 +48,25 @@ class WebpagesTableViewCell: UITableViewCell {
     }
     
     private func commonInit() {
-        backgroundColor = .white
-        setupViews()
+        backgroundColor = .clear
         setUpConstraints()
     }
     
-    private func setupViews() {
-        contentView.addSubview(webpagesLabel)
-        contentView.addSubview(webpagesTextView)
-    }
-    
     private func setUpConstraints() {
-        webpagesLabel.snp.makeConstraints { (make) in
+        
+        contentView.addSubview(icon)
+        icon.snp.makeConstraints { (make) in
             make.top.leading.equalTo(contentView).offset(10)
+            make.height.width.equalTo(30)
         }
         
+        contentView.addSubview(webpagesLabel)
+        webpagesLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(icon.snp.centerY)
+            make.leading.equalTo(icon.snp.trailing).offset(10)
+        }
+        
+        contentView.addSubview(webpagesTextView)
         webpagesTextView.snp.makeConstraints { (make) in
             make.top.equalTo(webpagesLabel.snp.bottom).offset(10)
             make.centerX.equalTo(contentView)

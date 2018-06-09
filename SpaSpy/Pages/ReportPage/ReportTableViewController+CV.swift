@@ -39,8 +39,6 @@ extension ReportTableViewController: UICollectionViewDelegateFlowLayout, UIColle
                 cell.addImageIcon.image = uploadedImage
                 return cell
             } else {
-                let addPhotoIcon = #imageLiteral(resourceName: "cam1")
-                cell.addImageIcon.image = addPhotoIcon
                 cell.addImageIcon.backgroundColor = .clear
                 return cell
             }

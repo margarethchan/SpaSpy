@@ -11,8 +11,13 @@ import SnapKit
 
 class NotesTableViewCell: UITableViewCell {
 
-    // Large Scrollable Text View
-    
+    lazy var icon: UIImageView = {
+        let image = UIImageView()
+        image.image = #imageLiteral(resourceName: "pencilwhite")
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+
     lazy var notesLabel: UILabel = {
         let label = UILabel()
         label.text = "Notes"
@@ -33,22 +38,6 @@ class NotesTableViewCell: UITableViewCell {
         return tv
     }()
     
-    // Small Scrollable Text View
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
-    
-    // custom table view cell
-    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         commonInit()
@@ -60,21 +49,25 @@ class NotesTableViewCell: UITableViewCell {
     }
     
     private func commonInit() {
-        backgroundColor = .white
-        setupViews()
+        backgroundColor = .clear
         setUpConstraints()
     }
     
-    private func setupViews() {
-        contentView.addSubview(notesLabel)
-        contentView.addSubview(notesTextView)
-    }
-    
     private func setUpConstraints() {
-        notesLabel.snp.makeConstraints { (make) in
+        
+        contentView.addSubview(icon)
+        icon.snp.makeConstraints { (make) in
             make.top.leading.equalTo(contentView).offset(10)
+            make.height.width.equalTo(30)
         }
         
+         contentView.addSubview(notesLabel)
+        notesLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(icon.snp.centerY)
+            make.leading.equalTo(icon.snp.trailing).offset(10)
+        }
+        
+        contentView.addSubview(notesTextView)
         notesTextView.snp.makeConstraints { (make) in
             make.top.equalTo(notesLabel.snp.bottom).offset(10)
             make.centerX.equalTo(contentView)

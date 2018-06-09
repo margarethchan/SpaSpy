@@ -11,6 +11,13 @@ import SnapKit
 
 class RedFlagsTableViewCell: UITableViewCell {
 
+    lazy var icon: UIImageView = {
+        let image = UIImageView()
+        image.image = #imageLiteral(resourceName: "flagwhiteempty")
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
     lazy var redFlagsLabel: UILabel = {
         let label = UILabel()
         label.text = "Red Flags"
@@ -39,12 +46,6 @@ class RedFlagsTableViewCell: UITableViewCell {
         button.setTitleColor(UIColor.black, for: .normal)
         return button
     }()
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
 
 
     
@@ -59,30 +60,30 @@ class RedFlagsTableViewCell: UITableViewCell {
     }
     
     private func commonInit() {
-        backgroundColor = .white
-        setupViews()
+        backgroundColor = .clear
         setUpConstraints()
-    }
-    
-    private func setupViews() {
-        contentView.addSubview(redFlagsLabel)
-        contentView.addSubview(selectedFlagsLabel)
-        contentView.addSubview(addRedFlagsButton)
-        contentView.addSubview(flagIconButton)
     }
 
     private func setUpConstraints() {
-        redFlagsLabel.snp.makeConstraints { (make) in
+        contentView.addSubview(icon)
+        icon.snp.makeConstraints { (make) in
             make.top.leading.equalTo(contentView).offset(10)
+            make.height.width.equalTo(30)
         }
         
+        contentView.addSubview(redFlagsLabel)
+        redFlagsLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(icon.snp.centerY)
+            make.leading.equalTo(icon.snp.trailing).offset(10)
+        }
+        
+        contentView.addSubview(selectedFlagsLabel)
         selectedFlagsLabel.snp.makeConstraints { (make) in
             make.top.equalTo(redFlagsLabel.snp.bottom).offset(10)
             make.centerX.equalTo(contentView)
-//            make.leading.equalTo(contentView.snp.leading).offset(10)
-//            make.trailing.equalTo(contentView.snp.trailing).offset(-10)
         }
         
+        contentView.addSubview(addRedFlagsButton)
         addRedFlagsButton.snp.makeConstraints { (make) in
             make.centerX.equalTo(contentView)
             make.top.equalTo(selectedFlagsLabel.snp.bottom).offset(10)
@@ -91,6 +92,7 @@ class RedFlagsTableViewCell: UITableViewCell {
             make.bottom.equalTo(contentView.snp.bottom).offset(-10)
         }
         
+        contentView.addSubview(flagIconButton)
         flagIconButton.snp.makeConstraints { (make) in
             make.leading.equalTo(addRedFlagsButton.snp.leading).offset(5)
             make.centerY.equalTo(addRedFlagsButton.snp.centerY)

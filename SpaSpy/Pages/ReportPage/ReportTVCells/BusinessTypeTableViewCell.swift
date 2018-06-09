@@ -11,6 +11,12 @@ import SnapKit
 
 class BusinessTypeTableViewCell: UITableViewCell {
 
+    lazy var icon: UIImageView = {
+        let image = UIImageView()
+        image.image = #imageLiteral(resourceName: "flowerwhite")
+        return image
+    }()
+    
     lazy var businessTypeLabel: UILabel = {
         let label = UILabel()
         label.text = "Business Services"
@@ -60,28 +66,31 @@ class BusinessTypeTableViewCell: UITableViewCell {
     }
     
     private func commonInit() {
-        backgroundColor = .white
-        setupViews()
+        backgroundColor = .clear
         setUpConstraints()
     }
     
-    private func setupViews() {
-        contentView.addSubview(businessTypeLabel)
-        contentView.addSubview(businessTypeCollectionView)
-        contentView.addSubview(otherBusinessTypeTextView)
-    }
-    
     private func setUpConstraints() {
-        businessTypeLabel.snp.makeConstraints { (make) in
+        
+        contentView.addSubview(icon)
+        icon.snp.makeConstraints { (make) in
             make.top.leading.equalTo(contentView).offset(10)
+            make.height.width.equalTo(30)
+        }
+        contentView.addSubview(businessTypeLabel)
+        businessTypeLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(icon.snp.centerY)
+            make.leading.equalTo(icon.snp.trailing).offset(10)
         }
         
+        contentView.addSubview(businessTypeCollectionView)
         businessTypeCollectionView.snp.makeConstraints { (make) in
             make.leading.trailing.equalTo(contentView)
             make.top.equalTo(businessTypeLabel.snp.bottom)
             make.height.equalTo(60)
         }
         
+        contentView.addSubview(otherBusinessTypeTextView)
         otherBusinessTypeTextView.snp.makeConstraints { (make) in
             make.centerX.equalTo(contentView)
             make.top.equalTo(businessTypeCollectionView.snp.bottom)

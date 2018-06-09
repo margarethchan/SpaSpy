@@ -11,6 +11,13 @@ import SnapKit
 
 class NumbersTableViewCell: UITableViewCell {
 
+    lazy var icon: UIImageView = {
+        let image = UIImageView()
+        image.image = #imageLiteral(resourceName: "phonewhiteempty")
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
     lazy var numbersLabel: UILabel = {
         let label = UILabel()
         label.text = "Phone Numbers"
@@ -29,17 +36,6 @@ class NumbersTableViewCell: UITableViewCell {
         tv.keyboardType = .numbersAndPunctuation
         return tv
     }()
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -52,21 +48,24 @@ class NumbersTableViewCell: UITableViewCell {
     }
     
     private func commonInit() {
-        backgroundColor = .white
-        setupViews()
+        backgroundColor = .clear
         setUpConstraints()
     }
     
-    private func setupViews() {
-        contentView.addSubview(numbersLabel)
-        contentView.addSubview(numbersTextView)
-    }
-    
     private func setUpConstraints() {
-        numbersLabel.snp.makeConstraints { (make) in
+        contentView.addSubview(icon)
+        icon.snp.makeConstraints { (make) in
             make.top.leading.equalTo(contentView).offset(10)
+            make.height.width.equalTo(30)
+        }
+        
+        contentView.addSubview(numbersLabel)
+        numbersLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(icon.snp.centerY)
+            make.leading.equalTo(icon.snp.trailing).offset(10)
         }
 
+        contentView.addSubview(numbersTextView)
         numbersTextView.snp.makeConstraints { (make) in
             make.top.equalTo(numbersLabel.snp.bottom).offset(10)
             make.centerX.equalTo(contentView)

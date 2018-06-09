@@ -11,6 +11,13 @@ import SnapKit
 
 class PhotosTableViewCell: UITableViewCell {
 
+    lazy var icon: UIImageView = {
+        let image = UIImageView()
+        image.image = #imageLiteral(resourceName: "camerawhite2")
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
     lazy var photosLabel: UILabel = {
         let label = UILabel()
         label.text = "Photos"
@@ -67,24 +74,25 @@ class PhotosTableViewCell: UITableViewCell {
     }
     
     private func commonInit() {
-        backgroundColor = .white
-        setupViews()
+        backgroundColor = .clear
         setUpConstraints()
     }
     
-    private func setupViews() {
-        contentView.addSubview(photosLabel)
-        contentView.addSubview(addPhotoButton)
-        contentView.addSubview(removePhotoButton)
-        contentView.addSubview(photosCollectionView)
-        
-    }
-    
     private func setUpConstraints() {
-        photosLabel.snp.makeConstraints { (make) in
+        
+        contentView.addSubview(icon)
+        icon.snp.makeConstraints { (make) in
             make.top.leading.equalTo(contentView).offset(10)
+            make.height.width.equalTo(30)
         }
         
+        contentView.addSubview(photosLabel)
+        photosLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(icon.snp.centerY)
+            make.leading.equalTo(icon.snp.trailing).offset(10)
+        }
+        
+        contentView.addSubview(addPhotoButton)
         addPhotoButton.snp.makeConstraints { (make) in
             make.leading.equalTo(contentView.snp.leading).offset(10)
             make.top.equalTo(photosLabel.snp.bottom).offset(10)
@@ -92,6 +100,7 @@ class PhotosTableViewCell: UITableViewCell {
             make.width.equalTo(contentView.snp.width).multipliedBy(0.45)
         }
         
+        contentView.addSubview(removePhotoButton)
         removePhotoButton.snp.makeConstraints { (make) in
             make.trailing.equalTo(contentView.snp.trailing).offset(-10)
             make.top.equalTo(photosLabel.snp.bottom).offset(10)
@@ -99,6 +108,7 @@ class PhotosTableViewCell: UITableViewCell {
             make.width.equalTo(contentView.snp.width).multipliedBy(0.45)
         }
         
+        contentView.addSubview(photosCollectionView)
         photosCollectionView.snp.makeConstraints { (make) in
             make.leading.trailing.equalTo(contentView)
             make.top.equalTo(addPhotoButton.snp.bottom)

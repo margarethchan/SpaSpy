@@ -113,16 +113,15 @@ extension ReportTableViewController: MFMailComposeViewControllerDelegate {
         let emailAlert = Alert.create(withTitle: "Email PDF to SpaSpy?", andMessage: "Would you like to email a PDF to SpaSpy?", withPreferredStyle: .alert)
         Alert.addAction(withTitle: "Yes", style: .default, andHandler: { (_) in
             // Send PDF to My Email
-            //let composeVC = MFMailComposeViewController()
-            //composeVC.mailComposeDelegate = self
-            
             let mailComposeViewController = MFMailComposeViewController()
+            //mailComposeViewController.mailComposeDelegate = self
+
             if MFMailComposeViewController.canSendMail() {
                 mailComposeViewController.delegate = self
                 mailComposeViewController.setSubject("Spa Spy Report: " + self.fileName)
                 mailComposeViewController.addAttachmentData(self.pdfData!, mimeType: "application/pdf", fileName: self.fileName)
                 mailComposeViewController.setToRecipients(["SpaSpyApp@gmail.com"])
-                self.present(mailComposeViewController, animated: true, completion: nil)
+                self.present(self.mailComposeViewController, animated: true, completion: nil)
             } else {
                 print("No email sending capability on this device")
             }
@@ -135,6 +134,4 @@ extension ReportTableViewController: MFMailComposeViewControllerDelegate {
         
     }
     
-    
-
 }

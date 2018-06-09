@@ -13,13 +13,9 @@ class AddPhotoCollectionViewCell: UICollectionViewCell {
     
     lazy var addImageIcon: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "cam1")
-        imageView.backgroundColor = .clear
+        imageView.image = #imageLiteral(resourceName: "camerawhite2")
         return imageView
     }()
-    
-    // image of a camera
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,7 +28,7 @@ class AddPhotoCollectionViewCell: UICollectionViewCell {
     }
     
     private func commonInit() {
-        backgroundColor = .white
+        backgroundColor = .clear
         setupViews()
         setUpConstraints()
     }

@@ -66,11 +66,12 @@ class ReportTableViewController: UITableViewController {
         self.tableView.bounces = false
         self.tableView.separatorStyle = .none
         self.imagePickerVC.delegate = self
+        self.tableView.backgroundColor = UIColor(red:0.39, green:0.82, blue:1.00, alpha:1.0)
         placesClient = GMSPlacesClient.shared()
         
         AuthUserService.manager.signInAnon()
         
-        mailComposeViewController = MFMailComposeViewController()
+//        mailComposeViewController = MFMailComposeViewController()
 //        mailComposeViewController.delegate = self
 
     }

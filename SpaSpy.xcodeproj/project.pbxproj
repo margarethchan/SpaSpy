@@ -136,6 +136,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8102E4B720CC7D6F002C7658 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				81DC1D932093A7B200915C70 /* AddPhotoCollectionViewCell.swift */,
+				81DC1D952093DD2900915C70 /* BusinessTypeCollectionViewCell.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
 		81DC1D352090F99800915C70 = {
 			isa = PBXGroup;
 			children = (
@@ -279,14 +288,13 @@
 			isa = PBXGroup;
 			children = (
 				81DC1D812093873700915C70 /* PhotosTableViewCell.swift */,
-				81DC1D932093A7B200915C70 /* AddPhotoCollectionViewCell.swift */,
 				81DC1D832093874400915C70 /* AddressTableViewCell.swift */,
 				81DC1D852093875300915C70 /* BusinessTypeTableViewCell.swift */,
-				81DC1D952093DD2900915C70 /* BusinessTypeCollectionViewCell.swift */,
 				81DC1D872093875D00915C70 /* RedFlagsTableViewCell.swift */,
 				81DC1D892093876B00915C70 /* NumbersTableViewCell.swift */,
 				81DC1D8B2093877C00915C70 /* WebpagesTableViewCell.swift */,
 				81DC1D8D2093878500915C70 /* NotesTableViewCell.swift */,
+				8102E4B720CC7D6F002C7658 /* CollectionViewCells */,
 			);
 			path = ReportTVCells;
 			sourceTree = "<group>";
