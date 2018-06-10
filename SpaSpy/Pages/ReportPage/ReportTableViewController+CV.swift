@@ -93,22 +93,43 @@ extension ReportTableViewController: UICollectionViewDelegateFlowLayout, UIColle
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionView.tag {
-        case 0:
-            let cell = collectionView.cellForItem(at: indexPath) as! AddPhotoCollectionViewCell
-            if cell.addImageIcon.image == UIImage(named: "cam1") {
-                print("add photo cell selected")
-                addImageButtonPressed()
-            }
         case 1:
             print("select business type cell selected")
             let cell = collectionView.cellForItem(at: indexPath) as! BusinessTypeCollectionViewCell
-            let businessType = businessTypes[indexPath.row]
+            let otherCellIndexPath = IndexPath(row: 4, section: 0)
+            let servicesTableViewCell = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! BusinessTypeTableViewCell
+            
+            if cell == collectionView.cellForItem(at: otherCellIndexPath) as! BusinessTypeCollectionViewCell {
+                servicesTableViewCell.servicesCellHeight?.deactivate()
+                servicesTableViewCell.otherBusinessTypeTextView.snp.makeConstraints { (make) in
+                    servicesTableViewCell.servicesCellHeight = make.height.equalTo(40).constraint
+                }
+                self.tableView.reloadData()
+            }
         default:
             print("")
         }
     }
     
     
-    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        switch collectionView.tag {
+        case 1:
+            print("select business type cell deselected")
+            let cell = collectionView.cellForItem(at: indexPath) as! BusinessTypeCollectionViewCell
+            let otherCellIndexPath = IndexPath(row: 4, section: 0)
+            let servicesTableViewCell = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! BusinessTypeTableViewCell
+            
+            if cell == collectionView.cellForItem(at: otherCellIndexPath) as! BusinessTypeCollectionViewCell {
+                servicesTableViewCell.servicesCellHeight?.deactivate()
+                servicesTableViewCell.otherBusinessTypeTextView.snp.makeConstraints { (make) in
+                    servicesTableViewCell.servicesCellHeight = make.height.equalTo(0).constraint
+                }
+                                self.tableView.reloadData()
+            }
+        default:
+            print("cell deselected")
+        }
+    }
 
 }
