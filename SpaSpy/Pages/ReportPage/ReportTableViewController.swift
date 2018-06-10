@@ -14,6 +14,7 @@ import GooglePlaces
 import GooglePlacePicker
 import MessageUI
 import FirebaseAuth
+import SnapKit
 
 class ReportTableViewController: UITableViewController {
     
@@ -105,13 +106,16 @@ class ReportTableViewController: UITableViewController {
             
             if uploadedPhotos.count < 1 {
                 cell.removePhotoButton.isHidden = true
-//                cell.photosCollectionView.isHidden = true
-                
-
+                cell.collectionCellHeight?.deactivate()
+                cell.photosCollectionView.snp.makeConstraints { (make) in
+                    cell.collectionCellHeight = make.height.equalTo(0).constraint
+                }
             } else {
                 cell.removePhotoButton.isHidden = false
-//                cell.photosCollectionView.isHidden = false
-                
+                cell.collectionCellHeight?.deactivate()
+                cell.photosCollectionView.snp.makeConstraints { (make) in
+                    cell.collectionCellHeight = make.height.equalTo(120).constraint
+                }
             }
             
             return cell

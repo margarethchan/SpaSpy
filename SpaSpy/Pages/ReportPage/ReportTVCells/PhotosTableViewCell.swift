@@ -11,6 +11,8 @@ import SnapKit
 
 class PhotosTableViewCell: UITableViewCell {
 
+    public var collectionCellHeight: Constraint? = nil
+    
     lazy var icon: UIImageView = {
         let image = UIImageView()
         image.image = #imageLiteral(resourceName: "camerawhite2")
@@ -38,7 +40,7 @@ class PhotosTableViewCell: UITableViewCell {
     
     lazy var removePhotoButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Remove Last Photo", for: .normal)
+        button.setTitle("Remove Last", for: .normal)
         button.backgroundColor = .lightGray
         button.layer.borderWidth = 1
         button.setTitleColor(UIColor.black, for: .normal)
@@ -120,7 +122,7 @@ class PhotosTableViewCell: UITableViewCell {
         photosCollectionView.snp.makeConstraints { (make) in
             make.leading.trailing.equalTo(contentView)
             make.top.equalTo(addPhotoButton.snp.bottom)
-            make.height.equalTo(120)
+            self.collectionCellHeight = make.height.equalTo(120).constraint
             make.bottom.equalTo(contentView.snp.bottom)
         }
         

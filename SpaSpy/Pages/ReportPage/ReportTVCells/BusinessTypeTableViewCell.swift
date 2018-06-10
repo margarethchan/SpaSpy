@@ -80,6 +80,7 @@ class BusinessTypeTableViewCell: UITableViewCell {
             make.top.leading.equalTo(contentView).offset(10)
             make.height.width.equalTo(StyleSheet.length)
         }
+        
         contentView.addSubview(businessTypeLabel)
         businessTypeLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(icon.snp.centerY)

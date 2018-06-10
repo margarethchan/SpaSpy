@@ -72,6 +72,7 @@ extension ReportTableViewController: UIImagePickerControllerDelegate, UINavigati
             uploadedPhotos.popLast()
             print("remove last photo")
             let tvc = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! PhotosTableViewCell
+            tvc.photosCollectionView.reloadData()
             self.tableView.reloadData()
         } else {
             print("no photos to remove")
