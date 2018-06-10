@@ -134,10 +134,10 @@ class ReportTableViewController: UITableViewController {
                 cell.addLocationButton.setTitle("Add Location", for: .normal)
                 
                 cell.nameCellHeight?.deactivate()
-                cell.addressCellHeight?.deactivate()
                 cell.businessNameLabel.snp.makeConstraints { (make) in
                     cell.nameCellHeight = make.height.equalTo(0).constraint
                 }
+                cell.addressCellHeight?.deactivate()
                 cell.businessAddressLabel.snp.makeConstraints { (make) in
                     cell.addressCellHeight = make.height.equalTo(0).constraint
                 }
@@ -145,10 +145,10 @@ class ReportTableViewController: UITableViewController {
                 cell.addLocationButton.setTitle("Change Location", for: .normal)
                 cell.addLocationButton.backgroundColor = .lightGray
                 cell.nameCellHeight?.deactivate()
-                cell.addressCellHeight?.deactivate()
                 cell.businessNameLabel.snp.makeConstraints { (make) in
                     cell.nameCellHeight = make.height.equalTo(30).constraint
                 }
+                cell.addressCellHeight?.deactivate()
                 cell.businessAddressLabel.snp.makeConstraints { (make) in
                     cell.addressCellHeight = make.height.equalTo(30).constraint
                 }
@@ -164,6 +164,16 @@ class ReportTableViewController: UITableViewController {
             cell.businessTypeCollectionView.allowsMultipleSelection = true
             cell.otherBusinessTypeTextView.delegate = self
             cell.otherBusinessTypeTextView.tag = indexPath.row
+            
+//            let otherCellIndexPath = IndexPath(item: 4, section: 0)
+//            if !(((cell.businessTypeCollectionView.cellForItem(at: otherCellIndexPath) as? BusinessTypeCollectionViewCell)?.isSelected)!) {
+//                cell.servicesCellHeight?.deactivate()
+//                cell.otherBusinessTypeTextView.snp.makeConstraints { (make) in
+//                    cell.servicesCellHeight = make.height.equalTo(0).constraint
+//                }
+//            }
+            
+            
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "RedFlagsTableViewCell", for: indexPath) as! RedFlagsTableViewCell
@@ -171,8 +181,17 @@ class ReportTableViewController: UITableViewController {
             cell.selectedFlagsLabel.text = selectedRedFlags.count.description + " Selected Flags"
             if self.selectedRedFlags.isEmpty {
                 cell.addRedFlagsButton.setTitle("Set Red Flags", for: .normal)
+                cell.redFlagsCellHeight?.deactivate()
+                cell.selectedFlagsLabel.snp.makeConstraints { (make) in
+                    cell.redFlagsCellHeight = make.height.equalTo(0).constraint
+                }
             } else {
                 cell.addRedFlagsButton.setTitle("Edit Red Flags", for: .normal)
+                cell.addRedFlagsButton.backgroundColor = .lightGray
+                cell.redFlagsCellHeight?.deactivate()
+                cell.selectedFlagsLabel.snp.makeConstraints { (make) in
+                    cell.redFlagsCellHeight = make.height.equalTo(30).constraint
+                }
             }
             return cell
         case 4:
