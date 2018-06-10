@@ -11,6 +11,8 @@ import SnapKit
 
 class RedFlagsTableViewCell: UITableViewCell {
 
+    public var redFlagsCellHeight: Constraint? = nil
+    
     lazy var icon: UIImageView = {
         let image = UIImageView()
         image.image = #imageLiteral(resourceName: "flagwhiteempty")
@@ -19,13 +21,13 @@ class RedFlagsTableViewCell: UITableViewCell {
         return image
     }()
     
-    lazy var redFlagsLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Red Flags"
-        label.font = UIFont.boldSystemFont(ofSize: 20)
-                label.textColor = StyleSheet.headerColor
-        return label
-    }()
+//    lazy var redFlagsLabel: UILabel = {
+//        let label = UILabel()
+//        label.text = "Red Flags"
+//        label.font = UIFont.boldSystemFont(ofSize: 20)
+//                label.textColor = StyleSheet.headerColor
+//        return label
+//    }()
     
     lazy var selectedFlagsLabel: UILabel = {
         let label = UILabel()
@@ -48,8 +50,6 @@ class RedFlagsTableViewCell: UITableViewCell {
         button.setTitleColor(UIColor.black, for: .normal)
         return button
     }()
-
-
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -73,33 +73,20 @@ class RedFlagsTableViewCell: UITableViewCell {
             make.height.width.equalTo(StyleSheet.length)
         }
         
-        contentView.addSubview(redFlagsLabel)
-        redFlagsLabel.snp.makeConstraints { (make) in
+        contentView.addSubview(addRedFlagsButton)
+        addRedFlagsButton.snp.makeConstraints { (make) in
             make.centerY.equalTo(icon.snp.centerY)
             make.leading.equalTo(icon.snp.trailing).offset(StyleSheet.headerIconOffset)
+            make.width.equalTo(contentView.snp.width).multipliedBy(0.85)
+            make.height.equalTo(30)
         }
         
         contentView.addSubview(selectedFlagsLabel)
         selectedFlagsLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(redFlagsLabel.snp.bottom).offset(10)
+            make.top.equalTo(addRedFlagsButton.snp.bottom).offset(5)
             make.centerX.equalTo(contentView)
-        }
-        
-        contentView.addSubview(addRedFlagsButton)
-        addRedFlagsButton.snp.makeConstraints { (make) in
-            make.centerX.equalTo(contentView)
-            make.top.equalTo(selectedFlagsLabel.snp.bottom).offset(10)
-            make.height.equalTo(40)
-            make.width.equalTo(contentView.snp.width).multipliedBy(0.9)
-            make.bottom.equalTo(contentView.snp.bottom).offset(-10)
-        }
-        
-        contentView.addSubview(flagIconButton)
-        flagIconButton.snp.makeConstraints { (make) in
-            make.leading.equalTo(addRedFlagsButton.snp.leading).offset(5)
-            make.centerY.equalTo(addRedFlagsButton.snp.centerY)
-            make.centerY.equalTo(addRedFlagsButton.snp.centerY)
-            make.height.width.equalTo(25)
+            self.redFlagsCellHeight = make.height.equalTo(30).constraint
+            make.bottom.equalTo(contentView.snp.bottom)
         }
     }
 }

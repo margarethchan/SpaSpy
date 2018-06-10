@@ -87,7 +87,6 @@ class PhotosTableViewCell: UITableViewCell {
             make.leading.equalTo(icon.snp.trailing).offset(StyleSheet.headerIconOffset)
             make.height.equalTo(30)
             self.addPhotoWidth = make.width.equalTo(contentView.snp.width).multipliedBy(0.4).constraint
-//            self.addPhotoTrailing = make.trailing.equalTo(contentView.snp.trailing).offset(-10).constraint
         }
         
         contentView.addSubview(removePhotoButton)

@@ -11,17 +11,18 @@ import SnapKit
 
 class BusinessTypeTableViewCell: UITableViewCell {
 
+    public var servicesCellHeight: Constraint? = nil
+    
     lazy var icon: UIImageView = {
         let image = UIImageView()
         image.image = #imageLiteral(resourceName: "flowerwhite")
-//        image.backgroundColor = .black
         image.contentMode = .scaleAspectFill
         return image
     }()
     
     lazy var businessTypeLabel: UILabel = {
         let label = UILabel()
-        label.text = "Business Services"
+        label.text = "Advertised Services"
         label.font = UIFont.boldSystemFont(ofSize: 20)
                 label.textColor = StyleSheet.headerColor
         return label
@@ -84,6 +85,7 @@ class BusinessTypeTableViewCell: UITableViewCell {
         contentView.addSubview(businessTypeLabel)
         businessTypeLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(icon.snp.centerY)
+           make.height.equalTo(30)
             make.leading.equalTo(icon.snp.trailing).offset(StyleSheet.headerIconOffset)
         }
         
@@ -97,10 +99,10 @@ class BusinessTypeTableViewCell: UITableViewCell {
         contentView.addSubview(otherBusinessTypeTextView)
         otherBusinessTypeTextView.snp.makeConstraints { (make) in
             make.centerX.equalTo(contentView)
-            make.top.equalTo(businessTypeCollectionView.snp.bottom)
-            make.height.equalTo(40)
+            make.top.equalTo(businessTypeCollectionView.snp.bottom).offset(5)
+            self.servicesCellHeight = make.height.equalTo(0).constraint
             make.width.equalTo(contentView.snp.width).multipliedBy(0.9)
-            make.bottom.equalTo(contentView.snp.bottom).offset(-10)
+            make.bottom.equalTo(contentView.snp.bottom)
         }
         
     }
