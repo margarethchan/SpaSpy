@@ -79,7 +79,6 @@ class AddressTableViewCell: UITableViewCell {
         addLocationButton.snp.makeConstraints { (make) in
             make.centerY.equalTo(icon.snp.centerY)
             make.leading.equalTo(icon.snp.trailing).offset(StyleSheet.headerIconOffset)
-//            make.trailing.equalTo(contentView.snp.trailing).offset(-10)
             make.width.equalTo(contentView.snp.width).multipliedBy(0.85).constraint
             make.height.equalTo(30)
         }
