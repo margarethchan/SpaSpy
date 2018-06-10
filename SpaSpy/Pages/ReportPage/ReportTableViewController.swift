@@ -106,27 +106,52 @@ class ReportTableViewController: UITableViewController {
             
             if uploadedPhotos.count < 1 {
                 cell.removePhotoButton.isHidden = true
+                cell.addPhotoWidth?.deactivate()
+                cell.addPhotoButton.snp.makeConstraints { (make) in
+                    cell.addPhotoWidth = make.width.equalTo(cell.contentView.snp.width).multipliedBy(0.85).constraint
+                }
                 cell.collectionCellHeight?.deactivate()
                 cell.photosCollectionView.snp.makeConstraints { (make) in
                     cell.collectionCellHeight = make.height.equalTo(0).constraint
                 }
             } else {
                 cell.removePhotoButton.isHidden = false
+
+                cell.addPhotoWidth?.deactivate()
+                cell.addPhotoButton.snp.makeConstraints { (make) in
+                    cell.addPhotoWidth = make.width.equalTo(cell.contentView.snp.width).multipliedBy(0.4).constraint
+                }
                 cell.collectionCellHeight?.deactivate()
                 cell.photosCollectionView.snp.makeConstraints { (make) in
                     cell.collectionCellHeight = make.height.equalTo(120).constraint
                 }
             }
-            
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddressTableViewCell", for: indexPath) as! AddressTableViewCell
             cell.addLocationButton.addTarget(self, action: #selector(addLocation), for: .touchUpInside)
-            cell.mapIconButton.addTarget(self, action: #selector(addLocation), for: .touchUpInside)
             if self.selectedLocationAddress == "" {
                 cell.addLocationButton.setTitle("Add Location", for: .normal)
+                
+                cell.nameCellHeight?.deactivate()
+                cell.addressCellHeight?.deactivate()
+                cell.businessNameLabel.snp.makeConstraints { (make) in
+                    cell.nameCellHeight = make.height.equalTo(0).constraint
+                }
+                cell.businessAddressLabel.snp.makeConstraints { (make) in
+                    cell.addressCellHeight = make.height.equalTo(0).constraint
+                }
             } else {
                 cell.addLocationButton.setTitle("Change Location", for: .normal)
+                cell.addLocationButton.backgroundColor = .lightGray
+                cell.nameCellHeight?.deactivate()
+                cell.addressCellHeight?.deactivate()
+                cell.businessNameLabel.snp.makeConstraints { (make) in
+                    cell.nameCellHeight = make.height.equalTo(30).constraint
+                }
+                cell.businessAddressLabel.snp.makeConstraints { (make) in
+                    cell.addressCellHeight = make.height.equalTo(30).constraint
+                }
             }
             cell.addLocationButton.addTarget(self, action: #selector(addLocation), for: .touchUpInside)
             return cell
@@ -257,36 +282,3 @@ extension ReportTableViewController: SetSelectedFlagsDelegate {
     }
 }
 
-extension ReportTableViewController: GMSPlacePickerViewControllerDelegate {
-    
-    @objc func addLocation() {
-        let config = GMSPlacePickerConfig(viewport: nil)
-        // nil viewport centers the map on the device current location instead of a prescribed viewport
-        let placePicker = GMSPlacePickerViewController(config: config)
-        placePicker.delegate = self
-        present(placePicker, animated: true, completion: nil)
-    }
-    
-    func placePicker(_ viewController: GMSPlacePickerViewController, didPick place: GMSPlace) {
-        // Dismiss the place picker, as it cannot dismiss itself.
-        viewController.dismiss(animated: true, completion: nil)
-        
-        let businessAddressCellIndexPath = IndexPath(row: 1, section: 0)
-        let businessAddressCell = self.tableView.cellForRow(at: businessAddressCellIndexPath) as! AddressTableViewCell
-        businessAddressCell.businessNameLabel.text = place.name
-        businessAddressCell.businessAddressLabel.text = (place.formattedAddress != nil) ? place.formattedAddress! : "Lat: \(place.coordinate.latitude) + Long: \(place.coordinate.longitude)"
-        // set address variables on form
-        self.selectedLocation = place
-        self.selectedLocationName = place.name
-        self.selectedLocationAddress = (place.formattedAddress != nil) ? place.formattedAddress! : "Lat: \(place.coordinate.latitude), Long: \(place.coordinate.longitude)"
-        self.selectedLocationLatitude = place.coordinate.latitude.description
-        self.selectedLocationLongitude = place.coordinate.longitude.description
-        self.tableView.reloadData()
-    }
-    
-    func placePickerDidCancel(_ viewController: GMSPlacePickerViewController) {
-        // Dismiss the place picker, as it cannot dismiss itself.
-        viewController.dismiss(animated: true, completion: nil)
-        print("No place selected")
-    }
-}

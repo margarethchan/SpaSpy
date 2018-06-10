@@ -11,10 +11,12 @@ import SnapKit
 
 class AddressTableViewCell: UITableViewCell {
     
+    public var addressCellHeight: Constraint? = nil
+    public var nameCellHeight: Constraint? = nil
+    
     lazy var icon: UIImageView = {
         let image = UIImageView()
-        image.image = #imageLiteral(resourceName: "mapwhitelarge")
-//        image.backgroundColor = .black
+        image.image = #imageLiteral(resourceName: "pinwhite1")
         image.contentMode = .scaleAspectFill
         return image
     }()
@@ -23,7 +25,7 @@ class AddressTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Business Address"
         label.font = UIFont.boldSystemFont(ofSize: 20)
-                label.textColor = StyleSheet.headerColor
+        label.textColor = StyleSheet.headerColor
         return label
     }()
     
@@ -39,12 +41,6 @@ class AddressTableViewCell: UITableViewCell {
         label.text = "No address for location"
         label.font = UIFont.italicSystemFont(ofSize: 17)
         return label
-    }()
-    
-    lazy var mapIconButton: UIButton = {
-        let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "pinwhite1"), for: .normal)
-        return button
     }()
     
     lazy var addLocationButton: UIButton = {
@@ -79,40 +75,30 @@ class AddressTableViewCell: UITableViewCell {
             make.height.width.equalTo(StyleSheet.length)
         }
         
-        contentView.addSubview(businessAddressHeaderLabel)
-        businessAddressHeaderLabel.snp.makeConstraints { (make) in
+        contentView.addSubview(addLocationButton)
+        addLocationButton.snp.makeConstraints { (make) in
             make.centerY.equalTo(icon.snp.centerY)
             make.leading.equalTo(icon.snp.trailing).offset(StyleSheet.headerIconOffset)
+//            make.trailing.equalTo(contentView.snp.trailing).offset(-10)
+            make.width.equalTo(contentView.snp.width).multipliedBy(0.85).constraint
+            make.height.equalTo(30)
         }
         
         contentView.addSubview(businessNameLabel)
         businessNameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(businessAddressHeaderLabel.snp.bottom).offset(10)
+            make.top.equalTo(addLocationButton.snp.bottom).offset(5)
             make.leading.equalTo(contentView.snp.leading).offset(10)
             make.trailing.equalTo(contentView.snp.trailing).offset(-10)
+            self.nameCellHeight = make.height.equalTo(30).constraint
         }
         
         contentView.addSubview(businessAddressLabel)
         businessAddressLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(businessNameLabel.snp.bottom).offset(10)
+            make.top.equalTo(businessNameLabel.snp.bottom)
             make.leading.equalTo(contentView.snp.leading).offset(10)
             make.trailing.equalTo(contentView.snp.trailing).offset(-10)
-        }
-        
-        contentView.addSubview(addLocationButton)
-        addLocationButton.snp.makeConstraints { (make) in
-            make.centerX.equalTo(contentView)
-            make.top.equalTo(businessAddressLabel.snp.bottom).offset(10)
-            make.height.equalTo(40)
-            make.width.equalTo(contentView.snp.width).multipliedBy(0.9)
-            make.bottom.equalTo(contentView.snp.bottom).offset(-10)
-        }
-        
-        contentView.addSubview(mapIconButton)
-        mapIconButton.snp.makeConstraints { (make) in
-            make.leading.equalTo(addLocationButton.snp.leading).offset(5)
-            make.centerY.equalTo(addLocationButton.snp.centerY)
-            make.height.width.equalTo(25)
+            self.addressCellHeight = make.height.equalTo(30).constraint
+            make.bottom.equalTo(contentView.snp.bottom)
         }
     }
 }

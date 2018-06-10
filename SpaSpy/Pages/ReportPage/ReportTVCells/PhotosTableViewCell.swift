@@ -12,22 +12,14 @@ import SnapKit
 class PhotosTableViewCell: UITableViewCell {
 
     public var collectionCellHeight: Constraint? = nil
+    public var addPhotoWidth: Constraint? = nil
     
     lazy var icon: UIImageView = {
         let image = UIImageView()
         image.image = #imageLiteral(resourceName: "camerawhite2")
-//        image.backgroundColor = .black
         image.contentMode = .scaleAspectFill
         return image
     }()
-    
-//    lazy var photosLabel: UILabel = {
-//        let label = UILabel()
-//        label.text = "Photos"
-//        label.font = UIFont.boldSystemFont(ofSize: 20)
-//        label.textColor = StyleSheet.headerColor
-//        return label
-//    }()
     
     lazy var addPhotoButton: UIButton = {
         let button = UIButton()
@@ -66,7 +58,6 @@ class PhotosTableViewCell: UITableViewCell {
         return cv
     }()
     
-    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         commonInit()
@@ -90,25 +81,14 @@ class PhotosTableViewCell: UITableViewCell {
             make.height.width.equalTo(StyleSheet.length)
         }
         
-//        contentView.addSubview(photosLabel)
-//        photosLabel.snp.makeConstraints { (make) in
-//            make.centerY.equalTo(icon.snp.centerY)
-//            make.leading.equalTo(icon.snp.trailing).offset(StyleSheet.headerIconOffset)
-//        }
-        
         contentView.addSubview(addPhotoButton)
         addPhotoButton.snp.makeConstraints { (make) in
             make.centerY.equalTo(icon.snp.centerY)
             make.leading.equalTo(icon.snp.trailing).offset(StyleSheet.headerIconOffset)
             make.height.equalTo(30)
-            make.width.equalTo(contentView.snp.width).multipliedBy(0.4)
+            self.addPhotoWidth = make.width.equalTo(contentView.snp.width).multipliedBy(0.4).constraint
+//            self.addPhotoTrailing = make.trailing.equalTo(contentView.snp.trailing).offset(-10).constraint
         }
-//        addPhotoButton.snp.makeConstraints { (make) in
-//            make.leading.equalTo(contentView.snp.leading).offset(10)
-//            make.top.equalTo(photosLabel.snp.bottom).offset(10)
-//            make.height.equalTo(30)
-//            make.width.equalTo(contentView.snp.width).multipliedBy(0.45)
-//        }
         
         contentView.addSubview(removePhotoButton)
         removePhotoButton.snp.makeConstraints { (make) in
@@ -125,6 +105,5 @@ class PhotosTableViewCell: UITableViewCell {
             self.collectionCellHeight = make.height.equalTo(120).constraint
             make.bottom.equalTo(contentView.snp.bottom)
         }
-        
     }
 }
