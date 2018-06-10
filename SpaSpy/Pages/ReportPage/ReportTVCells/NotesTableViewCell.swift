@@ -14,7 +14,8 @@ class NotesTableViewCell: UITableViewCell {
     lazy var icon: UIImageView = {
         let image = UIImageView()
         image.image = #imageLiteral(resourceName: "pencilwhite")
-        image.contentMode = .scaleAspectFit
+//        image.backgroundColor = .black
+        image.contentMode = .scaleAspectFill
         return image
     }()
 
@@ -22,6 +23,7 @@ class NotesTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Notes"
         label.font = UIFont.boldSystemFont(ofSize: 20)
+                label.textColor = StyleSheet.headerColor
         return label
     }()
     
@@ -58,13 +60,13 @@ class NotesTableViewCell: UITableViewCell {
         contentView.addSubview(icon)
         icon.snp.makeConstraints { (make) in
             make.top.leading.equalTo(contentView).offset(10)
-            make.height.width.equalTo(30)
+            make.height.width.equalTo(StyleSheet.length)
         }
         
          contentView.addSubview(notesLabel)
         notesLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(icon.snp.centerY)
-            make.leading.equalTo(icon.snp.trailing).offset(10)
+            make.leading.equalTo(icon.snp.trailing).offset(StyleSheet.headerIconOffset)
         }
         
         contentView.addSubview(notesTextView)

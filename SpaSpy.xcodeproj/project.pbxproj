@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8102E4B920CC9299002C7658 /* StyleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8102E4B820CC9299002C7658 /* StyleSheet.swift */; };
 		812A7C4920C4CDB6006820D9 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812A7C4820C4CDB6006820D9 /* AppUser.swift */; };
 		812A7C4B20C4CE6A006820D9 /* DBService+AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812A7C4A20C4CE6A006820D9 /* DBService+AppUser.swift */; };
 		812A7C4D20C4CFF6006820D9 /* AuthUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812A7C4C20C4CFF6006820D9 /* AuthUserService.swift */; };
@@ -63,6 +64,7 @@
 		297F6580FD2C5D0116DF5EF2 /* Pods_SpaSpy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpaSpy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E4BAAF94B01908B509C87D0 /* Pods-SpaSpy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaSpy.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpaSpy/Pods-SpaSpy.release.xcconfig"; sourceTree = "<group>"; };
 		62FD98FDFBAC69080F0569E7 /* Pods-SpaSpy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaSpy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpaSpy/Pods-SpaSpy.debug.xcconfig"; sourceTree = "<group>"; };
+		8102E4B820CC9299002C7658 /* StyleSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleSheet.swift; sourceTree = "<group>"; };
 		812A7C4820C4CDB6006820D9 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		812A7C4A20C4CE6A006820D9 /* DBService+AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBService+AppUser.swift"; sourceTree = "<group>"; };
 		812A7C4C20C4CFF6006820D9 /* AuthUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserService.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				81EE7D6320C3199A00ECCA3C /* PDFNameGenerator.swift */,
 				81EE7D6720C4727200ECCA3C /* Report.swift */,
 				812A7C4820C4CDB6006820D9 /* AppUser.swift */,
+				8102E4B820CC9299002C7658 /* StyleSheet.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				81DC1D772092749300915C70 /* LearnViewController.swift in Sources */,
 				81EE7D5E20BF2B4A00ECCA3C /* HistoryTableViewCell.swift in Sources */,
 				81DC1D67209273DE00915C70 /* ReportTableViewController.swift in Sources */,
+				8102E4B920CC9299002C7658 /* StyleSheet.swift in Sources */,
 				812A7C4920C4CDB6006820D9 /* AppUser.swift in Sources */,
 				81DC1D7F209274ED00915C70 /* HistoryView.swift in Sources */,
 				81DC1D422090F99800915C70 /* AppDelegate.swift in Sources */,

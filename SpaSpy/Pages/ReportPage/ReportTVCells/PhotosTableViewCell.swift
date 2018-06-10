@@ -14,16 +14,18 @@ class PhotosTableViewCell: UITableViewCell {
     lazy var icon: UIImageView = {
         let image = UIImageView()
         image.image = #imageLiteral(resourceName: "camerawhite2")
-        image.contentMode = .scaleAspectFit
+//        image.backgroundColor = .black
+        image.contentMode = .scaleAspectFill
         return image
     }()
     
-    lazy var photosLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Photos"
-        label.font = UIFont.boldSystemFont(ofSize: 20)
-        return label
-    }()
+//    lazy var photosLabel: UILabel = {
+//        let label = UILabel()
+//        label.text = "Photos"
+//        label.font = UIFont.boldSystemFont(ofSize: 20)
+//        label.textColor = StyleSheet.headerColor
+//        return label
+//    }()
     
     lazy var addPhotoButton: UIButton = {
         let button = UIButton()
@@ -83,29 +85,35 @@ class PhotosTableViewCell: UITableViewCell {
         contentView.addSubview(icon)
         icon.snp.makeConstraints { (make) in
             make.top.leading.equalTo(contentView).offset(10)
-            make.height.width.equalTo(30)
+            make.height.width.equalTo(StyleSheet.length)
         }
         
-        contentView.addSubview(photosLabel)
-        photosLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(icon.snp.centerY)
-            make.leading.equalTo(icon.snp.trailing).offset(10)
-        }
+//        contentView.addSubview(photosLabel)
+//        photosLabel.snp.makeConstraints { (make) in
+//            make.centerY.equalTo(icon.snp.centerY)
+//            make.leading.equalTo(icon.snp.trailing).offset(StyleSheet.headerIconOffset)
+//        }
         
         contentView.addSubview(addPhotoButton)
         addPhotoButton.snp.makeConstraints { (make) in
-            make.leading.equalTo(contentView.snp.leading).offset(10)
-            make.top.equalTo(photosLabel.snp.bottom).offset(10)
+            make.centerY.equalTo(icon.snp.centerY)
+            make.leading.equalTo(icon.snp.trailing).offset(StyleSheet.headerIconOffset)
             make.height.equalTo(30)
-            make.width.equalTo(contentView.snp.width).multipliedBy(0.45)
+            make.width.equalTo(contentView.snp.width).multipliedBy(0.4)
         }
+//        addPhotoButton.snp.makeConstraints { (make) in
+//            make.leading.equalTo(contentView.snp.leading).offset(10)
+//            make.top.equalTo(photosLabel.snp.bottom).offset(10)
+//            make.height.equalTo(30)
+//            make.width.equalTo(contentView.snp.width).multipliedBy(0.45)
+//        }
         
         contentView.addSubview(removePhotoButton)
         removePhotoButton.snp.makeConstraints { (make) in
             make.trailing.equalTo(contentView.snp.trailing).offset(-10)
-            make.top.equalTo(photosLabel.snp.bottom).offset(10)
+            make.top.equalTo(addPhotoButton.snp.top)
             make.height.equalTo(30)
-            make.width.equalTo(contentView.snp.width).multipliedBy(0.45)
+            make.width.equalTo(contentView.snp.width).multipliedBy(0.4)
         }
         
         contentView.addSubview(photosCollectionView)

@@ -13,8 +13,14 @@ class AddPhotoCollectionViewCell: UICollectionViewCell {
     
     lazy var addImageIcon: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "camerawhite2")
+//        imageView.image = #imageLiteral(resourceName: "camerawhite2")
         return imageView
+    }()
+    
+    lazy var addImageButton: UIButton = {
+        let button = UIButton()
+
+        return button
     }()
     
     override init(frame: CGRect) {
@@ -29,16 +35,17 @@ class AddPhotoCollectionViewCell: UICollectionViewCell {
     
     private func commonInit() {
         backgroundColor = .clear
-        setupViews()
         setUpConstraints()
     }
     
-    private func setupViews() {
-        contentView.addSubview(addImageIcon)
-    }
-    
     private func setUpConstraints() {
+        contentView.addSubview(addImageIcon)
         addImageIcon.snp.makeConstraints { (make) in
+            make.top.leading.trailing.bottom.equalTo(contentView)
+        }
+        
+        contentView.addSubview(addImageButton)
+        addImageButton.snp.makeConstraints { (make) in
             make.top.leading.trailing.bottom.equalTo(contentView)
         }
     }

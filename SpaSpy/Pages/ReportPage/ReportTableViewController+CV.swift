@@ -37,9 +37,13 @@ extension ReportTableViewController: UICollectionViewDelegateFlowLayout, UIColle
             if indexPath.row < uploadedPhotos.count {
                 let uploadedImage = uploadedPhotos[indexPath.row]
                 cell.addImageIcon.image = uploadedImage
+                cell.addImageButton.isHidden = true
                 return cell
             } else {
+                cell.addImageIcon.image = #imageLiteral(resourceName: "camerawhite2")
                 cell.addImageIcon.backgroundColor = .clear
+                cell.addImageButton.isHidden = false
+                cell.addImageButton.addTarget(self, action: #selector(addImageButtonPressed), for: .touchUpInside)
                 return cell
             }
         case 1:

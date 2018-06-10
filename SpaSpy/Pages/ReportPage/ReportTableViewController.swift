@@ -17,7 +17,7 @@ import FirebaseAuth
 
 class ReportTableViewController: UITableViewController {
     
-    // MARK:- CREATE PDF :  CREATE PDF FROM REPORT
+    /// PDF
     public let A4paperSize = CGSize(width: 595, height: 842)
     public let pageMargin: CGFloat = 20.0
     public var pdf: SimplePDF!
@@ -70,10 +70,6 @@ class ReportTableViewController: UITableViewController {
         placesClient = GMSPlacesClient.shared()
         
         AuthUserService.manager.signInAnon()
-        
-//        mailComposeViewController = MFMailComposeViewController()
-//        mailComposeViewController.delegate = self
-
     }
     
     /// NAV BAR BUTTONS
@@ -106,6 +102,18 @@ class ReportTableViewController: UITableViewController {
             cell.photosCollectionView.tag = 0
             cell.addPhotoButton.addTarget(self, action: #selector(addImageButtonPressed), for: .touchUpInside)
             cell.removePhotoButton.addTarget(self, action: #selector(removeLastPhoto), for: .touchUpInside)
+            
+            if uploadedPhotos.count < 1 {
+                cell.removePhotoButton.isHidden = true
+//                cell.photosCollectionView.isHidden = true
+                
+
+            } else {
+                cell.removePhotoButton.isHidden = false
+//                cell.photosCollectionView.isHidden = false
+                
+            }
+            
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddressTableViewCell", for: indexPath) as! AddressTableViewCell

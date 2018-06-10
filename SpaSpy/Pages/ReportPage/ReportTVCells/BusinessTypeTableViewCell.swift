@@ -14,6 +14,8 @@ class BusinessTypeTableViewCell: UITableViewCell {
     lazy var icon: UIImageView = {
         let image = UIImageView()
         image.image = #imageLiteral(resourceName: "flowerwhite")
+//        image.backgroundColor = .black
+        image.contentMode = .scaleAspectFill
         return image
     }()
     
@@ -21,6 +23,7 @@ class BusinessTypeTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Business Services"
         label.font = UIFont.boldSystemFont(ofSize: 20)
+                label.textColor = StyleSheet.headerColor
         return label
     }()
     
@@ -75,12 +78,12 @@ class BusinessTypeTableViewCell: UITableViewCell {
         contentView.addSubview(icon)
         icon.snp.makeConstraints { (make) in
             make.top.leading.equalTo(contentView).offset(10)
-            make.height.width.equalTo(30)
+            make.height.width.equalTo(StyleSheet.length)
         }
         contentView.addSubview(businessTypeLabel)
         businessTypeLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(icon.snp.centerY)
-            make.leading.equalTo(icon.snp.trailing).offset(10)
+            make.leading.equalTo(icon.snp.trailing).offset(StyleSheet.headerIconOffset)
         }
         
         contentView.addSubview(businessTypeCollectionView)

@@ -14,7 +14,8 @@ class NumbersTableViewCell: UITableViewCell {
     lazy var icon: UIImageView = {
         let image = UIImageView()
         image.image = #imageLiteral(resourceName: "phonewhiteempty")
-        image.contentMode = .scaleAspectFit
+//        image.backgroundColor = .black
+        image.contentMode = .scaleAspectFill
         return image
     }()
     
@@ -22,6 +23,7 @@ class NumbersTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Phone Numbers"
         label.font = UIFont.boldSystemFont(ofSize: 20)
+                label.textColor = StyleSheet.headerColor
         return label
     }()
     
@@ -56,13 +58,13 @@ class NumbersTableViewCell: UITableViewCell {
         contentView.addSubview(icon)
         icon.snp.makeConstraints { (make) in
             make.top.leading.equalTo(contentView).offset(10)
-            make.height.width.equalTo(30)
+            make.height.width.equalTo(StyleSheet.length)
         }
         
         contentView.addSubview(numbersLabel)
         numbersLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(icon.snp.centerY)
-            make.leading.equalTo(icon.snp.trailing).offset(10)
+            make.leading.equalTo(icon.snp.trailing).offset(StyleSheet.headerIconOffset)
         }
 
         contentView.addSubview(numbersTextView)
