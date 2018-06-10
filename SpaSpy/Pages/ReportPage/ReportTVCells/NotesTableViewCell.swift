@@ -74,7 +74,7 @@ class NotesTableViewCell: UITableViewCell {
             make.top.equalTo(notesLabel.snp.bottom).offset(10)
             make.centerX.equalTo(contentView)
             make.height.equalTo(100)
-            make.width.equalTo(contentView.snp.width).multipliedBy(0.9)
+            make.width.equalTo(contentView.snp.width).multipliedBy(0.85)
             make.bottom.equalTo(contentView.snp.bottom).offset(-10)
         }
     }

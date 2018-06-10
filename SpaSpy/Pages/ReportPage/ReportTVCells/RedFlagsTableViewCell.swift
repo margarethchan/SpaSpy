@@ -21,18 +21,18 @@ class RedFlagsTableViewCell: UITableViewCell {
         return image
     }()
     
-//    lazy var redFlagsLabel: UILabel = {
-//        let label = UILabel()
-//        label.text = "Red Flags"
-//        label.font = UIFont.boldSystemFont(ofSize: 20)
-//                label.textColor = StyleSheet.headerColor
-//        return label
-//    }()
+    lazy var redFlagsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Red Flags"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+                label.textColor = StyleSheet.headerColor
+        return label
+    }()
     
     lazy var selectedFlagsLabel: UILabel = {
         let label = UILabel()
         label.text = "No Flags Selected"
-        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.font = UIFont.italicSystemFont(ofSize: 17)
         return label
     }()
     
@@ -73,10 +73,18 @@ class RedFlagsTableViewCell: UITableViewCell {
             make.height.width.equalTo(StyleSheet.length)
         }
         
-        contentView.addSubview(addRedFlagsButton)
-        addRedFlagsButton.snp.makeConstraints { (make) in
+        contentView.addSubview(redFlagsLabel)
+        redFlagsLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(icon.snp.centerY)
             make.leading.equalTo(icon.snp.trailing).offset(StyleSheet.headerIconOffset)
+            make.width.equalTo(contentView.snp.width).multipliedBy(0.85)
+            make.height.equalTo(30)
+        }
+        
+        contentView.addSubview(addRedFlagsButton)
+        addRedFlagsButton.snp.makeConstraints { (make) in
+            make.centerX.equalTo(contentView.snp.centerX)
+            make.top.equalTo(redFlagsLabel.snp.bottom).offset(5)
             make.width.equalTo(contentView.snp.width).multipliedBy(0.85)
             make.height.equalTo(30)
         }
@@ -84,7 +92,7 @@ class RedFlagsTableViewCell: UITableViewCell {
         contentView.addSubview(selectedFlagsLabel)
         selectedFlagsLabel.snp.makeConstraints { (make) in
             make.top.equalTo(addRedFlagsButton.snp.bottom).offset(5)
-            make.centerX.equalTo(contentView)
+            make.leading.equalTo(contentView).offset(10)
             self.redFlagsCellHeight = make.height.equalTo(30).constraint
             make.bottom.equalTo(contentView.snp.bottom)
         }

@@ -73,7 +73,7 @@ class WebpagesTableViewCell: UITableViewCell {
             make.top.equalTo(webpagesLabel.snp.bottom).offset(10)
             make.centerX.equalTo(contentView)
             make.height.equalTo(60)
-            make.width.equalTo(contentView.snp.width).multipliedBy(0.9)
+            make.width.equalTo(contentView.snp.width).multipliedBy(0.85)
             make.bottom.equalTo(contentView.snp.bottom).offset(-10)
         }
     }

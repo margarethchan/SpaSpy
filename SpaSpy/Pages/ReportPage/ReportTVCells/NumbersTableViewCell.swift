@@ -72,7 +72,7 @@ class NumbersTableViewCell: UITableViewCell {
             make.top.equalTo(numbersLabel.snp.bottom).offset(10)
             make.centerX.equalTo(contentView)
             make.height.equalTo(40)
-            make.width.equalTo(contentView.snp.width).multipliedBy(0.9)
+            make.width.equalTo(contentView.snp.width).multipliedBy(0.85)
             make.bottom.equalTo(contentView.snp.bottom).offset(-10)
         }
     }

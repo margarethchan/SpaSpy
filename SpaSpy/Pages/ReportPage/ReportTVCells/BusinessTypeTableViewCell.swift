@@ -101,7 +101,7 @@ class BusinessTypeTableViewCell: UITableViewCell {
             make.centerX.equalTo(contentView)
             make.top.equalTo(businessTypeCollectionView.snp.bottom).offset(5)
             self.servicesCellHeight = make.height.equalTo(0).constraint
-            make.width.equalTo(contentView.snp.width).multipliedBy(0.9)
+            make.width.equalTo(contentView.snp.width).multipliedBy(0.85)
             make.bottom.equalTo(contentView.snp.bottom)
         }
         

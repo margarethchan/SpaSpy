@@ -75,10 +75,18 @@ class AddressTableViewCell: UITableViewCell {
             make.height.width.equalTo(StyleSheet.length)
         }
         
-        contentView.addSubview(addLocationButton)
-        addLocationButton.snp.makeConstraints { (make) in
+        contentView.addSubview(businessAddressHeaderLabel)
+        businessAddressHeaderLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(icon.snp.centerY)
             make.leading.equalTo(icon.snp.trailing).offset(StyleSheet.headerIconOffset)
+            make.width.equalTo(contentView.snp.width).multipliedBy(0.85).constraint
+            make.height.equalTo(30)
+        }
+        
+        contentView.addSubview(addLocationButton)
+        addLocationButton.snp.makeConstraints { (make) in
+            make.top.equalTo(businessAddressHeaderLabel.snp.bottom).offset(10)
+            make.centerX.equalTo(contentView.snp.centerX)
             make.width.equalTo(contentView.snp.width).multipliedBy(0.85).constraint
             make.height.equalTo(30)
         }

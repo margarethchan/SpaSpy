@@ -107,8 +107,11 @@ class ReportTableViewController: UITableViewController {
             if uploadedPhotos.count < 1 {
                 cell.removePhotoButton.isHidden = true
                 cell.addPhotoWidth?.deactivate()
+                cell.addPhotoLeading?.deactivate()
+                cell.addPhotoCenter?.deactivate()
                 cell.addPhotoButton.snp.makeConstraints { (make) in
                     cell.addPhotoWidth = make.width.equalTo(cell.contentView.snp.width).multipliedBy(0.85).constraint
+                    cell.addPhotoCenter = make.centerX.equalTo(cell.contentView.snp.centerX).constraint
                 }
                 cell.collectionCellHeight?.deactivate()
                 cell.photosCollectionView.snp.makeConstraints { (make) in
@@ -116,10 +119,12 @@ class ReportTableViewController: UITableViewController {
                 }
             } else {
                 cell.removePhotoButton.isHidden = false
-
                 cell.addPhotoWidth?.deactivate()
+                cell.addPhotoLeading?.deactivate()
+                cell.addPhotoCenter?.deactivate()
                 cell.addPhotoButton.snp.makeConstraints { (make) in
                     cell.addPhotoWidth = make.width.equalTo(cell.contentView.snp.width).multipliedBy(0.4).constraint
+                     cell.addPhotoCenter = make.centerX.equalTo(cell.contentView.snp.centerX).multipliedBy(0.55).constraint
                 }
                 cell.collectionCellHeight?.deactivate()
                 cell.photosCollectionView.snp.makeConstraints { (make) in
@@ -164,21 +169,15 @@ class ReportTableViewController: UITableViewController {
             cell.businessTypeCollectionView.allowsMultipleSelection = true
             cell.otherBusinessTypeTextView.delegate = self
             cell.otherBusinessTypeTextView.tag = indexPath.row
-            
-//            let otherCellIndexPath = IndexPath(item: 4, section: 0)
-//            if !(((cell.businessTypeCollectionView.cellForItem(at: otherCellIndexPath) as? BusinessTypeCollectionViewCell)?.isSelected)!) {
-//                cell.servicesCellHeight?.deactivate()
-//                cell.otherBusinessTypeTextView.snp.makeConstraints { (make) in
-//                    cell.servicesCellHeight = make.height.equalTo(0).constraint
-//                }
-//            }
-            
-            
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "RedFlagsTableViewCell", for: indexPath) as! RedFlagsTableViewCell
             cell.addRedFlagsButton.addTarget(self, action: #selector(selectRedFlags), for: .touchUpInside)
-            cell.selectedFlagsLabel.text = selectedRedFlags.count.description + " Selected Flags"
+            if self.selectedRedFlags.count == 1 {
+                cell.selectedFlagsLabel.text = selectedRedFlags.count.description + " Selected Flag"
+            } else if self.selectedRedFlags.count > 1 {
+                cell.selectedFlagsLabel.text = selectedRedFlags.count.description + " Selected Flags"
+            }
             if self.selectedRedFlags.isEmpty {
                 cell.addRedFlagsButton.setTitle("Set Red Flags", for: .normal)
                 cell.redFlagsCellHeight?.deactivate()
