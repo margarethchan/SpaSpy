@@ -25,3 +25,14 @@ let redFlags = ["Buzzer-controlled entrance",
                 "Workers appear fearful",
                 "Workers unable to perform non-sexual job",
 ]
+
+class Flag: Codable {
+    let description: String
+    let isSelected: Bool
+    
+    init(description: String, isSelected: Bool) {
+        self.description = description
+        self.isSelected = isSelected
+    }
+    
+}
