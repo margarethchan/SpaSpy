@@ -11,3 +11,10 @@ import Foundation
 
 let businessTypes = ["Spa", "Massage", "Health", "Beauty", "Other"]
 
+enum BusinessTypes: String {
+    case Spa
+    case Massage
+    case Health
+    case Beauty
+    case Other
+}
