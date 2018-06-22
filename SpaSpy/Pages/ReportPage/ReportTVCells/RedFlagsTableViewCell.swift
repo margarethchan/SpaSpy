@@ -16,7 +16,6 @@ class RedFlagsTableViewCell: UITableViewCell {
     lazy var icon: UIImageView = {
         let image = UIImageView()
         image.image = #imageLiteral(resourceName: "flagwhiteempty")
-//        image.backgroundColor = .black
         image.contentMode = .scaleAspectFill
         return image
     }()
@@ -93,6 +92,7 @@ class RedFlagsTableViewCell: UITableViewCell {
         selectedFlagsLabel.snp.makeConstraints { (make) in
             make.top.equalTo(addRedFlagsButton.snp.bottom).offset(5)
             make.leading.equalTo(contentView).offset(10)
+            make.trailing.equalTo(contentView.snp.trailing).offset(-10)
             self.redFlagsCellHeight = make.height.equalTo(30).constraint
             make.bottom.equalTo(contentView.snp.bottom)
         }

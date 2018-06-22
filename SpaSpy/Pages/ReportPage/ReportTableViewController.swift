@@ -40,7 +40,8 @@ class ReportTableViewController: UITableViewController {
     var placesClient: GMSPlacesClient!
     
     public var selectedBusinessTypes = [String]()
-    public var selectedRedFlags = [String]()
+    public var allRedFlags = [Flag]()
+    public var selectedRedFlags = [Flag]()
     public var enteredNumbers = ""
     public var enteredWebpages = ""
     public var enteredNotes = ""
@@ -66,11 +67,13 @@ class ReportTableViewController: UITableViewController {
         self.tableView.allowsSelection = false
         self.tableView.bounces = false
         self.tableView.separatorStyle = .none
+        self.tableView.tag = 0
         self.imagePickerVC.delegate = self
         self.tableView.backgroundColor = UIColor(red:0.39, green:0.82, blue:1.00, alpha:1.0)
         placesClient = GMSPlacesClient.shared()
         
         AuthUserService.manager.signInAnon()
+        loadAllFlags()
     }
     
     /// NAV BAR BUTTONS
@@ -228,7 +231,11 @@ class ReportTableViewController: UITableViewController {
             self.selectedBusinessTypes.append((businessTypeTVC?.otherBusinessTypeTextView.text)!)
         }
     }
-    
+    private func loadAllFlags() {
+        for desc in redFlags {
+            allRedFlags.append(Flag(description: desc, isSelected: false))
+        }
+    }
     @objc func selectRedFlags() {
         let flagsVC = FlagsViewController()
         flagsVC.modalPresentationStyle = .overFullScreen
@@ -236,6 +243,7 @@ class ReportTableViewController: UITableViewController {
         self.present(flagsVC, animated: false, completion: nil)
         flagsVC.delegate = self
         flagsVC.selectedFlags = self.selectedRedFlags
+        flagsVC.allFlags = self.allRedFlags
         print("open modal red flags view")
     }
 
@@ -259,7 +267,7 @@ class ReportTableViewController: UITableViewController {
         self.selectedLocationName = ""
         self.selectedLocationAddress = ""
         self.selectedBusinessTypes = [String]()
-        self.selectedRedFlags = [String]()
+        self.selectedRedFlags = [Flag]()
         self.enteredNumbers = ""
         self.enteredWebpages = ""
         self.enteredNotes = ""
@@ -294,9 +302,16 @@ class ReportTableViewController: UITableViewController {
 }
 
 extension ReportTableViewController: SetSelectedFlagsDelegate {
-    func setSelected(flags: [String]) {
+    
+    func clearAll(flags: [Flag]) {
         self.selectedRedFlags = flags
         self.tableView.reloadData()
     }
+    
+    func setSelected(flags: [Flag]) {
+        self.selectedRedFlags = flags
+        self.tableView.reloadData()
+    }
+    
 }
 

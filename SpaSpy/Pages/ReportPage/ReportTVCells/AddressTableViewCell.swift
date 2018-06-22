@@ -87,7 +87,7 @@ class AddressTableViewCell: UITableViewCell {
         addLocationButton.snp.makeConstraints { (make) in
             make.top.equalTo(businessAddressHeaderLabel.snp.bottom).offset(10)
             make.centerX.equalTo(contentView.snp.centerX)
-            make.width.equalTo(contentView.snp.width).multipliedBy(0.85).constraint
+            make.width.equalTo(contentView.snp.width).multipliedBy(0.85)
             make.height.equalTo(30)
         }
         

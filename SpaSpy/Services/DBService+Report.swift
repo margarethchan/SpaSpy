@@ -18,7 +18,7 @@ extension DBService {
                                latitude: String,
                                longitude: String,
                                services: [String],
-                               redFlags: [String],
+                               redFlags: [Flag],
                                phoneNumbers: String,
                                webpages: String,
                                notes: String) {

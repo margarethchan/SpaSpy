@@ -54,7 +54,7 @@ extension ReportTableViewController: MFMailComposeViewControllerDelegate {
         pdf.addLineSeparator(height: 0.5)
         if !self.selectedRedFlags.isEmpty {
             self.selectedRedFlags.forEach { (flag) in
-                pdf.addText(flag)
+                pdf.addText(flag.description)
             }
         } else {
             pdf.addText("No Red Flags Selected")
