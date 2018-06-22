@@ -25,9 +25,9 @@ class FlagsView: UIView {
         return view
     }()
     
-    lazy var cancelButton: UIButton = {
+    lazy var clearButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Cancel", for: .normal)
+        button.setTitle("Clear", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         return button
     }()
@@ -97,8 +97,8 @@ class FlagsView: UIView {
             make.height.equalTo(self.snp.height).multipliedBy(0.95)
         }
         
-        containerView.addSubview(cancelButton)
-        cancelButton.snp.makeConstraints { (make) in
+        containerView.addSubview(clearButton)
+        clearButton.snp.makeConstraints { (make) in
             make.top.equalTo(containerView.snp.top).offset(10)
             make.leading.equalTo(containerView.snp.leading).offset(10)
         }
@@ -106,7 +106,7 @@ class FlagsView: UIView {
         containerView.addSubview(flagsLabel)
         flagsLabel.snp.makeConstraints { (make) in
             make.centerX.equalTo(containerView.snp.centerX)
-            make.centerY.equalTo(cancelButton.snp.centerY)
+            make.centerY.equalTo(clearButton.snp.centerY)
         }
         
        containerView.addSubview(doneButton)
