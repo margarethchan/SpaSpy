@@ -19,12 +19,12 @@ class Report: Codable {
     let latitude: String
     let longitude: String
     let services: [String]
-    let redFlags: [Flag]
+    let redFlags: [String]
     let phoneNumbers: String
     let webpages: String
     let notes: String
     
-    init(reportID: String, posterID: String, timestamp: String, imageURLs: [String], name: String, address: String, latitude: String, longitude: String, services: [String], redFlags: [Flag], phoneNumbers: String, webpages: String, notes: String) {
+    init(reportID: String, posterID: String, timestamp: String, imageURLs: [String], name: String, address: String, latitude: String, longitude: String, services: [String], redFlags: [String], phoneNumbers: String, webpages: String, notes: String) {
         self.reportID = reportID
         self.posterID = posterID
         self.timestamp = timestamp

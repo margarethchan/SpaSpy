@@ -40,8 +40,8 @@ class ReportTableViewController: UITableViewController {
     var placesClient: GMSPlacesClient!
     
     public var selectedBusinessTypes = [String]()
-    public var allRedFlags = [Flag]()
-    public var selectedRedFlags = [Flag]()
+    public var allRedFlags = [String]()
+    public var selectedRedFlags = [String]()
     public var enteredNumbers = ""
     public var enteredWebpages = ""
     public var enteredNotes = ""
@@ -233,7 +233,7 @@ class ReportTableViewController: UITableViewController {
     }
     private func loadAllFlags() {
         for desc in redFlags {
-            allRedFlags.append(Flag(description: desc, isSelected: false))
+            allRedFlags.append(desc)
         }
     }
     @objc func selectRedFlags() {
@@ -267,7 +267,7 @@ class ReportTableViewController: UITableViewController {
         self.selectedLocationName = ""
         self.selectedLocationAddress = ""
         self.selectedBusinessTypes = [String]()
-        self.selectedRedFlags = [Flag]()
+        self.selectedRedFlags = [String]()
         self.enteredNumbers = ""
         self.enteredWebpages = ""
         self.enteredNotes = ""
@@ -303,12 +303,12 @@ class ReportTableViewController: UITableViewController {
 
 extension ReportTableViewController: SetSelectedFlagsDelegate {
     
-    func clearAll(flags: [Flag]) {
+    func clearAll(flags: [String]) {
         self.selectedRedFlags = flags
         self.tableView.reloadData()
     }
     
-    func setSelected(flags: [Flag]) {
+    func setSelected(flags: [String]) {
         self.selectedRedFlags = flags
         self.tableView.reloadData()
     }
