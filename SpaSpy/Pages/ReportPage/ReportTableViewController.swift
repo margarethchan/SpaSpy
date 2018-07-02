@@ -65,7 +65,7 @@ class ReportTableViewController: UITableViewController {
         self.tableView.estimatedRowHeight = 150
         self.tableView.reloadData()
         self.tableView.allowsSelection = false
-        self.tableView.bounces = false
+        self.tableView.bounces = true
         self.tableView.separatorStyle = .none
         self.tableView.tag = 0
         self.imagePickerVC.delegate = self

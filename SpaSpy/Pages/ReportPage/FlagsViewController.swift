@@ -18,11 +18,7 @@ class FlagsViewController: UIViewController {
     weak var delegate: SetSelectedFlagsDelegate?
     
     private let flagsView = FlagsView()
-    public var allFlags = [String]() {
-        didSet {
-            print("allFlags: \(allFlags.count)")
-        }
-    }
+    public var allFlags = [String]()
     public var selectedFlags = [String]() {
         didSet {
             print("selectedFlags: \(selectedFlags.count)")
@@ -39,6 +35,8 @@ class FlagsViewController: UIViewController {
         flagsView.redFlagsTableView.register(FlagTableViewCell.self, forCellReuseIdentifier: "FlagCell")
         flagsView.redFlagsTableView.tag = 1
         
+        self.selectedFlags = []
+        
         flagsView.clearButton.addTarget(self, action: #selector(clear), for: .touchUpInside)
         flagsView.doneButton.addTarget(self, action: #selector(done), for: .touchUpInside)
     }
@@ -54,7 +52,6 @@ class FlagsViewController: UIViewController {
         print("done")
         let selectedFlagsIndexPaths = self.flagsView.redFlagsTableView.indexPathsForSelectedRows
         selectedFlagsIndexPaths?.forEach({ (indexpath) in
-//            let flagCell = self.flagsView.redFlagsTableView.cellForRow(at: indexpath) as! FlagTableViewCell
             let flag = allFlags[indexpath.row]
             self.selectedFlags.append(flag.description)
         })
@@ -64,6 +61,7 @@ class FlagsViewController: UIViewController {
 }
 
 extension FlagsViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allFlags.count
     }
@@ -72,32 +70,20 @@ extension FlagsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FlagCell", for: indexPath) as! FlagTableViewCell
         let flag = allFlags[indexPath.row]
         cell.flagLabel.text = flag.description
-//        if self.selectedFlags.contains(flag) { // how to make Flag and [Flag] ]equatable?
-//        if cell.isSelected {
-//            cell.backgroundColor = .red
-//            cell.accessoryType = .checkmark
-//        } else {
-//            cell.accessoryType = .none
-        
-//        if self.selectedFlags.contains(flagDescription) {
-//        }
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FlagCell", for: indexPath) as! FlagTableViewCell
-        var flag = allFlags[indexPath.row]
-        cell.flagLabel.text = flag.description
-//        flag.isSelected = true
-        
-        //done()
-//        tableView.reloadData()
-
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let flag = allFlags[indexPath.row]
+        cell.isSelected = selectedFlags.contains(flag)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40.0
     }
+    
+    
+    
 }
 
 
