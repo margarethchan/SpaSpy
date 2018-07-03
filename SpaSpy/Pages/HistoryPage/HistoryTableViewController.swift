@@ -7,17 +7,23 @@
 //
 
 import UIKit
+import Foundation
+import FirebaseDatabase
 
 class HistoryTableViewController: UITableViewController {
 
+    var reports = [Report]() {
+        didSet {
+            print("reports: \(reports.count)")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        AppUser.configureCurrentAppUser(withUID: user.user.uid) {
-//            print("\n\tCurrent App User configured\n")
-//        }
-        
-        
+        let currentUser = AuthUserService.manager.getCurrentUser()
+        DBService.manager.getReports(fromUID: (currentUser?.uid)!) { (userReports) in
+            self.reports = userReports
+        }
 
     }
 
