@@ -24,12 +24,12 @@ class HistoryReportDetailViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = report?.name
         
-        self.submittedLabel.text = "\t" + (report?.timestamp ?? "N/A")
-        self.nameLabel.text = "\t" + (report?.name ?? "N/A")
-        self.addressLabel.text = "\t" + (report?.address ?? "N/A")
-        self.servicesLabel.text = "\t" + (report?.services.joined(separator: ", ") ?? "N/A")
-        self.redFlagsLabel.text = "\t" + (report?.redFlags.joined(separator: ", \n\t") ?? "N/A")
-        self.notesLabel.text = "\t" + (report?.notes ?? "N/A")
+        self.submittedLabel.text = (report?.timestamp ?? "N/A")
+        self.nameLabel.text = (report?.name ?? "N/A")
+        self.addressLabel.text = (report?.address ?? "N/A")
+        self.servicesLabel.text = (report?.services.joined(separator: ", ") ?? "N/A")
+        self.redFlagsLabel.text = (report?.redFlags.joined(separator: ", \n") ?? "N/A")
+        self.notesLabel.text = (report?.notes ?? "N/A")
         
     }
 }
