@@ -287,6 +287,7 @@ class ReportTableViewController: UITableViewController {
         photoTVC?.photosCollectionView.reloadData()
         
         let addressTVC = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? AddressTableViewCell
+        addressTVC?.addLocationButton.backgroundColor = .white
         addressTVC?.businessNameLabel.text = "No location selected"
         addressTVC?.businessAddressLabel.text = "No address for location"
         
@@ -296,6 +297,7 @@ class ReportTableViewController: UITableViewController {
         businessTypeTVC?.otherBusinessTypeTextView.text = "Other Type of Service"
         
         let flagsTVC = self.tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? RedFlagsTableViewCell
+        flagsTVC?.addRedFlagsButton.backgroundColor = .white
         flagsTVC?.selectedFlagsLabel.text = selectedRedFlags.count.description + " Selected Flags"
         
         let numbersTVC = self.tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as? NumbersTableViewCell
