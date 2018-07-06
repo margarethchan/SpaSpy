@@ -46,7 +46,8 @@ class AddressTableViewCell: UITableViewCell {
     lazy var addLocationButton: UIButton = {
         let button = UIButton()
         button.setTitle("Add Location", for: .normal)
-        button.backgroundColor = UIColor(red:0.39, green:0.82, blue:1.00, alpha:1.0)
+//        button.backgroundColor = UIColor(red:0.39, green:0.82, blue:1.00, alpha:1.0)
+        button.backgroundColor = .white
         button.layer.borderWidth = 1
         button.setTitleColor(UIColor.black, for: .normal)
         return button
@@ -94,16 +95,16 @@ class AddressTableViewCell: UITableViewCell {
         contentView.addSubview(businessNameLabel)
         businessNameLabel.snp.makeConstraints { (make) in
             make.top.equalTo(addLocationButton.snp.bottom).offset(5)
-            make.leading.equalTo(contentView.snp.leading).offset(10)
-            make.trailing.equalTo(contentView.snp.trailing).offset(-10)
+            make.centerX.equalTo(contentView.snp.centerX)
+            make.width.equalTo(contentView.snp.width).multipliedBy(0.85)
             self.nameCellHeight = make.height.equalTo(30).constraint
         }
         
         contentView.addSubview(businessAddressLabel)
         businessAddressLabel.snp.makeConstraints { (make) in
             make.top.equalTo(businessNameLabel.snp.bottom)
-            make.leading.equalTo(contentView.snp.leading).offset(10)
-            make.trailing.equalTo(contentView.snp.trailing).offset(-10)
+            make.centerX.equalTo(contentView.snp.centerX)
+            make.width.equalTo(contentView.snp.width).multipliedBy(0.85)
             self.addressCellHeight = make.height.equalTo(30).constraint
             make.bottom.equalTo(contentView.snp.bottom)
         }

@@ -15,18 +15,22 @@ extension ReportTableViewController: UITextViewDelegate {
         case 2:
             if textView.text == "Other Type of Service" {
                 textView.text = ""
+                textView.textColor = .black
             }
         case 4:
             if textView.text == "Listed Phone Numbers" {
                 textView.text = ""
+                textView.textColor = .black
             }
         case 5:
             if textView.text == "Listed Web Pages" {
                 textView.text = ""
+                textView.textColor = .black
             }
         case 6:
             if textView.text == "Other Notes" {
                 textView.text = ""
+                textView.textColor = .black
             }
         default:
             textView.text = ""
@@ -39,22 +43,26 @@ extension ReportTableViewController: UITextViewDelegate {
         switch textView.tag {
         case 2:
             if textView.text == "" {
+                textView.textColor = .lightGray
                 textView.text = "Other Type of Service"
             }
         case 4:
             if textView.text == "" {
+                textView.textColor = .lightGray
                 textView.text = "Listed Phone Numbers"
             } else {
                 self.enteredNumbers = textView.text
             }
         case 5:
             if textView.text == "" {
+                textView.textColor = .lightGray
                 textView.text = "Listed Web Pages"
             } else {
                 self.enteredWebpages = textView.text
             }
         case 6:
             if textView.text == "" {
+                textView.textColor = .lightGray
                 textView.text = "Other Notes"
             } else {
                 self.enteredNotes = textView.text

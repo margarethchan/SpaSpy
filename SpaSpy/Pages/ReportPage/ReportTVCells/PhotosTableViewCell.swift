@@ -34,7 +34,8 @@ class PhotosTableViewCell: UITableViewCell {
     lazy var addPhotoButton: UIButton = {
         let button = UIButton()
         button.setTitle("Add Photo", for: .normal)
-        button.backgroundColor = UIColor(red:0.39, green:0.82, blue:1.00, alpha:1.0)
+//        button.backgroundColor = UIColor(red:0.39, green:0.82, blue:1.00, alpha:1.0)
+        button.backgroundColor = .white
         button.layer.borderWidth = 1
         button.setTitleColor(UIColor.black, for: .normal)
         return button
@@ -43,7 +44,7 @@ class PhotosTableViewCell: UITableViewCell {
     lazy var removePhotoButton: UIButton = {
         let button = UIButton()
         button.setTitle("Remove Last", for: .normal)
-        button.backgroundColor = .lightGray
+        button.backgroundColor = .clear
         button.layer.borderWidth = 1
         button.setTitleColor(UIColor.black, for: .normal)
         return button

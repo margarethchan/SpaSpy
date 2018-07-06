@@ -154,7 +154,7 @@ class ReportTableViewController: UITableViewController {
                 }
             } else {
                 cell.addLocationButton.setTitle("Change Location", for: .normal)
-                cell.addLocationButton.backgroundColor = .lightGray
+                cell.addLocationButton.backgroundColor = .clear
                 cell.nameCellHeight?.deactivate()
                 cell.businessNameLabel.snp.makeConstraints { (make) in
                     cell.nameCellHeight = make.height.equalTo(30).constraint
@@ -192,7 +192,7 @@ class ReportTableViewController: UITableViewController {
                 }
             } else {
                 cell.addRedFlagsButton.setTitle("Edit Red Flags", for: .normal)
-                cell.addRedFlagsButton.backgroundColor = .lightGray
+                cell.addRedFlagsButton.backgroundColor = .clear
                 cell.redFlagsCellHeight?.deactivate()
                 cell.selectedFlagsLabel.snp.makeConstraints { (make) in
                     cell.redFlagsCellHeight = make.height.equalTo(30).constraint
@@ -292,21 +292,29 @@ class ReportTableViewController: UITableViewController {
         
         let businessTypeTVC = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? BusinessTypeTableViewCell
         businessTypeTVC?.businessTypeCollectionView.reloadData()
+        businessTypeTVC?.otherBusinessTypeTextView.textColor = .lightGray
         businessTypeTVC?.otherBusinessTypeTextView.text = "Other Type of Service"
         
         let flagsTVC = self.tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? RedFlagsTableViewCell
         flagsTVC?.selectedFlagsLabel.text = selectedRedFlags.count.description + " Selected Flags"
         
         let numbersTVC = self.tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as? NumbersTableViewCell
+        numbersTVC?.numbersTextView.textColor = .lightGray
         numbersTVC?.numbersTextView.text = "Listed Phone Numbers"
         
         let webpagesTVC = self.tableView.cellForRow(at: IndexPath(row: 5, section: 0)) as? WebpagesTableViewCell
+        webpagesTVC?.webpagesTextView.textColor = .lightGray
         webpagesTVC?.webpagesTextView.text = "Listed Web Pages"
         
         let notesTVC = self.tableView.cellForRow(at: IndexPath(row: 6, section: 0)) as? NotesTableViewCell
+        notesTVC?.notesTextView.textColor = .lightGray
         notesTVC?.notesTextView.text = "Other Notes"
         
         self.tableView.reloadData()
+        
+        let formClearedAlert = Alert.create(withTitle: "Report Form Cleared", andMessage: "Report not submitted", withPreferredStyle: .alert)
+        Alert.addAction(withTitle: "OK", style: .default, andHandler: nil, to: formClearedAlert)
+        self.present(formClearedAlert, animated: true, completion: nil)
         print("form cleared")
     }
 

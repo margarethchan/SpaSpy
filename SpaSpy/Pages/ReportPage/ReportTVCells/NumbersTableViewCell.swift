@@ -23,7 +23,7 @@ class NumbersTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Phone Numbers"
         label.font = UIFont.boldSystemFont(ofSize: 20)
-                label.textColor = StyleSheet.headerColor
+        label.textColor = StyleSheet.headerColor
         return label
     }()
     
