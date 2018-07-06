@@ -65,7 +65,7 @@ class ReportTableViewController: UITableViewController {
         self.tableView.estimatedRowHeight = 150
         self.tableView.reloadData()
         self.tableView.allowsSelection = false
-        self.tableView.bounces = false
+        self.tableView.bounces = true
         self.tableView.separatorStyle = .none
         self.tableView.tag = 0
         self.imagePickerVC.delegate = self
@@ -83,12 +83,15 @@ class ReportTableViewController: UITableViewController {
     
     @IBAction func reportButton(_ sender: UIBarButtonItem) {
         finalizeInputs()
-
-        DBService.manager.saveReport(withImages: uploadedPhotos, name: selectedLocationName, address: selectedLocationAddress, latitude: selectedLocationLatitude, longitude: selectedLocationLongitude, services: selectedBusinessTypes, redFlags: selectedRedFlags, phoneNumbers: enteredNumbers, webpages: enteredWebpages, notes: enteredNotes)
-        /// Uncomment next line to enable PDF generating function when submitting report
-//      collectPDFInputs()
-        reportSubmittedAlert()
-        clearForm()
+        if selectedLocationName.isEmpty || selectedLocationAddress.isEmpty || selectedBusinessTypes.count == 0 || selectedRedFlags.count == 0 || uploadedPhotos.count == 0 {
+            reportNotSubmittedAlert()
+        } else {
+            DBService.manager.saveReport(withImages: uploadedPhotos, name: selectedLocationName, address: selectedLocationAddress, latitude: selectedLocationLatitude, longitude: selectedLocationLongitude, services: selectedBusinessTypes, redFlags: selectedRedFlags, phoneNumbers: enteredNumbers, webpages: enteredWebpages, notes: enteredNotes)
+            /// Uncomment next line to enable PDF generating function when submitting report
+            //      collectPDFInputs()
+            reportSubmittedAlert()
+            clearForm()
+        }
     }
     
     /// MARK: - Table view data source
@@ -151,7 +154,7 @@ class ReportTableViewController: UITableViewController {
                 }
             } else {
                 cell.addLocationButton.setTitle("Change Location", for: .normal)
-                cell.addLocationButton.backgroundColor = .lightGray
+                cell.addLocationButton.backgroundColor = .clear
                 cell.nameCellHeight?.deactivate()
                 cell.businessNameLabel.snp.makeConstraints { (make) in
                     cell.nameCellHeight = make.height.equalTo(30).constraint
@@ -189,7 +192,7 @@ class ReportTableViewController: UITableViewController {
                 }
             } else {
                 cell.addRedFlagsButton.setTitle("Edit Red Flags", for: .normal)
-                cell.addRedFlagsButton.backgroundColor = .lightGray
+                cell.addRedFlagsButton.backgroundColor = .clear
                 cell.redFlagsCellHeight?.deactivate()
                 cell.selectedFlagsLabel.snp.makeConstraints { (make) in
                     cell.redFlagsCellHeight = make.height.equalTo(30).constraint
@@ -261,8 +264,16 @@ class ReportTableViewController: UITableViewController {
         self.present(reportCreatedAlert, animated: true, completion: nil)
     }
     
+    
+    private func reportNotSubmittedAlert() {
+        let reportFailAlert = Alert.create(withTitle: "Report Failed to Submit", andMessage: "Please complete report before sending", withPreferredStyle: .alert)
+        Alert.addAction(withTitle: "OK", style: .default, andHandler: nil, to: reportFailAlert)
+        self.present(reportFailAlert, animated: true, completion: nil)
+    }
+    
     private func clearForm() {
-        self.uploadedPhotos = [UIImage]()
+        self.uploadedPhotos = []
+        self.uploadedPhotoURLs = []
         self.currentSelectedImage = nil
         self.selectedLocationName = ""
         self.selectedLocationAddress = ""
@@ -281,21 +292,29 @@ class ReportTableViewController: UITableViewController {
         
         let businessTypeTVC = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? BusinessTypeTableViewCell
         businessTypeTVC?.businessTypeCollectionView.reloadData()
+        businessTypeTVC?.otherBusinessTypeTextView.textColor = .lightGray
         businessTypeTVC?.otherBusinessTypeTextView.text = "Other Type of Service"
         
         let flagsTVC = self.tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? RedFlagsTableViewCell
         flagsTVC?.selectedFlagsLabel.text = selectedRedFlags.count.description + " Selected Flags"
         
         let numbersTVC = self.tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as? NumbersTableViewCell
+        numbersTVC?.numbersTextView.textColor = .lightGray
         numbersTVC?.numbersTextView.text = "Listed Phone Numbers"
         
         let webpagesTVC = self.tableView.cellForRow(at: IndexPath(row: 5, section: 0)) as? WebpagesTableViewCell
+        webpagesTVC?.webpagesTextView.textColor = .lightGray
         webpagesTVC?.webpagesTextView.text = "Listed Web Pages"
         
         let notesTVC = self.tableView.cellForRow(at: IndexPath(row: 6, section: 0)) as? NotesTableViewCell
+        notesTVC?.notesTextView.textColor = .lightGray
         notesTVC?.notesTextView.text = "Other Notes"
         
         self.tableView.reloadData()
+        
+        let formClearedAlert = Alert.create(withTitle: "Report Form Cleared", andMessage: "Report not submitted", withPreferredStyle: .alert)
+        Alert.addAction(withTitle: "OK", style: .default, andHandler: nil, to: formClearedAlert)
+        self.present(formClearedAlert, animated: true, completion: nil)
         print("form cleared")
     }
 

@@ -27,7 +27,8 @@ class BusinessTypeCollectionViewCell: UICollectionViewCell {
     }
     
     private func commonInit() {
-        backgroundColor = UIColor(red:0.39, green:0.82, blue:1.00, alpha:1.0)
+//        backgroundColor = UIColor(red:0.39, green:0.82, blue:1.00, alpha:1.0)
+        backgroundColor = .white
         layer.borderWidth = 1
         setupViews()
         setUpConstraints()

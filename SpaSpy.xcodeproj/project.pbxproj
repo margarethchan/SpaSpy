@@ -35,8 +35,6 @@
 		81DC1D772092749300915C70 /* LearnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D762092749300915C70 /* LearnViewController.swift */; };
 		81DC1D79209274A500915C70 /* TopicsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D78209274A500915C70 /* TopicsTableViewController.swift */; };
 		81DC1D7B209274C300915C70 /* TopicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D7A209274C300915C70 /* TopicInfoView.swift */; };
-		81DC1D7D209274DC00915C70 /* HistoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D7C209274DB00915C70 /* HistoryCollectionViewController.swift */; };
-		81DC1D7F209274ED00915C70 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D7E209274ED00915C70 /* HistoryView.swift */; };
 		81DC1D822093873800915C70 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D812093873700915C70 /* PhotosTableViewCell.swift */; };
 		81DC1D842093874400915C70 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D832093874400915C70 /* AddressTableViewCell.swift */; };
 		81DC1D862093875300915C70 /* BusinessTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D852093875300915C70 /* BusinessTypeTableViewCell.swift */; };
@@ -48,6 +46,10 @@
 		81DC1D942093A7B200915C70 /* AddPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D932093A7B200915C70 /* AddPhotoCollectionViewCell.swift */; };
 		81DC1D962093DD2900915C70 /* BusinessTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D952093DD2900915C70 /* BusinessTypeCollectionViewCell.swift */; };
 		81DC1D982093DF1500915C70 /* BusinessType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D972093DF1500915C70 /* BusinessType.swift */; };
+		81E1013420EAD7CD00773FB7 /* DBService+History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E1013320EAD7CD00773FB7 /* DBService+History.swift */; };
+		81E1014720EEFDA100773FB7 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E1014620EEFDA100773FB7 /* NetworkHelper.swift */; };
+		81E1014920EEFDCA00773FB7 /* ImageAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E1014820EEFDCA00773FB7 /* ImageAPIClient.swift */; };
+		81E1014F20EF104F00773FB7 /* HistoryReportDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E1014E20EF104F00773FB7 /* HistoryReportDetailViewController.swift */; };
 		81EE7D5C20BF2B0B00ECCA3C /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D5B20BF2B0B00ECCA3C /* HistoryTableViewController.swift */; };
 		81EE7D5E20BF2B4A00ECCA3C /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D5D20BF2B4A00ECCA3C /* HistoryTableViewCell.swift */; };
 		81EE7D6020C2495F00ECCA3C /* ReportTableViewController+TextViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D5F20C2495F00ECCA3C /* ReportTableViewController+TextViews.swift */; };
@@ -59,6 +61,16 @@
 		81EE7D6C20C4816800ECCA3C /* DBService+Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D6B20C4816800ECCA3C /* DBService+Report.swift */; };
 		A4F278D2C07E38F58E370DB8 /* Pods_SpaSpy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 297F6580FD2C5D0116DF5EF2 /* Pods_SpaSpy.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		81E1014120EAFF8E00773FB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81DC1D362090F99800915C70 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 81DC1D3D2090F99800915C70;
+			remoteInfo = SpaSpy;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		297F6580FD2C5D0116DF5EF2 /* Pods_SpaSpy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpaSpy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,8 +106,6 @@
 		81DC1D762092749300915C70 /* LearnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnViewController.swift; sourceTree = "<group>"; };
 		81DC1D78209274A500915C70 /* TopicsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsTableViewController.swift; sourceTree = "<group>"; };
 		81DC1D7A209274C300915C70 /* TopicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicInfoView.swift; sourceTree = "<group>"; };
-		81DC1D7C209274DB00915C70 /* HistoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewController.swift; sourceTree = "<group>"; };
-		81DC1D7E209274ED00915C70 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		81DC1D812093873700915C70 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		81DC1D832093874400915C70 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
 		81DC1D852093875300915C70 /* BusinessTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessTypeTableViewCell.swift; sourceTree = "<group>"; };
@@ -107,6 +117,11 @@
 		81DC1D932093A7B200915C70 /* AddPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		81DC1D952093DD2900915C70 /* BusinessTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		81DC1D972093DF1500915C70 /* BusinessType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessType.swift; sourceTree = "<group>"; };
+		81E1013320EAD7CD00773FB7 /* DBService+History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBService+History.swift"; sourceTree = "<group>"; };
+		81E1013C20EAFF8E00773FB7 /* SpaSpyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaSpyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		81E1014620EEFDA100773FB7 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		81E1014820EEFDCA00773FB7 /* ImageAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPIClient.swift; sourceTree = "<group>"; };
+		81E1014E20EF104F00773FB7 /* HistoryReportDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryReportDetailViewController.swift; sourceTree = "<group>"; };
 		81EE7D5B20BF2B0B00ECCA3C /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		81EE7D5D20BF2B4A00ECCA3C /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		81EE7D5F20C2495F00ECCA3C /* ReportTableViewController+TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportTableViewController+TextViews.swift"; sourceTree = "<group>"; };
@@ -124,6 +139,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4F278D2C07E38F58E370DB8 /* Pods_SpaSpy.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81E1013920EAFF8E00773FB7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				81DC1D3E2090F99800915C70 /* SpaSpy.app */,
+				81E1013C20EAFF8E00773FB7 /* SpaSpyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -212,8 +235,11 @@
 				81EE7D6520C46FB000ECCA3C /* DBService.swift */,
 				812A7C4A20C4CE6A006820D9 /* DBService+AppUser.swift */,
 				81EE7D6B20C4816800ECCA3C /* DBService+Report.swift */,
+				81E1013320EAD7CD00773FB7 /* DBService+History.swift */,
 				812A7C7420C529A1006820D9 /* StorageService.swift */,
 				812A7C4C20C4CFF6006820D9 /* AuthUserService.swift */,
+				81E1014620EEFDA100773FB7 /* NetworkHelper.swift */,
+				81E1014820EEFDCA00773FB7 /* ImageAPIClient.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -281,8 +307,7 @@
 			children = (
 				81EE7D5B20BF2B0B00ECCA3C /* HistoryTableViewController.swift */,
 				81EE7D5D20BF2B4A00ECCA3C /* HistoryTableViewCell.swift */,
-				81DC1D7E209274ED00915C70 /* HistoryView.swift */,
-				81DC1D7C209274DB00915C70 /* HistoryCollectionViewController.swift */,
+				81E1014E20EF104F00773FB7 /* HistoryReportDetailViewController.swift */,
 			);
 			path = HistoryPage;
 			sourceTree = "<group>";
@@ -334,18 +359,40 @@
 			productReference = 81DC1D3E2090F99800915C70 /* SpaSpy.app */;
 			productType = "com.apple.product-type.application";
 		};
+		81E1013B20EAFF8E00773FB7 /* SpaSpyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81E1014320EAFF8E00773FB7 /* Build configuration list for PBXNativeTarget "SpaSpyTests" */;
+			buildPhases = (
+				81E1013820EAFF8E00773FB7 /* Sources */,
+				81E1013920EAFF8E00773FB7 /* Frameworks */,
+				81E1013A20EAFF8E00773FB7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				81E1014220EAFF8E00773FB7 /* PBXTargetDependency */,
+			);
+			name = SpaSpyTests;
+			productName = SpaSpyTests;
+			productReference = 81E1013C20EAFF8E00773FB7 /* SpaSpyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		81DC1D362090F99800915C70 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = C4Q;
 				TargetAttributes = {
 					81DC1D3D2090F99800915C70 = {
 						CreatedOnToolsVersion = 9.3;
+					};
+					81E1013B20EAFF8E00773FB7 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 81DC1D3D2090F99800915C70;
 					};
 				};
 			};
@@ -363,6 +410,7 @@
 			projectRoot = "";
 			targets = (
 				81DC1D3D2090F99800915C70 /* SpaSpy */,
+				81E1013B20EAFF8E00773FB7 /* SpaSpyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -376,6 +424,13 @@
 				8163877D20B6679E005F5308 /* GoogleService-Info.plist in Resources */,
 				81DC1D492090F99900915C70 /* Assets.xcassets in Resources */,
 				81DC1D472090F99800915C70 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81E1013A20EAFF8E00773FB7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,9 +520,11 @@
 				81EE7D6820C4727200ECCA3C /* Report.swift in Sources */,
 				81EE7D6A20C4786800ECCA3C /* ReportTableViewController+PDF.swift in Sources */,
 				81EE7D6620C46FB000ECCA3C /* DBService.swift in Sources */,
+				81E1013420EAD7CD00773FB7 /* DBService+History.swift in Sources */,
 				81DC1D592090FC1600915C70 /* APIKeys.swift in Sources */,
 				81EE7D5C20BF2B0B00ECCA3C /* HistoryTableViewController.swift in Sources */,
 				81DC1D7B209274C300915C70 /* TopicInfoView.swift in Sources */,
+				81E1014F20EF104F00773FB7 /* HistoryReportDetailViewController.swift in Sources */,
 				8192911320A2499B00172899 /* RedFlags.swift in Sources */,
 				81DC1D822093873800915C70 /* PhotosTableViewCell.swift in Sources */,
 				81DC1D712092743100915C70 /* SearchView.swift in Sources */,
@@ -483,19 +540,19 @@
 				81DC1D8E2093878500915C70 /* NotesTableViewCell.swift in Sources */,
 				81EE7D6020C2495F00ECCA3C /* ReportTableViewController+TextViews.swift in Sources */,
 				812A7C7520C529A1006820D9 /* StorageService.swift in Sources */,
+				81E1014920EEFDCA00773FB7 /* ImageAPIClient.swift in Sources */,
 				81DC1D772092749300915C70 /* LearnViewController.swift in Sources */,
 				81EE7D5E20BF2B4A00ECCA3C /* HistoryTableViewCell.swift in Sources */,
 				81DC1D67209273DE00915C70 /* ReportTableViewController.swift in Sources */,
 				8102E4B920CC9299002C7658 /* StyleSheet.swift in Sources */,
 				812A7C4920C4CDB6006820D9 /* AppUser.swift in Sources */,
-				81DC1D7F209274ED00915C70 /* HistoryView.swift in Sources */,
+				81E1014720EEFDA100773FB7 /* NetworkHelper.swift in Sources */,
 				81DC1D422090F99800915C70 /* AppDelegate.swift in Sources */,
 				81DC1D962093DD2900915C70 /* BusinessTypeCollectionViewCell.swift in Sources */,
 				8192911520A24A7B00172899 /* FlagTableViewCell.swift in Sources */,
 				81DC1D752092746300915C70 /* VenueDetailView.swift in Sources */,
 				8192911120A2425900172899 /* FlagsViewController.swift in Sources */,
 				812A7C7320C51E28006820D9 /* ReportTableViewController+Places.swift in Sources */,
-				81DC1D7D209274DC00915C70 /* HistoryCollectionViewController.swift in Sources */,
 				81DC1D982093DF1500915C70 /* BusinessType.swift in Sources */,
 				81DC1D65209273B200915C70 /* SignInViewController.swift in Sources */,
 				81DC1D882093875D00915C70 /* RedFlagsTableViewCell.swift in Sources */,
@@ -506,7 +563,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		81E1013820EAFF8E00773FB7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		81E1014220EAFF8E00773FB7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 81DC1D3D2090F99800915C70 /* SpaSpy */;
+			targetProxy = 81E1014120EAFF8E00773FB7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		81DC1D452090F99800915C70 /* Main.storyboard */ = {
@@ -680,6 +752,48 @@
 			};
 			name = Release;
 		};
+		81E1014420EAFF8E00773FB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HRCUFV4R99;
+				INFOPLIST_FILE = SpaSpyTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MHC.SpaSpyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpaSpy.app/SpaSpy";
+			};
+			name = Debug;
+		};
+		81E1014520EAFF8E00773FB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HRCUFV4R99;
+				INFOPLIST_FILE = SpaSpyTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MHC.SpaSpyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpaSpy.app/SpaSpy";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -697,6 +811,15 @@
 			buildConfigurations = (
 				81DC1D512090F99900915C70 /* Debug */,
 				81DC1D522090F99900915C70 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81E1014320EAFF8E00773FB7 /* Build configuration list for PBXNativeTarget "SpaSpyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81E1014420EAFF8E00773FB7 /* Debug */,
+				81E1014520EAFF8E00773FB7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

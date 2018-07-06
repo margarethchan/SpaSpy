@@ -44,7 +44,8 @@ class RedFlagsTableViewCell: UITableViewCell {
     lazy var addRedFlagsButton: UIButton = {
         let button = UIButton()
         button.setTitle("Set Red Flags", for: .normal)
-        button.backgroundColor = UIColor(red:0.39, green:0.82, blue:1.00, alpha:1.0)
+//        button.backgroundColor = UIColor(red:0.39, green:0.82, blue:1.00, alpha:1.0)
+        button.backgroundColor = .white
         button.layer.borderWidth = 1
         button.setTitleColor(UIColor.black, for: .normal)
         return button
@@ -91,8 +92,8 @@ class RedFlagsTableViewCell: UITableViewCell {
         contentView.addSubview(selectedFlagsLabel)
         selectedFlagsLabel.snp.makeConstraints { (make) in
             make.top.equalTo(addRedFlagsButton.snp.bottom).offset(5)
-            make.leading.equalTo(contentView).offset(10)
-            make.trailing.equalTo(contentView.snp.trailing).offset(-10)
+            make.centerX.equalTo(contentView.snp.centerX)
+            make.width.equalTo(contentView.snp.width).multipliedBy(0.85)
             self.redFlagsCellHeight = make.height.equalTo(30).constraint
             make.bottom.equalTo(contentView.snp.bottom)
         }

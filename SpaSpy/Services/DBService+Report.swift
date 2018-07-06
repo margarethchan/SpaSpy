@@ -68,6 +68,7 @@ extension DBService {
                 }
             }
         }
+        self.uploadedURLs = []
     }
     
     public func addImageURLsToReport(urls: [String], reportID: String) {
