@@ -20,4 +20,6 @@ class HistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var businessTypes: UILabel!
     
     
+    
+    
 }

@@ -35,7 +35,6 @@
 		81DC1D772092749300915C70 /* LearnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D762092749300915C70 /* LearnViewController.swift */; };
 		81DC1D79209274A500915C70 /* TopicsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D78209274A500915C70 /* TopicsTableViewController.swift */; };
 		81DC1D7B209274C300915C70 /* TopicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D7A209274C300915C70 /* TopicInfoView.swift */; };
-		81DC1D7D209274DC00915C70 /* HistoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D7C209274DB00915C70 /* HistoryCollectionViewController.swift */; };
 		81DC1D7F209274ED00915C70 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D7E209274ED00915C70 /* HistoryView.swift */; };
 		81DC1D822093873800915C70 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D812093873700915C70 /* PhotosTableViewCell.swift */; };
 		81DC1D842093874400915C70 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D832093874400915C70 /* AddressTableViewCell.swift */; };
@@ -49,6 +48,8 @@
 		81DC1D962093DD2900915C70 /* BusinessTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D952093DD2900915C70 /* BusinessTypeCollectionViewCell.swift */; };
 		81DC1D982093DF1500915C70 /* BusinessType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC1D972093DF1500915C70 /* BusinessType.swift */; };
 		81E1013420EAD7CD00773FB7 /* DBService+History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E1013320EAD7CD00773FB7 /* DBService+History.swift */; };
+		81E1014720EEFDA100773FB7 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E1014620EEFDA100773FB7 /* NetworkHelper.swift */; };
+		81E1014920EEFDCA00773FB7 /* ImageAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E1014820EEFDCA00773FB7 /* ImageAPIClient.swift */; };
 		81EE7D5C20BF2B0B00ECCA3C /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D5B20BF2B0B00ECCA3C /* HistoryTableViewController.swift */; };
 		81EE7D5E20BF2B4A00ECCA3C /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D5D20BF2B4A00ECCA3C /* HistoryTableViewCell.swift */; };
 		81EE7D6020C2495F00ECCA3C /* ReportTableViewController+TextViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7D5F20C2495F00ECCA3C /* ReportTableViewController+TextViews.swift */; };
@@ -105,7 +106,6 @@
 		81DC1D762092749300915C70 /* LearnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnViewController.swift; sourceTree = "<group>"; };
 		81DC1D78209274A500915C70 /* TopicsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsTableViewController.swift; sourceTree = "<group>"; };
 		81DC1D7A209274C300915C70 /* TopicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicInfoView.swift; sourceTree = "<group>"; };
-		81DC1D7C209274DB00915C70 /* HistoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewController.swift; sourceTree = "<group>"; };
 		81DC1D7E209274ED00915C70 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		81DC1D812093873700915C70 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		81DC1D832093874400915C70 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
@@ -120,6 +120,8 @@
 		81DC1D972093DF1500915C70 /* BusinessType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessType.swift; sourceTree = "<group>"; };
 		81E1013320EAD7CD00773FB7 /* DBService+History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBService+History.swift"; sourceTree = "<group>"; };
 		81E1013C20EAFF8E00773FB7 /* SpaSpyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaSpyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		81E1014620EEFDA100773FB7 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		81E1014820EEFDCA00773FB7 /* ImageAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPIClient.swift; sourceTree = "<group>"; };
 		81EE7D5B20BF2B0B00ECCA3C /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		81EE7D5D20BF2B4A00ECCA3C /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		81EE7D5F20C2495F00ECCA3C /* ReportTableViewController+TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportTableViewController+TextViews.swift"; sourceTree = "<group>"; };
@@ -236,6 +238,8 @@
 				81E1013320EAD7CD00773FB7 /* DBService+History.swift */,
 				812A7C7420C529A1006820D9 /* StorageService.swift */,
 				812A7C4C20C4CFF6006820D9 /* AuthUserService.swift */,
+				81E1014620EEFDA100773FB7 /* NetworkHelper.swift */,
+				81E1014820EEFDCA00773FB7 /* ImageAPIClient.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -304,7 +308,6 @@
 				81EE7D5B20BF2B0B00ECCA3C /* HistoryTableViewController.swift */,
 				81EE7D5D20BF2B4A00ECCA3C /* HistoryTableViewCell.swift */,
 				81DC1D7E209274ED00915C70 /* HistoryView.swift */,
-				81DC1D7C209274DB00915C70 /* HistoryCollectionViewController.swift */,
 			);
 			path = HistoryPage;
 			sourceTree = "<group>";
@@ -536,11 +539,13 @@
 				81DC1D8E2093878500915C70 /* NotesTableViewCell.swift in Sources */,
 				81EE7D6020C2495F00ECCA3C /* ReportTableViewController+TextViews.swift in Sources */,
 				812A7C7520C529A1006820D9 /* StorageService.swift in Sources */,
+				81E1014920EEFDCA00773FB7 /* ImageAPIClient.swift in Sources */,
 				81DC1D772092749300915C70 /* LearnViewController.swift in Sources */,
 				81EE7D5E20BF2B4A00ECCA3C /* HistoryTableViewCell.swift in Sources */,
 				81DC1D67209273DE00915C70 /* ReportTableViewController.swift in Sources */,
 				8102E4B920CC9299002C7658 /* StyleSheet.swift in Sources */,
 				812A7C4920C4CDB6006820D9 /* AppUser.swift in Sources */,
+				81E1014720EEFDA100773FB7 /* NetworkHelper.swift in Sources */,
 				81DC1D7F209274ED00915C70 /* HistoryView.swift in Sources */,
 				81DC1D422090F99800915C70 /* AppDelegate.swift in Sources */,
 				81DC1D962093DD2900915C70 /* BusinessTypeCollectionViewCell.swift in Sources */,
@@ -548,7 +553,6 @@
 				81DC1D752092746300915C70 /* VenueDetailView.swift in Sources */,
 				8192911120A2425900172899 /* FlagsViewController.swift in Sources */,
 				812A7C7320C51E28006820D9 /* ReportTableViewController+Places.swift in Sources */,
-				81DC1D7D209274DC00915C70 /* HistoryCollectionViewController.swift in Sources */,
 				81DC1D982093DF1500915C70 /* BusinessType.swift in Sources */,
 				81DC1D65209273B200915C70 /* SignInViewController.swift in Sources */,
 				81DC1D882093875D00915C70 /* RedFlagsTableViewCell.swift in Sources */,

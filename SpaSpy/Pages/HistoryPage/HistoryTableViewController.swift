@@ -12,82 +12,53 @@ import FirebaseDatabase
 
 class HistoryTableViewController: UITableViewController {
 
-    var reports = [Report]() {
-        didSet {
-            print("reports: \(reports.count)")
-        }
-    }
+    var reports = [Report]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let currentUser = AuthUserService.manager.getCurrentUser()
         DBService.manager.getReports(fromUID: (currentUser?.uid)!) { (userReports) in
             self.reports = userReports
         }
-
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return reports.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReportCell", for: indexPath) as! HistoryTableViewCell
 
-        // Configure the cell...
-
+        let report = reports[indexPath.row]
+        cell.businessName.text = report.name
+        cell.businessAddress.text = report.address
+        cell.businessTypes.text = report.services.joined(separator: ", ")
+        cell.businessImage.image = nil
+        
+        if let reportImageURLstrs = report.imageURLs {
+            let completion: (UIImage) -> Void = {(onlineImage: UIImage) in
+                cell.businessImage.image = onlineImage
+                cell.setNeedsLayout()
+            }
+            ImageAPIClient.manager.loadImage(from: reportImageURLstrs[0], completionHandler: completion, errorHandler: {print($0)})
+        } else {
+            cell.businessImage.image = UIImage(named: "noImage")
+        }
         return cell
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200.0
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation

@@ -20,8 +20,8 @@ class StorageService {
     }
     static let manager = StorageService()
     private var storage: Storage!
-    private var storageRef: StorageReference!
-    private var imagesRef: StorageReference!
+    public var storageRef: StorageReference!
+    public var imagesRef: StorageReference!
     
     public func storeImage(_ image: UIImage, imageID: String) -> StorageUploadTask? {
         let ref  = imagesRef.child(imageID)
@@ -34,6 +34,7 @@ class StorageService {
             }
         })
     }
+    
     public func storeReportImage(withImage image: UIImage?, reportID: String, andImageID imageID: String, completion: @escaping (_ error: String?, _ imageURLString: String?) -> Void) {
         guard let image = image else {
             print("No image uploaded"); return }
@@ -58,31 +59,5 @@ class StorageService {
             }
         }
     }
-    
-    
-    
-    
-    /// NEW METHODS FOR IMAGE STORAGE UPLOAD/DOWNLOAD
-    
-    
-    //    public func downloadImagesFromStorage(images: [UIImage]?, reportID: String) {
-    //        guard let images = images else { return }
-    //        for image in images {
-    //            let imageURLString = reportID + (images.index(of: image)?.description)!
-    //            let storageRef = Storage.storage().reference()
-    //            let downloadImageRef = storageRef.child("images/\(imageURLString)")
-    //
-    //            downloadImageRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
-    //                if let error = error {
-    //                    print("download image error: \(error.localizedDescription)")
-    //                } else if let data = data {
-    //                    let image = UIImage.init(data: data)
-    //                    print("Uploaded image")
-    //                }
-    //            }
-    //
-    //        }
-    //    }
-    
     
 }
