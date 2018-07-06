@@ -21,22 +21,22 @@ extension DBService {
             guard
                 let reportID = reportDict["reportID"] as? String,
                 let posterID = reportDict["posterID"] as? String,
-                let timestamp = reportDict["timestamp"] as? String,
-                let imageURLs = reportDict["imageURLs"] as? [String]?,
-                let name = reportDict["name"] as? String,
-                let address = reportDict["address"] as? String,
-                let latitude = reportDict["latitude"] as? String,
-                let longitude = reportDict["longitude"] as? String,
-                let services = reportDict["services"] as? [String],
-                let redFlags = reportDict["redFlags"] as? [String],
-                let phoneNumbers = reportDict["phoneNumbers"] as? String,
-                let webpages = reportDict["webpages"] as? String,
-                let notes = reportDict["notes"] as? String
+                let timestamp = reportDict["timestamp"] as? String
                 else {
                     print("Couldn't get report")
                     return
                 }
-                let report = Report(reportID: reportID, posterID: posterID, timestamp: timestamp, imageURLs: imageURLs ?? [""], name: name, address: address, latitude: latitude, longitude: longitude, services: services, redFlags: redFlags, phoneNumbers: phoneNumbers, webpages: webpages, notes: notes)
+                let imageURLs = reportDict["imageURLs"] as! [String]
+                let name = reportDict["name"] as! String
+                let address = reportDict["address"] as! String
+                let latitude = reportDict["latitude"] as! String
+                let longitude = reportDict["longitude"] as! String
+                let services = reportDict["services"] as! [String]
+                let redFlags = reportDict["redFlags"] as! [String]
+                let phoneNumbers = reportDict["phoneNumbers"] as! String
+                let webpages = reportDict["webpages"] as! String
+                let notes = reportDict["notes"] as! String
+                let report = Report(reportID: reportID, posterID: posterID, timestamp: timestamp, imageURLs: imageURLs, name: name, address: address, latitude: latitude, longitude: longitude, services: services, redFlags: redFlags, phoneNumbers: phoneNumbers, webpages: webpages, notes: notes)
             reports.append(report)
             }
             let reportsFromUID = reports.filter{$0.posterID == uid}

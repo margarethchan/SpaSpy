@@ -83,12 +83,15 @@ class ReportTableViewController: UITableViewController {
     
     @IBAction func reportButton(_ sender: UIBarButtonItem) {
         finalizeInputs()
-
-        DBService.manager.saveReport(withImages: uploadedPhotos, name: selectedLocationName, address: selectedLocationAddress, latitude: selectedLocationLatitude, longitude: selectedLocationLongitude, services: selectedBusinessTypes, redFlags: selectedRedFlags, phoneNumbers: enteredNumbers, webpages: enteredWebpages, notes: enteredNotes)
-        /// Uncomment next line to enable PDF generating function when submitting report
-//      collectPDFInputs()
-        reportSubmittedAlert()
-        clearForm()
+        if selectedLocationName.isEmpty || selectedLocationAddress.isEmpty || selectedBusinessTypes.count == 0 || selectedRedFlags.count == 0 || uploadedPhotos.count == 0 {
+            reportNotSubmittedAlert()
+        } else {
+            DBService.manager.saveReport(withImages: uploadedPhotos, name: selectedLocationName, address: selectedLocationAddress, latitude: selectedLocationLatitude, longitude: selectedLocationLongitude, services: selectedBusinessTypes, redFlags: selectedRedFlags, phoneNumbers: enteredNumbers, webpages: enteredWebpages, notes: enteredNotes)
+            /// Uncomment next line to enable PDF generating function when submitting report
+            //      collectPDFInputs()
+            reportSubmittedAlert()
+            clearForm()
+        }
     }
     
     /// MARK: - Table view data source
@@ -261,8 +264,16 @@ class ReportTableViewController: UITableViewController {
         self.present(reportCreatedAlert, animated: true, completion: nil)
     }
     
+    
+    private func reportNotSubmittedAlert() {
+        let reportFailAlert = Alert.create(withTitle: "Report Failed to Submit", andMessage: "Please complete report before sending", withPreferredStyle: .alert)
+        Alert.addAction(withTitle: "OK", style: .default, andHandler: nil, to: reportFailAlert)
+        self.present(reportFailAlert, animated: true, completion: nil)
+    }
+    
     private func clearForm() {
-        self.uploadedPhotos = [UIImage]()
+        self.uploadedPhotos = []
+        self.uploadedPhotoURLs = []
         self.currentSelectedImage = nil
         self.selectedLocationName = ""
         self.selectedLocationAddress = ""
