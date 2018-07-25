@@ -16,6 +16,7 @@
 		8163873020B4ED6D005F5308 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8163872F20B4ED6D005F5308 /* Alert.swift */; };
 		8163873420B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8163873320B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift */; };
 		8163877D20B6679E005F5308 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8163877C20B6679D005F5308 /* GoogleService-Info.plist */; };
+		8168CA3B2108299200521BE6 /* ReportImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8168CA3A2108299200521BE6 /* ReportImageCollectionViewCell.swift */; };
 		8192069A20A1459700C074C7 /* ReportTableViewController+CV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8192069920A1459700C074C7 /* ReportTableViewController+CV.swift */; };
 		8192911120A2425900172899 /* FlagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8192911020A2425900172899 /* FlagsViewController.swift */; };
 		8192911320A2499B00172899 /* RedFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8192911220A2499B00172899 /* RedFlags.swift */; };
@@ -85,6 +86,7 @@
 		8163872F20B4ED6D005F5308 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		8163873320B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportTableViewController+ImagePicker.swift"; sourceTree = "<group>"; };
 		8163877C20B6679D005F5308 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		8168CA3A2108299200521BE6 /* ReportImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		8192069920A1459700C074C7 /* ReportTableViewController+CV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportTableViewController+CV.swift"; sourceTree = "<group>"; };
 		8192911020A2425900172899 /* FlagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsViewController.swift; sourceTree = "<group>"; };
 		8192911220A2499B00172899 /* RedFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedFlags.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				81EE7D5B20BF2B0B00ECCA3C /* HistoryTableViewController.swift */,
 				81EE7D5D20BF2B4A00ECCA3C /* HistoryTableViewCell.swift */,
 				81E1014E20EF104F00773FB7 /* HistoryReportDetailViewController.swift */,
+				8168CA3A2108299200521BE6 /* ReportImageCollectionViewCell.swift */,
 			);
 			path = HistoryPage;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				81DC1D772092749300915C70 /* LearnViewController.swift in Sources */,
 				81EE7D5E20BF2B4A00ECCA3C /* HistoryTableViewCell.swift in Sources */,
 				81DC1D67209273DE00915C70 /* ReportTableViewController.swift in Sources */,
+				8168CA3B2108299200521BE6 /* ReportImageCollectionViewCell.swift in Sources */,
 				8102E4B920CC9299002C7658 /* StyleSheet.swift in Sources */,
 				812A7C4920C4CDB6006820D9 /* AppUser.swift in Sources */,
 				81E1014720EEFDA100773FB7 /* NetworkHelper.swift in Sources */,
