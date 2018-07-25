@@ -50,13 +50,11 @@ class HistoryTableViewController: UITableViewController {
         cell.businessImage.image = nil
         
         if let reportImageURLstrs = report.imageURLs {
-            let completion: (UIImage) -> Void = {(onlineImage: UIImage) in
-                cell.businessImage.image = onlineImage
-                cell.setNeedsLayout()
+            ImageAPIClient.manager.loadImage(from: reportImageURLstrs[0], completionHandler: { (image) in
+                cell.businessImage.image = image
+            }) { (error) in
+                print("No Image loaded: \(error)")
             }
-            ImageAPIClient.manager.loadImage(from: reportImageURLstrs[0], completionHandler: completion, errorHandler: {print($0)})
-        } else {
-            cell.businessImage.image = UIImage(named: "noImage")
         }
         return cell
     }

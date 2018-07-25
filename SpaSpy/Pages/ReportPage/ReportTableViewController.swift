@@ -27,7 +27,7 @@ class ReportTableViewController: UITableViewController {
     
     /// BUSINESS PHOTOS
     public var uploadedPhotos = [UIImage]()
-    public var uploadedPhotoURLs = [String]()
+//    public var uploadedPhotoURLs = [String]()
     public let imagePickerVC = UIImagePickerController()
     private var currentSelectedImage: UIImage!
     
@@ -72,7 +72,6 @@ class ReportTableViewController: UITableViewController {
         self.tableView.backgroundColor = UIColor(red:0.39, green:0.82, blue:1.00, alpha:1.0)
         placesClient = GMSPlacesClient.shared()
         
-        AuthUserService.manager.signInAnon()
         loadAllFlags()
     }
     
@@ -273,7 +272,7 @@ class ReportTableViewController: UITableViewController {
     
     private func clearForm() {
         self.uploadedPhotos = []
-        self.uploadedPhotoURLs = []
+//        self.uploadedPhotoURLs = []
         self.currentSelectedImage = nil
         self.selectedLocationName = ""
         self.selectedLocationAddress = ""

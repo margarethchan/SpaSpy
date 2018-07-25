@@ -13,6 +13,7 @@ import FirebaseDatabase
 extension DBService {
 
     public func getReports(fromUID uid: String, completion: @escaping (_ reports: [Report]) -> Void) {
+        
         reportsRef.observeSingleEvent(of: .value) { (dataSnapshot) in
             var reports: [Report] = []
             guard let reportSnapshots = dataSnapshot.children.allObjects as? [DataSnapshot] else { return }
@@ -38,6 +39,8 @@ extension DBService {
                 let notes = reportDict["notes"] as! String
                 let report = Report(reportID: reportID, posterID: posterID, timestamp: timestamp, imageURLs: imageURLs, name: name, address: address, latitude: latitude, longitude: longitude, services: services, redFlags: redFlags, phoneNumbers: phoneNumbers, webpages: webpages, notes: notes)
             reports.append(report)
+                
+                
             }
             let reportsFromUID = reports.filter{$0.posterID == uid}
             completion(reportsFromUID)

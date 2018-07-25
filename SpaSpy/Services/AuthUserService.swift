@@ -21,18 +21,5 @@ class AuthUserService: NSObject {
     public func getCurrentUser() -> User? {
         return auth.currentUser
     }
-    
-    public func signInAnon() {
-        self.auth.signInAnonymously { (user, error) in
-            if let user = user {
-                let newUserProfile = AppUser(userID: user.user.uid, reports: [])
-                DBService.manager.addAppUser(newUserProfile)
-                print("\n\tSuccess! Signed in Anonymously as UserID: \(user.user.uid)\n")
-            }
-            if let error = error {
-                print("Error signing in Anonymously: \(error.localizedDescription)")
-            }
-        }
-    }
 }
 

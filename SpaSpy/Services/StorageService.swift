@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseStorage
 import Firebase
+import FirebaseDatabase
 import UIKit
 
 class StorageService {
@@ -16,48 +17,52 @@ class StorageService {
     private init() {
         storage = Storage.storage()
         storageRef = storage.reference()
-        imagesRef = storageRef.child("images")
     }
     static let manager = StorageService()
     private var storage: Storage!
     public var storageRef: StorageReference!
-    public var imagesRef: StorageReference!
+    public var reportRef: StorageReference!
     
-    public func storeImage(_ image: UIImage, imageID: String) -> StorageUploadTask? {
-        let ref  = imagesRef.child(imageID)
-        guard let imageData = UIImagePNGRepresentation(image) else { return nil }
-        let metaData = StorageMetadata()
-        metaData.contentType = "image/png"
-        return ref.putData(imageData, metadata: metaData, completion: { (storageMetaData, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-        })
+    public func uploadReportImages(reportImages: [UIImage], toReportID reportID: String) {
+        let reportRef = storageRef.child(reportID)
+        
+        uploadImages(reportImages: reportImages, toReportID: reportID, fromIndex: 0)
     }
     
-    public func storeReportImage(withImage image: UIImage?, reportID: String, andImageID imageID: String, completion: @escaping (_ error: String?, _ imageURLString: String?) -> Void) {
-        guard let image = image else {
-            print("No image uploaded"); return }
-        let savedImageID = reportID + "_" + imageID
-        guard let uploadTask = StorageService.manager.storeImage(image, imageID: savedImageID) else {
-            completion("Error uploading image", nil)
+    public func uploadImages(reportImages: [UIImage], toReportID reportID: String, fromIndex index: Int) {
+        
+        let reportRef = storageRef.child(reportID)
+        
+        if index < reportImages.count {
+            let imagePath = reportRef.child("\(index)")
+            guard let imageData = UIImageJPEGRepresentation(reportImages[index], 1) else { return }
+            
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
+            
+            let uploadTask = imagePath.putData(imageData, metadata: metadata) { (metadata, error) in
+                guard let metadata = metadata else {
+                    print("Error uploading image: \(error)")
+                    return
+                }
+            }
+            uploadTask.observe(.success) { (taskSnapshot) in
+                taskSnapshot.reference.downloadURL(completion: { (url, error) in
+                    if let error = error {
+                        print("\tUnable to create downloadURL: \(error)")
+                    } else if let url = url {
+                        DBService.manager.ref.child("reports").child(reportID).child("imageURLs").child("\(index)").setValue(url.absoluteString)
+                        print("\tdownloadURL: \(url.absoluteString)")
+                    }
+                })
+            }
+            uploadTask.observe(.failure) { (taskSnapshot) in
+                if let error = taskSnapshot.error {
+                    print("Failed to create downloadURL: \(error)")
+                }
+            }
+            uploadImages(reportImages: reportImages, toReportID: reportID, fromIndex: index + 1)
             return
         }
-        uploadTask.observe(.success) { (taskSnapshot) in
-            taskSnapshot.reference.downloadURL(completion: { (url, error) in
-                if let error = error {
-                    print("error downloading url: \(error.localizedDescription)")
-                } else if let url = url {
-                    completion(nil, url.absoluteString)
-                    print("image url: \(url.absoluteString)")
-                }
-            })
-        }
-        uploadTask.observe(.failure) { (snapshot) in
-            if let error = snapshot.error {
-                print(error.localizedDescription)
-            }
-        }
     }
-    
 }

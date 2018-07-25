@@ -513,34 +513,37 @@
                                             <constraint firstAttribute="trailing" secondItem="tYF-lI-kJC" secondAttribute="trailing" constant="10" id="lhp-Qr-fOM"/>
                                         </constraints>
                                     </stackView>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PpQ-tL-BrN">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PpQ-tL-BrN">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="249"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2Hf-2x-ZCZ">
-                                            <size key="itemSize" width="201" height="249"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="2Hf-2x-ZCZ">
+                                            <size key="itemSize" width="417" height="249"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ymU-lz-hiU">
-                                                <rect key="frame" x="0.0" y="0.0" width="201" height="249"/>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ReportImageCollectionViewCell" id="ymU-lz-hiU" customClass="ReportImageCollectionViewCell" customModule="SpaSpy" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="417" height="249"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="201" height="249"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="417" height="249"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hIe-cf-FqR">
-                                                            <rect key="frame" x="0.0" y="0.0" width="201" height="249"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hIe-cf-FqR">
+                                                            <rect key="frame" x="0.0" y="0.0" width="417" height="249"/>
                                                         </imageView>
                                                     </subviews>
                                                 </view>
                                                 <constraints>
-                                                    <constraint firstItem="hIe-cf-FqR" firstAttribute="leading" secondItem="ymU-lz-hiU" secondAttribute="leading" id="XM3-pa-J79"/>
-                                                    <constraint firstAttribute="trailing" secondItem="hIe-cf-FqR" secondAttribute="trailing" id="Zxe-eT-PP2"/>
-                                                    <constraint firstAttribute="bottom" secondItem="hIe-cf-FqR" secondAttribute="bottom" id="h9x-3M-Zzs"/>
-                                                    <constraint firstItem="hIe-cf-FqR" firstAttribute="top" secondItem="ymU-lz-hiU" secondAttribute="top" id="ycq-9J-rH2"/>
+                                                    <constraint firstItem="hIe-cf-FqR" firstAttribute="centerY" secondItem="ymU-lz-hiU" secondAttribute="centerY" id="CdY-mP-OE7"/>
+                                                    <constraint firstItem="hIe-cf-FqR" firstAttribute="centerX" secondItem="ymU-lz-hiU" secondAttribute="centerX" id="PaL-Sn-F9s"/>
+                                                    <constraint firstItem="hIe-cf-FqR" firstAttribute="height" secondItem="ymU-lz-hiU" secondAttribute="height" id="PpU-Er-8Lb"/>
+                                                    <constraint firstItem="hIe-cf-FqR" firstAttribute="width" secondItem="ymU-lz-hiU" secondAttribute="width" id="jIL-yb-TCR"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outlet property="reportImage" destination="hIe-cf-FqR" id="p2z-eM-I5d"/>
+                                                </connections>
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>

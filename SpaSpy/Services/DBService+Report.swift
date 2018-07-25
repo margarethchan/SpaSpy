@@ -53,22 +53,11 @@ extension DBService {
                 print("new report added to database!")
             }
         }
-        var counter = 0
-        for image in images! {
-            let imageID = images?.index(of: image)?.description
-            StorageService.manager.storeReportImage(withImage: image, reportID: report.reportID, andImageID: imageID!) { (error, imageURLString) in
-                if let error = error {
-                    print("Error saving image with report: \(error)")
-                } else if let imageURLString = imageURLString {
-                    self.uploadedURLs.append(imageURLString)
-                    counter += 1
-                    if counter == images?.count {
-                        DBService.manager.addImageURLsToReport(urls: self.uploadedURLs, reportID: report.reportID)
-                    }
-                }
-            }
-        }
-        self.uploadedURLs = []
+        StorageService.manager.uploadReportImages(reportImages: images!, toReportID: report.reportID)
+    }
+    
+    private func uploadImages(forIndex index: Int) {
+        
     }
     
     public func addImageURLsToReport(urls: [String], reportID: String) {
