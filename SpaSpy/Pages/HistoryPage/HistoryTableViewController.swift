@@ -29,6 +29,12 @@ class HistoryTableViewController: UITableViewController {
         getReports()
     }
     
+    
+    
+    /// TODO: CACHE IMAGES
+    
+    
+    
     private func getReports() {
         let currentUser = AuthUserService.manager.getCurrentUser()
         DBService.manager.getReports(fromUID: (currentUser?.uid)!) { (userReports) in

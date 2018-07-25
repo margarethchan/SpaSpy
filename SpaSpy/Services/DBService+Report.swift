@@ -26,6 +26,7 @@ extension DBService {
             print("Error: could not get current user id.")
             return
         }
+
         
         let ref = reportsRef.childByAutoId()
         
@@ -53,12 +54,12 @@ extension DBService {
                 print("new report added to database!")
             }
         }
-        StorageService.manager.uploadReportImages(reportImages: images!, toReportID: report.reportID)
+
+        if let images = images {
+            StorageService.manager.uploadReportImages(reportImages: images, toReportID: report.reportID)
+        }
     }
-    
-    private func uploadImages(forIndex index: Int) {
-        
-    }
+
     
     public func addImageURLsToReport(urls: [String], reportID: String) {
         addImageURLs(urls: urls, ref: reportsRef, reportID: reportID)
