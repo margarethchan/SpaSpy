@@ -16,12 +16,11 @@ class ImageAPIClient {
                    completionHandler: @escaping (UIImage) -> Void,
                    errorHandler: @escaping (Error) -> Void) {
         guard let url = URL(string: urlStr) else {return}
-        let completion = {(data: Data) in
-            guard let onlineImage = UIImage(data: data) else { return }
-            completionHandler(onlineImage)
-        }
         NetworkHelper.manager.performDataTask(with: URLRequest(url: url),
-                                              completionHandler: completion,
+                                              completionHandler: {(data: Data) in
+                                                guard let onlineImage = UIImage(data: data) else { return }
+                                                completionHandler(onlineImage)
+        },
                                               errorHandler: errorHandler)
     }
 }
