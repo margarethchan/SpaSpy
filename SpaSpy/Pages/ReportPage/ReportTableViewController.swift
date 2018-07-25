@@ -72,7 +72,6 @@ class ReportTableViewController: UITableViewController {
         self.tableView.backgroundColor = UIColor(red:0.39, green:0.82, blue:1.00, alpha:1.0)
         placesClient = GMSPlacesClient.shared()
         
-        AuthUserService.manager.signInAnon()
         loadAllFlags()
     }
     
