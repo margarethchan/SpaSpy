@@ -27,7 +27,7 @@ class ReportTableViewController: UITableViewController {
     
     /// BUSINESS PHOTOS
     public var uploadedPhotos = [UIImage]()
-    public var uploadedPhotoURLs = [String]()
+//    public var uploadedPhotoURLs = [String]()
     public let imagePickerVC = UIImagePickerController()
     private var currentSelectedImage: UIImage!
     
@@ -272,7 +272,7 @@ class ReportTableViewController: UITableViewController {
     
     private func clearForm() {
         self.uploadedPhotos = []
-        self.uploadedPhotoURLs = []
+//        self.uploadedPhotoURLs = []
         self.currentSelectedImage = nil
         self.selectedLocationName = ""
         self.selectedLocationAddress = ""
