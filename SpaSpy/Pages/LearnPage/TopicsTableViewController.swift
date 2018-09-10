@@ -10,43 +10,70 @@ import UIKit
 
 class TopicsTableViewController: UITableViewController {
 
+    let websites = websiteLinks
+    let reports = reportLinks
+    let quotes = resourceQuotes
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 2
     }
 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Websites"
+        case 1:
+            return "Reports"
+        default:
+            return ""
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        switch section {
+        case 0:
+            return websites.count
+        case 1:
+            return reports.count
+        default:
+            return 1
+        }
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "resourceCell", for: indexPath)
+            let resource = websites[indexPath.row]
+            cell.textLabel?.text = resource.websiteName
+            cell.textLabel?.numberOfLines = 0
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "resourceCell", for: indexPath)
+            let report = reports[indexPath.row]
+            cell.textLabel?.text = report.websiteName
+            cell.textLabel?.numberOfLines = 0
+            return cell
+        default:
+            return UITableViewCell()
+        }
     }
-    */
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 1 {
+            return 100
+        }
+        return 50
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
