@@ -86,7 +86,7 @@ class RedFlagsTableViewCell: UITableViewCell {
             make.centerX.equalTo(contentView.snp.centerX)
             make.top.equalTo(redFlagsLabel.snp.bottom).offset(5)
             make.width.equalTo(contentView.snp.width).multipliedBy(0.85)
-            make.height.equalTo(30)
+            make.height.equalTo(StyleSheet.buttonHeight)
         }
         
         contentView.addSubview(selectedFlagsLabel)

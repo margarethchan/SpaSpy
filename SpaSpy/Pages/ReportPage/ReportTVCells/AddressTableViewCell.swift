@@ -89,7 +89,7 @@ class AddressTableViewCell: UITableViewCell {
             make.top.equalTo(businessAddressHeaderLabel.snp.bottom).offset(10)
             make.centerX.equalTo(contentView.snp.centerX)
             make.width.equalTo(contentView.snp.width).multipliedBy(0.85)
-            make.height.equalTo(30)
+            make.height.equalTo(StyleSheet.buttonHeight)
         }
         
         contentView.addSubview(businessNameLabel)

@@ -17,6 +17,7 @@
 		8163873420B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8163873320B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift */; };
 		8163877D20B6679E005F5308 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8163877C20B6679D005F5308 /* GoogleService-Info.plist */; };
 		8168CA3B2108299200521BE6 /* ReportImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8168CA3A2108299200521BE6 /* ReportImageCollectionViewCell.swift */; };
+		8169A5C72145B46300FFEE5C /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8169A5C62145B46300FFEE5C /* Resources.swift */; };
 		8192069A20A1459700C074C7 /* ReportTableViewController+CV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8192069920A1459700C074C7 /* ReportTableViewController+CV.swift */; };
 		8192911120A2425900172899 /* FlagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8192911020A2425900172899 /* FlagsViewController.swift */; };
 		8192911320A2499B00172899 /* RedFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8192911220A2499B00172899 /* RedFlags.swift */; };
@@ -87,6 +88,7 @@
 		8163873320B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportTableViewController+ImagePicker.swift"; sourceTree = "<group>"; };
 		8163877C20B6679D005F5308 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		8168CA3A2108299200521BE6 /* ReportImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		8169A5C62145B46300FFEE5C /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		8192069920A1459700C074C7 /* ReportTableViewController+CV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportTableViewController+CV.swift"; sourceTree = "<group>"; };
 		8192911020A2425900172899 /* FlagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsViewController.swift; sourceTree = "<group>"; };
 		8192911220A2499B00172899 /* RedFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedFlags.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				81DC1D912093A55400915C70 /* Photo.swift */,
 				81DC1D972093DF1500915C70 /* BusinessType.swift */,
 				8192911220A2499B00172899 /* RedFlags.swift */,
+				8169A5C62145B46300FFEE5C /* Resources.swift */,
 				81EE7D6120C2FD8500ECCA3C /* DateFormatter.swift */,
 				81EE7D6320C3199A00ECCA3C /* PDFNameGenerator.swift */,
 				81EE7D6720C4727200ECCA3C /* Report.swift */,
@@ -538,6 +541,7 @@
 				81DC1D6F2092741E00915C70 /* FlagsView.swift in Sources */,
 				8163873420B5FF78005F5308 /* ReportTableViewController+ImagePicker.swift in Sources */,
 				8163873020B4ED6D005F5308 /* Alert.swift in Sources */,
+				8169A5C72145B46300FFEE5C /* Resources.swift in Sources */,
 				81DC1D862093875300915C70 /* BusinessTypeTableViewCell.swift in Sources */,
 				812A7C4B20C4CE6A006820D9 /* DBService+AppUser.swift in Sources */,
 				81DC1D8E2093878500915C70 /* NotesTableViewCell.swift in Sources */,

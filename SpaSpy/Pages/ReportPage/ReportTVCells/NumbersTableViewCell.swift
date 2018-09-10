@@ -71,7 +71,7 @@ class NumbersTableViewCell: UITableViewCell {
         numbersTextView.snp.makeConstraints { (make) in
             make.top.equalTo(numbersLabel.snp.bottom).offset(10)
             make.centerX.equalTo(contentView)
-            make.height.equalTo(40)
+            make.height.equalTo(StyleSheet.buttonHeight)
             make.width.equalTo(contentView.snp.width).multipliedBy(0.85)
             make.bottom.equalTo(contentView.snp.bottom).offset(-10)
         }

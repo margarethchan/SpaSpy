@@ -57,6 +57,11 @@ class ReportTableViewController: UITableViewController {
     
     var mailComposeViewController: MFMailComposeViewController!
 
+    @IBOutlet weak var clearButton: UIBarButtonItem!
+    
+    @IBOutlet weak var reportLabel: UINavigationItem!
+    @IBOutlet weak var reportButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
@@ -72,7 +77,27 @@ class ReportTableViewController: UITableViewController {
         self.tableView.backgroundColor = UIColor(red:0.39, green:0.82, blue:1.00, alpha:1.0)
         placesClient = GMSPlacesClient.shared()
         
+        setAccessibilityButtons()
+        
         loadAllFlags()
+    }
+    
+    private func setAccessibilityButtons() {
+        clearButton.isAccessibilityElement = true
+        clearButton.accessibilityLabel = NSLocalizedString("Clear form", comment: "")
+        clearButton.accessibilityHint = NSLocalizedString("Clears all the form fields", comment: "")
+        clearButton.accessibilityTraits = UIAccessibilityTraitButton
+        
+        reportLabel.isAccessibilityElement = true
+        reportLabel.accessibilityLabel = NSLocalizedString("Report form label", comment: "")
+        reportLabel.accessibilityTraits = UIAccessibilityTraitHeader
+        
+        reportButton.isAccessibilityElement = true
+        reportButton.accessibilityLabel = NSLocalizedString("Submit report", comment: "")
+        reportButton.accessibilityHint = NSLocalizedString("Submits all fields for report", comment: "")
+        reportButton.accessibilityTraits = UIAccessibilityTraitButton
+        
+        tableView.isAccessibilityElement = true
     }
     
     /// NAV BAR BUTTONS
@@ -136,6 +161,26 @@ class ReportTableViewController: UITableViewController {
                     cell.collectionCellHeight = make.height.equalTo(120).constraint
                 }
             }
+            
+            // Set Accessibility Info
+            cell.photosHeaderLabel.isAccessibilityElement = true
+            cell.photosHeaderLabel.accessibilityLabel = NSLocalizedString("Photos of Business", comment: "")
+            cell.photosHeaderLabel.accessibilityTraits = UIAccessibilityTraitStaticText
+            
+            cell.addPhotoButton.isAccessibilityElement = true
+            cell.addPhotoButton.accessibilityLabel = NSLocalizedString("Add Photo", comment: "")
+            cell.addPhotoButton.accessibilityHint = NSLocalizedString("Adds a photo to the report", comment: "")
+            cell.addPhotoButton.accessibilityTraits = UIAccessibilityTraitButton
+            
+            cell.removePhotoButton.isAccessibilityElement = true
+            cell.removePhotoButton.accessibilityLabel = NSLocalizedString("Remove Last Photo", comment: "")
+            cell.removePhotoButton.accessibilityHint = NSLocalizedString("Removes last photo uploaded to the report", comment: "")
+            cell.removePhotoButton.accessibilityTraits = UIAccessibilityTraitButton
+            
+            cell.photosCollectionView.isAccessibilityElement = true
+            cell.photosCollectionView.accessibilityLabel = NSLocalizedString("Collection of uploaded photos", comment: "")
+            cell.photosCollectionView.accessibilityTraits = UIAccessibilityTraitNone
+            
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddressTableViewCell", for: indexPath) as! AddressTableViewCell
@@ -164,6 +209,26 @@ class ReportTableViewController: UITableViewController {
                 }
             }
             cell.addLocationButton.addTarget(self, action: #selector(addLocation), for: .touchUpInside)
+            
+            // Set accessibility info
+            cell.businessAddressHeaderLabel.isAccessibilityElement = true
+            cell.businessAddressHeaderLabel.accessibilityLabel = NSLocalizedString("Business Address", comment: "")
+            cell.businessAddressHeaderLabel.accessibilityTraits = UIAccessibilityTraitStaticText
+            
+            cell.businessNameLabel.isAccessibilityElement = true
+            cell.businessNameLabel.accessibilityLabel = NSLocalizedString("Selected Business Name", comment: "")
+            cell.businessNameLabel.accessibilityTraits = UIAccessibilityTraitUpdatesFrequently
+            
+            cell.businessAddressLabel.isAccessibilityElement = true
+            cell.businessAddressLabel.accessibilityLabel = NSLocalizedString("Selected Business Address", comment: "")
+            cell.businessAddressLabel.accessibilityTraits = UIAccessibilityTraitUpdatesFrequently
+            
+            cell.addLocationButton.isAccessibilityElement = true
+            cell.addLocationButton.accessibilityLabel = NSLocalizedString("Add Location", comment: "")
+            cell.addLocationButton.accessibilityHint = NSLocalizedString("Adds a location to the report", comment: "")
+            cell.addLocationButton.accessibilityTraits = UIAccessibilityTraitButton
+            
+
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessTypeTableViewCell", for: indexPath) as! BusinessTypeTableViewCell
@@ -174,6 +239,16 @@ class ReportTableViewController: UITableViewController {
             cell.businessTypeCollectionView.allowsMultipleSelection = true
             cell.otherBusinessTypeTextView.delegate = self
             cell.otherBusinessTypeTextView.tag = indexPath.row
+            
+            // Set Accessibility Info
+            cell.businessTypeLabel.isAccessibilityElement = true
+            cell.businessTypeLabel.accessibilityLabel = NSLocalizedString("Advertised Services", comment: "")
+            cell.businessTypeLabel.accessibilityTraits = UIAccessibilityTraitStaticText
+            
+            cell.otherBusinessTypeTextView.isAccessibilityElement = true
+            cell.otherBusinessTypeTextView.accessibilityLabel = NSLocalizedString("Other service", comment: "")
+            cell.otherBusinessTypeTextView.accessibilityHint = NSLocalizedString("Enter other advertised service", comment: "")
+            
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "RedFlagsTableViewCell", for: indexPath) as! RedFlagsTableViewCell
@@ -194,24 +269,71 @@ class ReportTableViewController: UITableViewController {
                 cell.addRedFlagsButton.backgroundColor = .clear
                 cell.redFlagsCellHeight?.deactivate()
                 cell.selectedFlagsLabel.snp.makeConstraints { (make) in
-                    cell.redFlagsCellHeight = make.height.equalTo(30).constraint
+                    cell.redFlagsCellHeight = make.height.equalTo(StyleSheet.buttonHeight).constraint
                 }
             }
+            
+            cell.redFlagsLabel.isAccessibilityElement = true
+            cell.redFlagsLabel.accessibilityLabel = NSLocalizedString("Red Flags", comment: "")
+            cell.redFlagsLabel.accessibilityTraits = UIAccessibilityTraitStaticText
+            
+            cell.selectedFlagsLabel.isAccessibilityElement = true
+            cell.selectedFlagsLabel.accessibilityLabel = NSLocalizedString("Number of selected flags", comment: "")
+            cell.selectedFlagsLabel.accessibilityTraits = UIAccessibilityTraitUpdatesFrequently
+            
+            cell.addRedFlagsButton.isAccessibilityElement = true
+            cell.addRedFlagsButton.accessibilityLabel = NSLocalizedString("Set Red Flags", comment: "")
+            cell.addRedFlagsButton.accessibilityHint = NSLocalizedString("Select from list of red flags", comment: "")
+            cell.addRedFlagsButton.accessibilityTraits = UIAccessibilityTraitButton
+            
+            
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "NumbersTableViewCell", for: indexPath) as! NumbersTableViewCell
             cell.numbersTextView.delegate = self
             cell.numbersTextView.tag = indexPath.row
+            
+            // Accessibility
+            cell.numbersLabel.isAccessibilityElement = true
+            cell.numbersLabel.accessibilityLabel = NSLocalizedString("Phone Numbers", comment: "")
+            cell.numbersLabel.accessibilityTraits = UIAccessibilityTraitStaticText
+            
+            cell.numbersTextView.isAccessibilityElement = true
+            cell.numbersTextView.accessibilityLabel = NSLocalizedString("Listed phone numbers", comment: "")
+            cell.numbersTextView.accessibilityHint = NSLocalizedString("Input any phone numbers for the business", comment: "")
+            
+            
+            
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "WebpagesTableViewCell", for: indexPath) as! WebpagesTableViewCell
             cell.webpagesTextView.delegate = self
             cell.webpagesTextView.tag = indexPath.row
+            
+            // Accessibility
+            cell.webpagesLabel.isAccessibilityElement = true
+            cell.webpagesLabel.accessibilityLabel = NSLocalizedString("Web pages", comment: "")
+            cell.webpagesLabel.accessibilityTraits = UIAccessibilityTraitStaticText
+            
+            cell.webpagesTextView.isAccessibilityElement = true
+            cell.webpagesTextView.accessibilityLabel = NSLocalizedString("Web pages", comment: "")
+            cell.webpagesTextView.accessibilityHint = NSLocalizedString("Input any web pages for the business", comment: "")
+            
             return cell
         case 6:
             let cell = tableView.dequeueReusableCell(withIdentifier: "NotesTableViewCell", for: indexPath) as! NotesTableViewCell
             cell.notesTextView.delegate = self
             cell.notesTextView.tag = indexPath.row
+            
+            // Accessibility
+            cell.notesLabel.isAccessibilityElement = true
+            cell.notesLabel.accessibilityLabel = NSLocalizedString("Notes", comment: "")
+            cell.notesLabel.accessibilityTraits = UIAccessibilityTraitStaticText
+            
+            cell.notesTextView.isAccessibilityElement = true
+            cell.notesTextView.accessibilityLabel = NSLocalizedString("Other notes", comment: "")
+            cell.notesTextView.accessibilityHint = NSLocalizedString("Input any other notes for the business", comment: "")
+            
             return cell
         default:
             let cell = UITableViewCell()

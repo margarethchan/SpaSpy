@@ -17,4 +17,5 @@ struct StyleSheet {
     // Header Label
     static let headerColor = UIColor.white
     static let headerIconOffset = 5
+    static let buttonHeight = 44
 }

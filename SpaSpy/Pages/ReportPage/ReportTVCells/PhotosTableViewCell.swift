@@ -104,7 +104,7 @@ class PhotosTableViewCell: UITableViewCell {
 //            make.centerY.equalTo(icon.snp.centerY)
             make.top.equalTo(photosHeaderLabel.snp.bottom).offset(10)
             self.addPhotoLeading = make.leading.equalTo(contentView.snp.leading).offset(10).constraint
-            make.height.equalTo(30)
+            make.height.equalTo(StyleSheet.buttonHeight)
             self.addPhotoWidth = make.width.equalTo(contentView.snp.width).multipliedBy(0.4).constraint
         }
         
@@ -113,7 +113,7 @@ class PhotosTableViewCell: UITableViewCell {
 //            make.trailing.equalTo(contentView.snp.trailing).offset(-20)
             make.centerX.equalTo(contentView.snp.centerX).multipliedBy(1.45)
             make.top.equalTo(addPhotoButton.snp.top)
-            make.height.equalTo(30)
+            make.height.equalTo(StyleSheet.buttonHeight)
             make.width.equalTo(contentView.snp.width).multipliedBy(0.4)
         }
         

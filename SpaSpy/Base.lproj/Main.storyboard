@@ -164,6 +164,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="clearButton" destination="OKn-0Q-j4s" id="ug9-Mw-3Vp"/>
+                        <outlet property="reportButton" destination="TU5-2h-upg" id="4gJ-TK-0eo"/>
+                        <outlet property="reportLabel" destination="Rhg-fa-ka1" id="Swz-qe-vN7"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WC9-7r-2Jh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -209,20 +214,100 @@
         <!--Learn-->
         <scene sceneID="6w7-B2-3hN">
             <objects>
-                <viewController id="Tec-U4-BP0" sceneMemberID="viewController">
+                <viewController id="Tec-U4-BP0" customClass="LearnViewController" customModule="SpaSpy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yno-c9-eCP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="KZe-Ft-jpr">
+                                <rect key="frame" x="63" y="320" width="286.33333333333331" height="111.33333333333331"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="National Human Trafficking Hotline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QX5-xy-QN3">
+                                        <rect key="frame" x="0.0" y="0.0" width="286.33333333333331" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone: 1-888-373-7888" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCq-AS-9Po">
+                                        <rect key="frame" x="0.0" y="20.333333333333314" width="189.66666666666666" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text: 233733 (BE FREE)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MmA-aT-EKu">
+                                        <rect key="frame" x="0.0" y="40.666666666666686" width="182.33333333333334" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TTY: 711" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNT-Ro-O1g">
+                                        <rect key="frame" x="0.0" y="61.000000000000007" width="64" height="20.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQU-3W-J51">
+                                        <rect key="frame" x="0.0" y="81.333333333333314" width="244" height="30"/>
+                                        <state key="normal" title="https://humantraffickinghotline.org/"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you or someone you know is a victim of human trafficking, contact the National Human Trafficking Hotline now." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5WM-Hz-EJj">
+                                <rect key="frame" x="42.333333333333343" y="157.33333333333334" width="331" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KZe-Ft-jpr" firstAttribute="centerY" secondItem="2da-sD-vXV" secondAttribute="centerY" id="3Ad-0j-IiU"/>
+                            <constraint firstItem="KZe-Ft-jpr" firstAttribute="centerX" secondItem="2da-sD-vXV" secondAttribute="centerX" id="JTj-yN-Hoj"/>
+                            <constraint firstItem="5WM-Hz-EJj" firstAttribute="centerY" secondItem="2da-sD-vXV" secondAttribute="centerY" multiplier="0.5" id="YkD-yY-TU8"/>
+                            <constraint firstItem="5WM-Hz-EJj" firstAttribute="width" secondItem="Yno-c9-eCP" secondAttribute="width" multiplier="0.8" id="ZXR-we-mm1"/>
+                            <constraint firstItem="5WM-Hz-EJj" firstAttribute="centerX" secondItem="2da-sD-vXV" secondAttribute="centerX" id="d4C-GE-412"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="2da-sD-vXV"/>
                     </view>
                     <navigationItem key="navigationItem" title="Learn" id="qyT-KV-6lE">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="menu1" id="WsL-uL-dzF"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="menu1" id="WsL-uL-dzF">
+                            <connections>
+                                <segue destination="Ljd-mJ-xb5" kind="show" id="Y1i-KX-GQS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CSv-Zn-ggX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4516" y="312.59370314842579"/>
+            <point key="canvasLocation" x="4515.9420289855079" y="312.22826086956525"/>
+        </scene>
+        <!--Topics Table View Controller-->
+        <scene sceneID="qic-uD-6tc">
+            <objects>
+                <tableViewController id="Ljd-mJ-xb5" customClass="TopicsTableViewController" customModule="SpaSpy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" id="ULn-Fg-jYb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="resourceCell" id="4Ft-Dp-F3D">
+                                <rect key="frame" x="0.0" y="28" width="414" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Ft-Dp-F3D" id="qkH-fK-avD">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="49.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ljd-mJ-xb5" id="xXv-bq-NY5"/>
+                            <outlet property="delegate" destination="Ljd-mJ-xb5" id="8ut-qP-abe"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p1l-Zl-KnL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5254" y="307"/>
         </scene>
         <!--Report-->
         <scene sceneID="Mkp-Vj-F8v">
