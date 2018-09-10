@@ -51,6 +51,13 @@ extension ReportTableViewController: UICollectionViewDelegateFlowLayout, UIColle
             let businessType = businessTypes[indexPath.row]
             cell.businessTypeLabel.text = businessType
             collectionView.allowsMultipleSelection = true
+            
+            cell.isAccessibilityElement = true
+            cell.accessibilityLabel = NSLocalizedString(cell.businessTypeLabel.text!, comment: "")
+            cell.accessibilityHint = NSLocalizedString("Select if business offers this service", comment: "")
+            cell.accessibilityTraits = UIAccessibilityTraitButton
+            
+            
             return cell
         default:
             let cell = UICollectionViewCell()
@@ -72,7 +79,7 @@ extension ReportTableViewController: UICollectionViewDelegateFlowLayout, UIColle
             let paddingSpace = sectionInsets.left * (5 + 1)
             let availableWidth = view.frame.width - paddingSpace
             let widthPerItem = availableWidth / 4
-            return CGSize(width: widthPerItem, height: widthPerItem * 0.4)
+            return CGSize(width: widthPerItem, height: widthPerItem * 0.5)
         default:
             return CGSize(width: 5.0, height: 5.0)
         }
